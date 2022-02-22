@@ -1,10 +1,10 @@
 {
-	"id": "obsidian-sample-plugin",
-	"name": "Sample Plugin",
-	"version": "1.0.1",
+	"id": "heatmap-calendar",
+	"name": "Heatmap Calendar",
+	"version": "0.1.0",
 	"minAppVersion": "0.12.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
+	"description": "Activity Year Overview for DataviewJS, Github style – Track Goals, Progress, Habits, Tasks, Exercise, Finances, \"Dont Break the Chain\" etc.",
+	"author": "Richard Slettevoll",
+	"authorUrl": "https://richard.sl",
 	"isDesktopOnly": false
 }
