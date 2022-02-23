@@ -7,7 +7,7 @@
       }
       .heatmap-calendar-graph{
         font-size: 0.65em;
-        display: inline;
+        display: grid;
         grid-template-columns: auto 1fr; 
         grid-template-areas:
           'year months'
