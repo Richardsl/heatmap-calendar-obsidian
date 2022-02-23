@@ -3,18 +3,16 @@ import { App, Plugin, PluginSettingTab, Setting } from 'obsidian';
 // TODO: fix at entries ikke dokke opp på feil år
 
 interface HeatmapCalendarSettings {
-	mySetting: string;
 	year: number;
-	intensity: number;
+	defaultEntryIntensity: number;
 	colors: {
 		default: Array<string>;
 	};
 	entries: Array<Entry>;
 }
 const DEFAULT_SETTINGS: HeatmapCalendarSettings = {
-	mySetting: 'default',
 	year: new Date().getFullYear(),
-	intensity: 4,
+	defaultEntryIntensity: 4,
 	colors: {
 		default: ["#c6e48b","#7bc96f","#49af5d","#2e8840","#196127"]
 	},
@@ -92,15 +90,27 @@ export default class HeatmapCalendar extends Plugin {
 
 			const year = calendarData.year || this.settings.year
 			const colors = calendarData.colors || this.settings.colors
+			console.log("colors ",colors)
+			console.log("calendarData.colors ",calendarData.colors)
+			console.log("this.settings.colors ",this.settings.colors)
 			const calEntries = calendarData.entries || this.settings.entries
-			!calEntries[0].intensity && this.settings.intensity
+			//!calEntries[0].intensity && this.settings.intensity
+			
+			
 
-			//map() ?
-			const entries: Array<Entry> = []
+			//calEntries.map(e=> new Date(e.date).getFullYear() == year ? this.daysIntoYear(new Date(e.date)) : {})
+			
+			const mappedEntries: Array<Entry> = []
+
 			calEntries.forEach(e => {
-				entries[this.daysIntoYear(new Date(e.date))] = e
+				const newEntry = {...e}
+				if (new Date(e.date).getFullYear() == year){
+					if(!newEntry.intensity){newEntry.intensity= this.settings.defaultEntryIntensity}
+					mappedEntries[this.daysIntoYear(new Date(e.date))] = newEntry
+				}
 			})
-
+			
+			
 			const firstDayOfYear = new Date(Date.UTC(year, 0, 1))
 			let numberOfEmptyDaysBeforeYearBegins = (firstDayOfYear.getDay() + 5) % 6
 			let boxes = ""
@@ -108,26 +118,26 @@ export default class HeatmapCalendar extends Plugin {
 				boxes += `<li style="background-color: transparent"></li>`
 				numberOfEmptyDaysBeforeYearBegins--
 			}
-
 			const lastDayOfYear = new Date(Date.UTC(year, 11, 31))
 			const numberOfDays = this.daysIntoYear(lastDayOfYear) //eg 365 or 366
+			console.log("mappedEntries",mappedEntries)
 			for (let day = 1; day <= numberOfDays; day++) {
-
+				
 				let background_color, content = ""
 
-				if (entries[day]) {
-
-					if (entries[day].color) {
-						background_color = colors[entries[day].color][entries[day].intensity - 1]
-					} else { // default color: first color in colors array
-						background_color = colors.default[entries[day].intensity - 1]
+				if (mappedEntries[day]) {
+					if (mappedEntries[day].color) {
+						console.log("if (mappedEntries[day].color) {")
+						background_color = colors[mappedEntries[day].color][mappedEntries[day].intensity - 1]
+						console.log("has color: ",background_color)
+					} else { 
+						background_color = colors.default[mappedEntries[day].intensity - 1]
+						console.log("default color: ",background_color)
 					}
-					if (entries[day].content) {
-						content = entries[day].content
+					if (mappedEntries[day].content) {
+						content = mappedEntries[day].content
 					}
-
 					boxes += `<li style="background-color:${background_color};">${content}</li>`
-
 				} else {
 					boxes += `<li></li>`
 				}
@@ -163,6 +173,7 @@ export default class HeatmapCalendar extends Plugin {
 				</ul>
 				</div>
 			`
+			console.log(html)
 			el.insertAdjacentHTML("beforeend", html);
 		}
 
