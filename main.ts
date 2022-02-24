@@ -29,7 +29,6 @@ colors: {
 		orange: ["#ffa244","#fd7f00","#dd6f00","#bf6000","#9b4e00"],
 		pink: ["#ff96cb","#ff70b8","#ff3a9d","#ee0077","#c30062"],
 		orangeToRed: ["#ffdf04","#ffbe04","#ff9a03","#ff6d02","#ff2c01"]
-
 	},
 	*/
 
@@ -106,33 +105,35 @@ export default class HeatmapCalendar extends Plugin {
 			console.log("calEntries", calEntries)
 			
 			const intensities: Array<number> = []
-			calEntries.forEach(e => e.intensity && intensities.push(e.intensity))
+			calEntries.forEach(e => {
+				if(e.intensity){
+					intensities.push(e.intensity)
+				}
+			})
 
 			const minimumIntensity = Math.min(...intensities) ?? 1;
 			const averageIntensity = intensities.reduce((a,b) => a + b, 0) / intensities.length ?? 3
 			const maximumIntensity = Math.max(...intensities) ?? 5;
-/*
-			if(intensities.length != 0){
-				
-			}else{
-				
-			}
-			
-*/
+
 			console.log("minimumIntensity",minimumIntensity)
 			console.log("maximumIntensity",maximumIntensity)
 			console.log("averageIntensity",averageIntensity)
 
-
-
-
 			const mappedEntries: Array<Entry> = []
+			
 			calEntries.forEach(e => {
+				console.log("cal foreach")
 				if (new Date(e.date).getFullYear() == year) {
+					console.log("if year")
 					const newEntry = { ...e }
-					newEntry.intensity = newEntry.intensity ?? this.settings.defaultEntryIntensity
+					newEntry.intensity = e.intensity ?? this.settings.defaultEntryIntensity;
+					console.log("newEntry.intensity", newEntry.intensity)
 
-					newEntry.intensity = Math.round(this.map(newEntry.intensity, minimumIntensity, maximumIntensity,1,5))
+					if(minimumIntensity==maximumIntensity){
+						newEntry.intensity = 5;
+					}else{
+						newEntry.intensity = Math.round(this.map(newEntry.intensity, minimumIntensity, maximumIntensity,1,5))
+					}
 					//if (!newEntry.intensity) { newEntry.intensity = this.settings.defaultEntryIntensity }
 					mappedEntries[this.daysIntoYear(new Date(e.date))] = newEntry
 
