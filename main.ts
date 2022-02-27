@@ -100,7 +100,7 @@ export default class HeatmapCalendar extends Plugin {
 			})
 
 			const firstDayOfYear = new Date(Date.UTC(year, 0, 1))
-			let numberOfEmptyDaysBeforeYearBegins = (firstDayOfYear.getDay() + 5) % 6
+			let numberOfEmptyDaysBeforeYearBegins = (firstDayOfYear.getDay() + 6) % 7
 			let boxes = ""
 			while (numberOfEmptyDaysBeforeYearBegins) {
 				boxes += `<li style="background-color: transparent"></li>`
