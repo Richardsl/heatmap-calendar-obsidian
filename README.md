@@ -1,16 +1,16 @@
 # Heatmap Calendar plugin for Obsidian
 
 This Obsidian plugin creates a full year heatmap calendar similar to github activity calendar.  
-It's intended to be used with DataviewJS (another obsidian plugin) – but could possibly be used standalone or with other plugins  
+It's intended to be used with [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/) – but could probably be used standalone or with other plugins as well.  
 
 ![heatmap calendar examples](https://github.com/richardsl/heatmap-calendar-obsidian/github-images/master/heatmap-calendar-examples.jpg?raw=true)
 
 ### How it works:
 
-You first annotate your data in daily notes, see [dateview annotation documentation](https://blacksmithgu.github.io/obsidian-dataview/data-annotation/).  
-You then create a [DataviewJS block](https://blacksmithgu.github.io/obsidian-dataview/api/intro/) where you iterate over your data and pass it into this plugin using *window.renderHeatmapCalendar()* or just *renderHeatmapCalendar()*.
+First annotate your data in daily notes, see [Dataview annotation documentation](https://blacksmithgu.github.io/obsidian-dataview/data-annotation/).  
+You then create a [DataviewJS block](https://blacksmithgu.github.io/obsidian-dataview/api/intro/) and iterate over your data and pass it into Heatmap Calendar using *window.renderHeatmapCalendar()* or just *renderHeatmapCalendar()*.
 
-![heatmap calendar how to example 1](https://github.com/richardsl/heatmap-calendar-obsidian/github-images/master/heatmap-calendar-howto1.png?raw=true)
+![heatmap calendar how to example 1](https://github.com/richardsl/heatmap-calendar-obsidian/github-images/master/heatmap-calendar-howto1.png?raw=true)  
 ![heatmap calendar how to example 2](https://github.com/richardsl/heatmap-calendar-obsidian/github-images/master/heatmap-calendar-howto2.png?raw=true)
 
 ### Use:
@@ -36,7 +36,7 @@ This plugin attaches a single function to the window object in obsidian – **re
     
         calendarData.entries.push({
             date: page.file.name, // needs to be in format YYYY-MM-DD
-            intensity: page.exercise // optional, what color to use for entry, will autoscale. default 5(darkest)
+            intensity: page.exercise // optional, what color intensity to use for entry, will autoscale. default 4 (1-5)
             content: "🏋️" // optional, adds text to the date cell (use at own risk)
             color: "orange" // optional, reference from your colors array. if no color is supplied; colors[0] is used
         })
@@ -51,8 +51,9 @@ This plugin attaches a single function to the window object in obsidian – **re
 
 
     ```
-
-Open the EXAMPLE VAULT
+  
+---
+Download the [EXAMPLE VAULT](https://github.com/richardsl/heatmap-calendar-obsidian/github-images/master/EXAMPLE_VAULT) to try out the examples.  
 
 ### Notes:
 

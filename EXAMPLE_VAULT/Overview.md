@@ -1,12 +1,12 @@
 # Overview
-(PS. install "Dataview" and "Heatmap Calendar" plugins for the examples below to work)
+*(PS. Disable safe mode and install "Dataview" and "Heatmap Calendar" plugins for the examples below to work. You may have to restart Obsidian).*
 
 ```dataviewjs
 
 dv.span("**🏋️ Exercise 🏋️**")
 
 const calendarData = {
-    year: 2022,
+    year: 2023,
     colors: {
         red: ["#ff9e82","#ff7b55","#ff4d1a","#e73400","#bd2a00"]
     },
