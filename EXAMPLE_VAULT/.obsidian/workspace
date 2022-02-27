@@ -4,23 +4,8 @@
     "type": "split",
     "children": [
       {
-        "id": "ec3d27c5ea98ee5c",
-        "type": "leaf",
-        "dimension": 31.469194312796205,
-        "state": {
-          "type": "markdown",
-          "state": {
-            "file": "daily notes/2023-01-03.md",
-            "mode": "source",
-            "backlinks": false,
-            "source": false
-          }
-        }
-      },
-      {
         "id": "c9195cadf1b9486a",
         "type": "leaf",
-        "dimension": 68.5308056872038,
         "state": {
           "type": "markdown",
           "state": {
@@ -82,8 +67,8 @@
   "active": "c9195cadf1b9486a",
   "lastOpenFiles": [
     "Overview.md",
-    "daily notes/2023-01-03.md",
     "daily notes/2022-01-02.md",
+    "daily notes/2023-01-03.md",
     "daily notes/2022-01-05.md",
     "daily notes/2022-01-04.md",
     "daily notes/2022-01-03.md",

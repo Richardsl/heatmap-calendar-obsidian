@@ -6,7 +6,7 @@
 dv.span("**🏋️ Exercise 🏋️**")
 
 const calendarData = {
-    year: 2023,
+    year: 2022,
     colors: {
         red: ["#ff9e82","#ff7b55","#ff4d1a","#e73400","#bd2a00"]
     },
@@ -24,6 +24,7 @@ for(let page of dv.pages('"daily notes"').where(p=>p.exercise).sort(p=>p.file.na
 renderHeatmapCalendar(this.container, calendarData)
 
 ```
+
 ```dataviewjs
 
 dv.span("**💸 Money Spent 💸**")
@@ -44,6 +45,7 @@ for(let page of dv.pages('"daily notes"').where(p=>p.moneySpent).sort(p=>p.file.
 renderHeatmapCalendar(this.container, calendarData)
 
 ```
+
 ```dataviewjs
 
 dv.span("**🍺 Alcohol Consumption 🍺**")
@@ -68,6 +70,7 @@ for(let page of dv.pages('"daily notes"').where(p=>p.alcohol).sort(p=>p.file.nam
 renderHeatmapCalendar(this.container, calendarData)
 
 ```
+
 ```dataviewjs
 
 dv.span("**Writing - Dont break the chain! 🔗🔗**")
@@ -92,6 +95,7 @@ for(let page of dv.pages('"daily notes"').where(p=>p.writing).sort(p=>p.file.nam
 renderHeatmapCalendar(this.container, calendarData)
 
 ```
+
 ```dataviewjs
 //
 // Using multiple colors for different variations of entry
@@ -124,6 +128,7 @@ for(let page of dv.pages('"daily notes"').where(p=>p.social).sort(p=>p.file.name
 renderHeatmapCalendar(this.container, calendarData)
 
 ```
+
 
 ##### Calories?
 

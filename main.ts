@@ -101,9 +101,15 @@ export default class HeatmapCalendar extends Plugin {
 
 			const firstDayOfYear = new Date(Date.UTC(year, 0, 1))
 			let numberOfEmptyDaysBeforeYearBegins = (firstDayOfYear.getDay() + 6) % 7
-			let boxes = ""
+
+			interface box {
+				backgroundColor: string;
+				content?: string;
+			}
+
+			let boxes: Array<box> = []
 			while (numberOfEmptyDaysBeforeYearBegins) {
-				boxes += `<li style="background-color: transparent"></li>`
+				boxes.push({ backgroundColor: "transparent" })
 				numberOfEmptyDaysBeforeYearBegins--
 			}
 			const lastDayOfYear = new Date(Date.UTC(year, 11, 31))
@@ -122,44 +128,67 @@ export default class HeatmapCalendar extends Plugin {
 					if (mappedEntries[day].content) {
 						content = mappedEntries[day].content
 					}
-					boxes += `<li style="background-color:${background_color};">${content}</li>`
+					boxes.push({ backgroundColor: background_color, content: content })
 				} else {
-					boxes += `<li></li>`
+					boxes.push({ backgroundColor: "" })
 				}
 			}
-			const html = `
-				<div class="heatmap-calendar-graph">
-				<div class="heatmap-calendar-year">${String(year).slice(2)}</div>
-				<ul class="heatmap-calendar-months">
-					<li>Jan</li>
-					<li>Feb</li>
-					<li>Mar</li>
-					<li>Apr</li>
-					<li>May</li>
-					<li>Jun</li>
-					<li>Jul</li>
-					<li>Aug</li>
-					<li>Sep</li>
-					<li>Oct</li>
-					<li>Nov</li>
-					<li>Dec</li>
-				</ul>
-				<ul class="heatmap-calendar-days">
-					<li>Mon</li>
-					<li>Tue</li>
-					<li>Wed</li>
-					<li>Thu</li>
-					<li>Fri</li>
-					<li>Sat</li>
-					<li>Sun</li>
-				</ul>
-				<ul class="heatmap-calendar-boxes">
-					${boxes}
-				</ul>
-				</div>
-			`
-			//console.log(html)
-			el.insertAdjacentHTML("beforeend", html);
+
+			const heatmapCalendarGraphDiv = createDiv({
+				cls: "heatmap-calendar-graph",
+				parent: el
+			})
+
+			createDiv({
+				cls: "heatmap-calendar-year",
+				text: String(year).slice(2),
+				parent: heatmapCalendarGraphDiv
+			})
+
+			const heatmapCalendarMonthsUl = createEl("ul", {
+				cls: "heatmap-calendar-months",
+				parent: heatmapCalendarGraphDiv
+			})
+
+			createEl("li", { text: "Jan", parent: heatmapCalendarMonthsUl })
+			createEl("li", { text: "Feb", parent: heatmapCalendarMonthsUl })
+			createEl("li", { text: "Mar", parent: heatmapCalendarMonthsUl })
+			createEl("li", { text: "Apr", parent: heatmapCalendarMonthsUl })
+			createEl("li", { text: "May", parent: heatmapCalendarMonthsUl })
+			createEl("li", { text: "Jun", parent: heatmapCalendarMonthsUl })
+			createEl("li", { text: "Jul", parent: heatmapCalendarMonthsUl })
+			createEl("li", { text: "Aug", parent: heatmapCalendarMonthsUl })
+			createEl("li", { text: "Sep", parent: heatmapCalendarMonthsUl })
+			createEl("li", { text: "Oct", parent: heatmapCalendarMonthsUl })
+			createEl("li", { text: "Nov", parent: heatmapCalendarMonthsUl })
+			createEl("li", { text: "Dec", parent: heatmapCalendarMonthsUl })
+
+			const heatmapCalendarDaysUl = createEl("ul", {
+				cls: "heatmap-calendar-days",
+				parent: heatmapCalendarGraphDiv
+			})
+
+			createEl("li", { text: "Mon", parent: heatmapCalendarDaysUl })
+			createEl("li", { text: "Tue", parent: heatmapCalendarDaysUl })
+			createEl("li", { text: "Wed", parent: heatmapCalendarDaysUl })
+			createEl("li", { text: "Thu", parent: heatmapCalendarDaysUl })
+			createEl("li", { text: "Fri", parent: heatmapCalendarDaysUl })
+			createEl("li", { text: "Sat", parent: heatmapCalendarDaysUl })
+			createEl("li", { text: "Sun", parent: heatmapCalendarDaysUl })
+
+			const heatmapCalendarBoxesUl = createEl("ul", {
+				cls: "heatmap-calendar-boxes",
+				parent: heatmapCalendarGraphDiv
+			})
+
+			boxes.forEach(e => {
+				createEl("li", {
+					text: e.content || "",
+					attr: { "style": `background-color: ${e.backgroundColor || ""}` },
+					parent: heatmapCalendarBoxesUl,
+				})
+			})
+
 		}
 	}
 
