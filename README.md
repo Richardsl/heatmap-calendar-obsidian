@@ -3,15 +3,15 @@
 This [Obsidian](https://obsidian.md/) plugin creates a full year heatmap calendar similar to github activity calendar.  
 It's intended to be used with [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/) – but could probably be used standalone or with other plugins as well.  
 
-![heatmap calendar examples](https://github.com/richardsl/heatmap-calendar-obsidian/github-images/master/heatmap-calendar-examples.jpg?raw=true)
+![heatmap calendar examples](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-examples.jpg)
 
 ### How it works:
 
 First annotate your data in daily notes, see [Dataview annotation documentation](https://blacksmithgu.github.io/obsidian-dataview/data-annotation/).  
 You then create a [DataviewJS block](https://blacksmithgu.github.io/obsidian-dataview/api/intro/) and iterate over your data and pass it into Heatmap Calendar using *window.renderHeatmapCalendar()* or just *renderHeatmapCalendar()*.
 
-![heatmap calendar how to example 1](https://github.com/richardsl/heatmap-calendar-obsidian/github-images/master/heatmap-calendar-howto1.png?raw=true)  
-![heatmap calendar how to example 2](https://github.com/richardsl/heatmap-calendar-obsidian/github-images/master/heatmap-calendar-howto2.png?raw=true)
+![heatmap calendar how to example 1](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-howto1.png?raw=true)  
+![heatmap calendar how to example 2](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-howto2.png?raw=true)
 
 ### Use:
 
@@ -53,7 +53,7 @@ This plugin attaches a single function to the window object in obsidian – **re
     ```
   
 ---
-Download the [EXAMPLE VAULT](https://github.com/richardsl/heatmap-calendar-obsidian/github-images/master/EXAMPLE_VAULT) to try out the examples.  
+Download the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) to try out the examples.  
 
 ### Notes:
 
