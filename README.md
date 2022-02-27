@@ -1,6 +1,6 @@
 # Heatmap Calendar plugin for Obsidian
 
-This Obsidian plugin creates a full year heatmap calendar similar to github activity calendar.  
+This [Obsidian](https://obsidian.md/) plugin creates a full year heatmap calendar similar to github activity calendar.  
 It's intended to be used with [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/) – but could probably be used standalone or with other plugins as well.  
 
 ![heatmap calendar examples](https://github.com/richardsl/heatmap-calendar-obsidian/github-images/master/heatmap-calendar-examples.jpg?raw=true)
