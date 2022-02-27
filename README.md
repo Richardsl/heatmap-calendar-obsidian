@@ -1,72 +1,65 @@
-## Obsidian Sample Plugin
+# Heatmap Calendar plugin for Obsidian
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+This Obsidian plugin creates a full year heatmap calendar similar to github activity calendar.  
+It's intended to be used with DataviewJS (another obsidian plugin) – but could possibly be used standalone or with other plugins  
 
-This project uses Typescript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in Typescript Definition format, which contains TSDoc comments describing what it does.
+![heatmap calendar examples](https://github.com/richardsl/heatmap-calendar-obsidian/github-images/master/heatmap-calendar-examples.jpg?raw=true)
 
-**Note:** The Obsidian API is still in early alpha and is subject to change at any time!
+### How it works:
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Changes the default font color to red using `styles.css`.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open Sample Modal" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+You first annotate your data in daily notes, see [dateview annotation documentation](https://blacksmithgu.github.io/obsidian-dataview/data-annotation/).  
+You then create a [DataviewJS block](https://blacksmithgu.github.io/obsidian-dataview/api/intro/) where you iterate over your data and pass it into this plugin using *window.renderHeatmapCalendar()* or just *renderHeatmapCalendar()*.
 
-### First time developing plugins?
+![heatmap calendar how to example 1](https://github.com/richardsl/heatmap-calendar-obsidian/github-images/master/heatmap-calendar-howto1.png?raw=true)
+![heatmap calendar how to example 2](https://github.com/richardsl/heatmap-calendar-obsidian/github-images/master/heatmap-calendar-howto2.png?raw=true)
 
-Quick starting guide for new plugin devs:
+### Use:
 
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+This plugin attaches a single function to the window object in obsidian – **renderHeatmapCalendar(this.container, calendarData)**  
 
-### Releasing new releases
+    ```dataviewjs
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+    const calendarData = { 
+        year: 2022, // optional, defaults to current year
+        colors: {   // optional, defaults to green
+          blue:        ["#8cb9ff","#69a3ff","#428bff","#1872ff","#0058e2"], // this first entry is considered default
+          green:       ["#c6e48b","#7bc96f","#49af5d","#2e8840","#196127"],
+          red:         ["#ff9e82","#ff7b55","#ff4d1a","#e73400","#bd2a00"],
+          orange:      ["#ffa244","#fd7f00","#dd6f00","#bf6000","#9b4e00"],
+          pink:        ["#ff96cb","#ff70b8","#ff3a9d","#ee0077","#c30062"],
+          orangeToRed: ["#ffdf04","#ffbe04","#ff9a03","#ff6d02","#ff2c01"]
+        },
+        entries: [] // populated in the DataviewJS loop below
+    }
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+    for(let page of dv.pages('"daily notes"').where(p=>p.exercise).sort(p=>p.file.name)){ //DataviewJS stuff
+    
+        calendarData.entries.push({
+            date: page.file.name, // needs to be in format YYYY-MM-DD
+            intensity: page.exercise // optional, what color to use for entry, will autoscale. default 5(darkest)
+            content: "🏋️" // optional, adds text to the date cell (use at own risk)
+            color: "orange" // optional, reference from your colors array. if no color is supplied; colors[0] is used
+        })
+          
+    }
 
-### Adding your plugin to the community plugin list
-
-- Check https://github.com/obsidianmd/obsidian-releases/blob/master/plugin-review.md
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
-
-### How to use
-
-- Clone this repo.
-- `npm i` or `yarn` to install dependencies
-- `npm run dev` to start compilation in watch mode.
-
-### Manually installing the plugin
-
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
-
-### Improve code quality with eslint (optional)
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- To use eslint with this project, make sure to install eslint from terminal:
-  - `npm install -g eslint`
-- To use eslint to analyze this project use this command:
-  - `eslint main.ts`
-  - eslint will then create a report with suggestions for code improvement by file and line number.
-- If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
-  - `eslint .\src\`
+    /**
+    * param1  HTMLElement   this gives the plugin a reference to render the calendar at
+    * param2  CalendarData  your calendar object, with settings/data for the calendar
+    */
+    renderHeatmapCalendar(this.container, calendarData)
 
 
-### API Documentation
+    ```
 
-See https://github.com/obsidianmd/obsidian-api
+Open the EXAMPLE VAULT
+
+### Notes:
+
+- Still in beta
+- Not tested on Mobile/small screens
+- Doesn't adapt to darkmode yet
+- Intended to be used with DataviewJS, but could possibly be used standalone or with other plugins as its just a global function
+- Week starts on Monday, not configurable yet
+- Date format (name of daily note) is currently YYYY-MM-DD, not configurable yet
+- I used [leonardocolor.io](https://leonardocolor.io) to create the example color gradients

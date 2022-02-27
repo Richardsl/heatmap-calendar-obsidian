@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-plugin-todo",
+  "name": "Obsidian TODO | Text-based GTD",
+  "version": "0.2.7",
+  "minAppVersion": "0.11.0",
+  "description": "Text-based GTD in Obsidian. Collects all outstanding TODOs from your vault and presents them in lists Today, Scheduled, Inbox and Someday/Maybe.",
+  "author": "Lars Lockefeer",
+  "authorUrl": "https://lars.lockefeer.online",
+  "isDesktopOnly": false
+}

@@ -1,0 +1,95 @@
+{
+  "main": {
+    "id": "d0c193b5cefb8e06",
+    "type": "split",
+    "children": [
+      {
+        "id": "ec3d27c5ea98ee5c",
+        "type": "leaf",
+        "dimension": 31.469194312796205,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "daily notes/2022-01-05.md",
+            "mode": "source",
+            "backlinks": false,
+            "source": false
+          }
+        }
+      },
+      {
+        "id": "c9195cadf1b9486a",
+        "type": "leaf",
+        "dimension": 68.5308056872038,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Overview.md",
+            "mode": "source",
+            "backlinks": false,
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4562bef9af3bf95c",
+    "type": "split",
+    "children": [
+      {
+        "id": "28a4ef86adc69f29",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e8fb6d5804de7e3b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "14b595261cf5b687",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "greg",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 310
+  },
+  "right": {
+    "id": "cd7c4293d3400457",
+    "type": "split",
+    "children": [],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "ec3d27c5ea98ee5c",
+  "lastOpenFiles": [
+    "daily notes/2022-01-05.md",
+    "Overview.md",
+    "daily notes/2022-01-04.md",
+    "daily notes/2022-01-02.md",
+    "daily notes/2022-01-03.md",
+    "daily notes/2022-01-01.md",
+    "daily notes/2022-02-26.md",
+    "daily notes/2022-02-27.md",
+    "daily notes/2022-02-25.md",
+    "daily notes/2022-02-24.md"
+  ]
+}

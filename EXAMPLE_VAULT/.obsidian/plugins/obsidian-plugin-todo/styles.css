@@ -1,0 +1,77 @@
+div.todo-item-view-container {
+}
+
+div.todo-item-view-toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #cccccc;
+    border-top: 1px solid #cccccc;
+}
+
+div.todo-item-view-toolbar-item {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 8px;
+    padding-bottom: 2px;
+    cursor: pointer;
+}
+
+div.todo-item-view-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+div.todo-item-view-item {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+div.todo-item-view-item p {
+    margin: 0;
+}
+
+div.todo-item-view-item span.due-date {
+    padding: 5px 8px 5px 8px;
+    font-size: 0.6em;
+    border-radius: 12px;
+    background-color: #fbb034;
+    border-color: #fbb034;
+}
+
+div.todo-item-view-item span.due-date.overdue {
+    background-color: #ff2400;
+    border-color: #ff2400;
+}
+
+div.todo-item-view-item span.due-date.future-due {
+    background-color: #6fdf94;
+    border-color: #6fdf94;
+}
+
+div.todo-item-view-item-checkbox {
+    flex-basis: 25px;
+    flex-shrink: 0;
+}
+
+div.todo-item-view-item-description {
+    flex-grow: 1;
+    padding-left: 4px;
+}
+
+div.todo-item-view-item-link {
+    flex-basis: 25px;
+    flex-shrink: 0;
+    cursor: pointer;
+    padding-left: 8px;
+}
+
+div.todo-item-view-item-link svg, div.todo-item-view-toolbar-item svg {
+    fill: #cccccc;
+}
+
+div.todo-item-view-toolbar-item.active svg {
+    fill: #7f6df2;
+}

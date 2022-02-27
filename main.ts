@@ -1,7 +1,7 @@
-import { App, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { Plugin } from 'obsidian';
 
 // TODO: blande farga om man bruka to farga i en event?
-// TODO: custom scale istedenfor automap
+// TODO: custom fixed scale istedenfor automap
 // CouldDO: laga visuell scala under, me min max avg text
 // CouldDO: konne legge til so monge farga man vil i colors array 
 
@@ -13,6 +13,7 @@ interface HeatmapCalendarSettings {
 	};
 	entries: Array<Entry>;
 }
+
 const DEFAULT_SETTINGS: HeatmapCalendarSettings = {
 	year: new Date().getFullYear(),
 	defaultEntryIntensity: 4,
@@ -21,16 +22,6 @@ const DEFAULT_SETTINGS: HeatmapCalendarSettings = {
 	},
 	entries: [{ date: "1900-01-01" }]
 }
-/*
-colors: {
-		default: ["#c6e48b","#7bc96f","#49af5d","#2e8840","#196127"],//green
-		blue: ["#8cb9ff","#69a3ff","#428bff","#1872ff","#0058e2"],
-		red: ["#ff9e82","#ff7b55","#ff4d1a","#e73400","#bd2a00"],
-		orange: ["#ffa244","#fd7f00","#dd6f00","#bf6000","#9b4e00"],
-		pink: ["#ff96cb","#ff70b8","#ff3a9d","#ee0077","#c30062"],
-		orangeToRed: ["#ffdf04","#ffbe04","#ff9a03","#ff6d02","#ff2c01"]
-	},
-	*/
 
 interface Entry {
 	date: string;
@@ -47,29 +38,6 @@ interface CalendarData {
 		};
 	};
 	entries?: Array<Entry>;
-
-}
-
-const calendarData: CalendarData = {
-	year: 2022,
-	colors: {
-		default: ["#c6e48b", "#7bc96f", "#49af5d", "#2e8840", "#196127"],
-		blue: ["#8cb9ff", "#69a3ff", "#428bff", "#1872ff", "#0058e2"],
-	},
-	entries: [
-		{
-			date: "2022-12-31",
-			intensity: 5,
-			color: "blue",
-			content: "blue",
-		},
-		{
-			date: "2022-12-31",
-			intensity: 5,
-			color: "blue",
-			content: "blue",
-		},
-	]
 }
 
 export default class HeatmapCalendar extends Plugin {
@@ -102,45 +70,34 @@ export default class HeatmapCalendar extends Plugin {
 			const year = calendarData.year ?? this.settings.year
 			const colors = calendarData.colors ?? this.settings.colors
 			const calEntries = calendarData.entries ?? this.settings.entries
-			console.log("calEntries", calEntries)
-			
+
 			const intensities: Array<number> = []
 			calEntries.forEach(e => {
-				if(e.intensity){
+				if (e.intensity) {
 					intensities.push(e.intensity)
 				}
 			})
 
 			const minimumIntensity = Math.min(...intensities) ?? 1;
-			const averageIntensity = intensities.reduce((a,b) => a + b, 0) / intensities.length ?? 3
+			//const averageIntensity = intensities.reduce((a,b) => a + b, 0) / intensities.length ?? 3
 			const maximumIntensity = Math.max(...intensities) ?? 5;
 
-			console.log("minimumIntensity",minimumIntensity)
-			console.log("maximumIntensity",maximumIntensity)
-			console.log("averageIntensity",averageIntensity)
-
 			const mappedEntries: Array<Entry> = []
-			
+
 			calEntries.forEach(e => {
-				console.log("cal foreach")
 				if (new Date(e.date).getFullYear() == year) {
-					console.log("if year")
+
 					const newEntry = { ...e }
 					newEntry.intensity = e.intensity ?? this.settings.defaultEntryIntensity;
-					console.log("newEntry.intensity", newEntry.intensity)
 
-					if(minimumIntensity==maximumIntensity){
+					if (minimumIntensity == maximumIntensity) {
 						newEntry.intensity = 5;
-					}else{
-						newEntry.intensity = Math.round(this.map(newEntry.intensity, minimumIntensity, maximumIntensity,1,5))
+					} else {
+						newEntry.intensity = Math.round(this.map(newEntry.intensity, minimumIntensity, maximumIntensity, 1, 5))
 					}
-					//if (!newEntry.intensity) { newEntry.intensity = this.settings.defaultEntryIntensity }
 					mappedEntries[this.daysIntoYear(new Date(e.date))] = newEntry
-
 				}
 			})
-
-			console.log("mappedEntries",mappedEntries)
 
 			const firstDayOfYear = new Date(Date.UTC(year, 0, 1))
 			let numberOfEmptyDaysBeforeYearBegins = (firstDayOfYear.getDay() + 5) % 6
@@ -151,21 +108,16 @@ export default class HeatmapCalendar extends Plugin {
 			}
 			const lastDayOfYear = new Date(Date.UTC(year, 11, 31))
 			const numberOfDays = this.daysIntoYear(lastDayOfYear) //eg 365 or 366
-			//console.log("mappedEntries",mappedEntries)
+
 			for (let day = 1; day <= numberOfDays; day++) {
 
 				let background_color, content = ""
 
 				if (mappedEntries[day]) {
 					if (mappedEntries[day].color) {
-						//console.log("if (mappedEntries[day].color) {")
 						background_color = colors[mappedEntries[day].color][mappedEntries[day].intensity - 1]
-						console.log("has color: ", background_color)
 					} else {
-						//background_color = colors.default[mappedEntries[day].intensity - 1]
 						background_color = colors[Object.keys(colors)[0]][mappedEntries[day].intensity - 1]
-						
-						console.log("default color: ", background_color)
 					}
 					if (mappedEntries[day].content) {
 						content = mappedEntries[day].content
@@ -206,11 +158,9 @@ export default class HeatmapCalendar extends Plugin {
 				</ul>
 				</div>
 			`
-			console.log(html)
+			//console.log(html)
 			el.insertAdjacentHTML("beforeend", html);
 		}
-
-
 	}
 
 	onunload() {
