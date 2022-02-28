@@ -8,16 +8,20 @@ It's intended to be used with [DataviewJS](https://blacksmithgu.github.io/obsidi
 
 
 ## How it works:
+
 First annotate your data in daily notes, see [Dataview annotation documentation](https://blacksmithgu.github.io/obsidian-dataview/data-annotation/).  
 You then create a [DataviewJS block](https://blacksmithgu.github.io/obsidian-dataview/api/intro/) and iterate over your data and pass it into Heatmap Calendar using *window.renderHeatmapCalendar()* or just *renderHeatmapCalendar()*.
+
 ![heatmap calendar how to example 1](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-howto3.jpg?raw=true)
 
 ## Use:
 
 This plugin attaches a single function to the window object in obsidian – **renderHeatmapCalendar(this.container, calendarData)**  
+It's intended to be used inside of a dataviewjs block like below. You use dataview to collect the data, and this plugin to display it.
+Heatmap Calendar does not do any querying of the notes/data, you need DataviewJs or something similar to do that first.
 
 ```javascript
-
+```dataviewjs
 const calendarData = { 
 	year: 2022, // optional, defaults to current year
 	colors: {   // optional, defaults to green
@@ -48,7 +52,6 @@ for(let page of dv.pages('"daily notes"').where(p=>p.exercise).sort(p=>p.file.na
 */
 renderHeatmapCalendar(this.container, calendarData)
 
-
 ```
   
     
@@ -58,7 +61,6 @@ Download the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsid
 
 ## Notes:
 
-- Still in beta
 - Not tested on Mobile/small screens
 - Doesn't adapt to darkmode yet
 - Intended to be used with DataviewJS, but could possibly be used standalone or with other plugins as its just a global function
