@@ -39,9 +39,9 @@ for(let page of dv.pages('"daily notes"').where(p=>p.exercise).sort(p=>p.file.na
 
 	calendarData.entries.push({
 		date: page.file.name, // needs to be in format YYYY-MM-DD
-		intensity: page.exercise // optional, what color intensity to use for entry, will autoscale. default 4 (1-5)
-		content: "🏋️" // optional, adds text to the date cell (use at own risk)
-		color: "orange" // optional, reference from your colors array. if no color is supplied; colors[0] is used
+		intensity: page.exercise, // optional, what color intensity to use for entry, will autoscale. default 4 (1-5)
+		content: "🏋️", // optional, adds text to the date cell (use at own risk)
+		color: "orange", // optional, reference from your colors array. if no color is supplied; colors[0] is used
 	})
 
 }
