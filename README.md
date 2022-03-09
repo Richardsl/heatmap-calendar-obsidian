@@ -3,7 +3,7 @@
 This [Obsidian](https://obsidian.md/) plugin creates a full year heatmap calendar similar to github activity calendar.  
 It's intended to be used with [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/) – but could probably be used standalone or with other plugins as well.  
 
-![heatmap calendar examples](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-examples.jpg)
+![heatmap calendar examples](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-examples.jpg?raw=true)
 
 
 
@@ -21,7 +21,7 @@ It's intended to be used inside of a dataviewjs block like below. You use datavi
 Heatmap Calendar does not do any querying of the notes/data, you need DataviewJs or something similar to do that first.
 
 ```javascript
-```dataviewjs
+dataviewjs
 const calendarData = { 
 	year: 2022, // optional, defaults to current year
 	colors: {   // optional, defaults to green
