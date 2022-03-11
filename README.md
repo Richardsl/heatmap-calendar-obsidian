@@ -9,7 +9,7 @@ It's intended to be used with [DataviewJS](https://blacksmithgu.github.io/obsidi
 
 ## How it works:
 
-First annotate your data in daily notes, see [Dataview annotation documentation](https://blacksmithgu.github.io/obsidian-dataview/data-annotation/).  
+First annotate the data you want to track in your daily notes, see [Dataview annotation documentation](https://blacksmithgu.github.io/obsidian-dataview/data-annotation/).  
 Then – create a [DataviewJS block](https://blacksmithgu.github.io/obsidian-dataview/api/intro/) and iterate over your data and pass it into Heatmap Calendar using *window.renderHeatmapCalendar()* or just *renderHeatmapCalendar()*.
 
 ![heatmap calendar how to example 1](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-howto3.jpg?raw=true)
@@ -58,11 +58,10 @@ renderHeatmapCalendar(this.container, calendarData)
 Adding new colors are optional, but if supplied, the first index will be considered default.
 You can use multiple colors in the same calendar, just use different colors for different events.  
    
-Download the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) to try out the examples.  
 
 
 ## Notes:
-
+- Download the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) to try out the examples.  
 - Not tested on Mobile/small screens
 - Doesn't adapt to darkmode yet
 - Intended to be used with DataviewJS, but could possibly be used standalone or with other plugins as its just a global function
