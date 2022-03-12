@@ -8,7 +8,8 @@ Tracking and visualizing the data can help motivate you to start doing the thing
 
 It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/) – but could probably be used standalone or with other plugins as well.  
 
-![heatmap calendar examples](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-examples.jpg?raw=true)
+![heatmap calendar example 1](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-howto1.png?raw=true)
+![heatmap calendar example 2](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-howto2.png?raw=true)
 
 
 
