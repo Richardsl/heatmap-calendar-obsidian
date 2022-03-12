@@ -1,6 +1,7 @@
 # Heatmap Calendar plugin for Obsidian
 
 Visualize your daily note data in a full year "heatmap like" calendar similar to the github activity calendar using this [Obsidian](https://obsidian.md/) plugin.  
+
 Usefull for tracking your goal progress for such things as excersice, finances, passions, vices, social interactions, project progression etc.   
 
 Tracking and visualizing the data can help motivate you to start doing the things you want to do, or even more – motivate you to not stop doing it once you've started.
