@@ -46,7 +46,7 @@ export default class HeatmapCalendar extends Plugin {
 
 	daysIntoYear(date: Date): number {
 		return (
-			(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) -
+			(Date.UTC(date.getFullYear(), date.getMonth(), date.getUTCDate()) -
 				Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000
 		)
 	}
@@ -100,7 +100,7 @@ export default class HeatmapCalendar extends Plugin {
 			})
 
 			const firstDayOfYear = new Date(Date.UTC(year, 0, 1))
-			let numberOfEmptyDaysBeforeYearBegins = (firstDayOfYear.getDay() + 6) % 7
+			let numberOfEmptyDaysBeforeYearBegins = (firstDayOfYear.getUTCDay() + 6) % 7
 
 			interface box {
 				backgroundColor: string;

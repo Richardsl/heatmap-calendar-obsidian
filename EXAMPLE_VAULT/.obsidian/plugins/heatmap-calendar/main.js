@@ -76,7 +76,7 @@ var DEFAULT_SETTINGS = {
 };
 var HeatmapCalendar = class extends import_obsidian.Plugin {
   daysIntoYear(date) {
-    return (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1e3;
+    return (Date.UTC(date.getFullYear(), date.getMonth(), date.getUTCDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1e3;
   }
   clamp(input, min, max) {
     return input < min ? min : input > max ? max : input;
@@ -116,7 +116,7 @@ var HeatmapCalendar = class extends import_obsidian.Plugin {
           }
         });
         const firstDayOfYear = new Date(Date.UTC(year, 0, 1));
-        let numberOfEmptyDaysBeforeYearBegins = (firstDayOfYear.getDay() + 6) % 7;
+        let numberOfEmptyDaysBeforeYearBegins = (firstDayOfYear.getUTCDay() + 6) % 7;
         let boxes = [];
         while (numberOfEmptyDaysBeforeYearBegins) {
           boxes.push({ backgroundColor: "transparent" });

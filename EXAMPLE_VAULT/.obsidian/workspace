@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "daily notes/2022-04-15.md",
+            "file": "Overview.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -66,9 +66,9 @@
   },
   "active": "c9195cadf1b9486a",
   "lastOpenFiles": [
+    "Overview.md",
     "daily notes/2022-04-15.md",
     "daily notes/2023-01-03.md",
-    "Overview.md",
     "daily notes/2022-01-02.md",
     "daily notes/2022-01-05.md",
     "daily notes/2022-01-04.md",
