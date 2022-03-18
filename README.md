@@ -72,19 +72,20 @@ You can use multiple colors in the same calendar, just use different colors for 
 - Doesn't adapt to darkmode yet
 - Intended to be used with DataviewJS, but could possibly be used standalone or with other plugins as its just a global function
 - Week starts on Monday, not configurable yet
-- Date format is YYYY-MM-DD, if your daily note filname is something else, you can use JS to change it in the loop
+- Date format is YYYY-MM-DD, if your daily note filEname is something else, you can use JS to change it in the loop
 - I used [leonardocolor.io](https://leonardocolor.io) to create the example color gradients
 
+---
 
-# Changelog:
+## Changelog:
 
-## [0.1.1] - 2022-03-18
+### [0.1.1] - 2022-03-18
 
-### Fixed
+#### Fixed
 - fix major date problem where year would render with incorrect number of days for different timezones [issue#4](https://github.com/Richardsl/heatmap-calendar-obsidian/issues/4).
 - fix problem with certain entries not showing up in correct month
 - fix grid cells not scaling correctly with browser width, especially content in grid cells
 
 
-## [0.1.0] - 2022-02-23
+### [0.1.0] - 2022-02-23
 - initial release
