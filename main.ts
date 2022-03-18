@@ -15,7 +15,7 @@ interface HeatmapCalendarSettings {
 }
 
 const DEFAULT_SETTINGS: HeatmapCalendarSettings = {
-	year: new Date().getFullYear(),
+	year: new Date().getUTCFullYear(),
 	defaultEntryIntensity: 4,
 	colors: {
 		default: ["#c6e48b", "#7bc96f", "#49af5d", "#2e8840", "#196127"]
@@ -46,8 +46,8 @@ export default class HeatmapCalendar extends Plugin {
 
 	daysIntoYear(date: Date): number {
 		return (
-			(Date.UTC(date.getFullYear(), date.getMonth(), date.getUTCDate()) -
-				Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000
+			(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()) -
+				Date.UTC(date.getUTCFullYear(), 0, 0)) / 24 / 60 / 60 / 1000
 		)
 	}
 
@@ -85,7 +85,7 @@ export default class HeatmapCalendar extends Plugin {
 			const mappedEntries: Array<Entry> = []
 
 			calEntries.forEach(e => {
-				if (new Date(e.date).getFullYear() == year) {
+				if (new Date(e.date).getUTCFullYear() == year) {
 
 					const newEntry = { ...e }
 					newEntry.intensity = e.intensity ?? this.settings.defaultEntryIntensity;

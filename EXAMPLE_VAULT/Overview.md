@@ -91,6 +91,8 @@ for(let page of dv.pages('"daily notes"').where(p=>p.writing).sort(p=>p.file.nam
         content: "🔗"
     })   
 }
+
+//console.log(calendarData)
 	
 renderHeatmapCalendar(this.container, calendarData)
 

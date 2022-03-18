@@ -19,7 +19,7 @@
       }
       .heatmap-calendar-months {
         display: grid;
-        grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(12, minmax(0, 1fr));
         grid-area: months;
         margin-top: 0.1em;
         margin-bottom: 0.3em;
@@ -33,14 +33,14 @@
       }
       .heatmap-calendar-boxes {
         grid-auto-flow: column;
-        grid-template-columns: repeat(53, 1fr);
+        grid-template-columns: repeat(53, minmax(0, 1fr));
         grid-area: boxes;
       }
       .heatmap-calendar-days,
       .heatmap-calendar-boxes {
         display: grid;
         grid-gap: 0.3em;
-        grid-template-rows: repeat(7, 1fr);
+        grid-template-rows: repeat(7, minmax(0, 1fr));
       }
       .heatmap-calendar-year {
         grid-area: year;

@@ -74,3 +74,17 @@ You can use multiple colors in the same calendar, just use different colors for 
 - Week starts on Monday, not configurable yet
 - Date format is YYYY-MM-DD, if your daily note filname is something else, you can use JS to change it in the loop
 - I used [leonardocolor.io](https://leonardocolor.io) to create the example color gradients
+
+
+# Changelog:
+
+## [0.1.1] - 2022-03-18
+
+### Fixed
+- fix major date problem where year would render with incorrect number of days for different timezones [issue#4](https://github.com/Richardsl/heatmap-calendar-obsidian/issues/4).
+- fix problem with certain entries not showing up in correct month
+- fix grid cells not scaling correctly with browser width, especially content in grid cells
+
+
+## [0.1.0] - 2022-02-23
+- initial release

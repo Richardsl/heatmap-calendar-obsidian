@@ -67,7 +67,7 @@ __export(exports, {
 });
 var import_obsidian = __toModule(require("obsidian"));
 var DEFAULT_SETTINGS = {
-  year: new Date().getFullYear(),
+  year: new Date().getUTCFullYear(),
   defaultEntryIntensity: 4,
   colors: {
     default: ["#c6e48b", "#7bc96f", "#49af5d", "#2e8840", "#196127"]
@@ -76,7 +76,7 @@ var DEFAULT_SETTINGS = {
 };
 var HeatmapCalendar = class extends import_obsidian.Plugin {
   daysIntoYear(date) {
-    return (Date.UTC(date.getFullYear(), date.getMonth(), date.getUTCDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1e3;
+    return (Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()) - Date.UTC(date.getUTCFullYear(), 0, 0)) / 24 / 60 / 60 / 1e3;
   }
   clamp(input, min, max) {
     return input < min ? min : input > max ? max : input;
@@ -104,7 +104,7 @@ var HeatmapCalendar = class extends import_obsidian.Plugin {
         const mappedEntries = [];
         calEntries.forEach((e) => {
           var _a2;
-          if (new Date(e.date).getFullYear() == year) {
+          if (new Date(e.date).getUTCFullYear() == year) {
             const newEntry = __spreadValues({}, e);
             newEntry.intensity = (_a2 = e.intensity) != null ? _a2 : this.settings.defaultEntryIntensity;
             if (minimumIntensity == maximumIntensity) {
