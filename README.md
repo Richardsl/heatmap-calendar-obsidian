@@ -1,33 +1,31 @@
 # Heatmap Calendar plugin for Obsidian
 
-Visualize your daily note data in a full year "heatmap like" calendar similar to the github activity calendar using this [Obsidian](https://obsidian.md/) plugin.  
+Visualise your data in a full year heatmap calendar similar to the github activity calendar using this [Obsidian](https://obsidian.md/) plugin.  
 
-Usefull for tracking your goal progress for such things as excersice, finances, passions, vices, social interactions, project progression etc.   
+Usefull for tracking your progress for various things such as exercise, finance, passion, vice, social, project progression etc.   
 
-Tracking and visualizing the data can help motivate you to start doing the things you want to do, or even more – motivate you to not stop doing it once you've started.
+Tracking and visualizing the data can help motivate you to start doing the things you want to do, or even more – motivate you to continue once you've started!
 
-It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/) – but could probably be used standalone or with other plugins as well.  
+It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/), but could be used standalone or with other plugins as well, as all the plugin does, is add the function ***renderHeatmapCalendar()*** to the global namespace.
 
 ![heatmap calendar examples](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-examples.jpg?raw=true)
 
 
-## How it works:
+## Use:
 
-First annotate the data you want to track in your daily notes, see [Dataview annotation documentation](https://blacksmithgu.github.io/obsidian-dataview/data-annotation/).  
-Then, create a [DataviewJS block](https://blacksmithgu.github.io/obsidian-dataview/api/intro/) to collect the data using the DataviewJS api.  
-Lastly, pass the data into Heatmap Calendar using  **renderHeatmapCalendar()** 
+1. Annotate the data you want to track in your daily notes (see [Dataview annotation documentation](https://blacksmithgu.github.io/obsidian-dataview/data-annotation/)) 
+2. Create a [DataviewJS block](https://blacksmithgu.github.io/obsidian-dataview/api/intro/) wherever you want the Heatmap Calendar to display.  
+3. Collect the data you want to display using [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/api/code-reference/)
+4. Pass the data into Heatmap Calendar using  **renderHeatmapCalendar()** 
 
 ![heatmap calendar example 1](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-howto1.png?raw=true)
 ![heatmap calendar example 2](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-howto2.png?raw=true)
 
-## Use:
 
-This plugin attaches a single function to the window object in obsidian – **renderHeatmapCalendar(this.container, calendarData)**  
-It's intended to be used inside of a dataviewjs block like below. You use dataview to collect the data, and this plugin to display it.
-Heatmap Calendar does not do any querying of the notes/data, you need DataviewJs or something similar to do that first.
+## Example Code:
 
-```javascript
-dataviewjs
+~~~javascript
+\```dataviewjs
 const calendarData = { 
 	year: 2022, // optional, defaults to current year
 	colors: {   // optional, defaults to green
@@ -57,35 +55,38 @@ for(let page of dv.pages('"daily notes"').where(p=>p.exercise).sort(p=>p.file.na
 * param2  CalendarData  your calendar object, with settings/data for the calendar
 */
 renderHeatmapCalendar(this.container, calendarData)
-
 ```
+~~~
+
   
 ## Colors:
-Adding new colors are optional, but if supplied, the first index will be considered default.
-You can use multiple colors in the same calendar, just use different colors for different events.  
+You don't need to supply any colors, the calendar used green by default, just like Github.   
+If you do supply colors, the first index will be considered the default color.
+
+Add a custom color to each event by specifying the name you gave the color, if you want.
+You can even use multiple colors in the same calendar, just use different colors for different events.  
    
 
 
 ## Notes:
 - Download the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) to try out the examples.  
-- Not tested on Mobile/small screens
+- Not tested on phone/small screens
 - Doesn't adapt to darkmode yet
-- Intended to be used with DataviewJS, but could possibly be used standalone or with other plugins as its just a global function
 - Week starts on Monday, not configurable yet
-- Date format is YYYY-MM-DD, if your daily note filEname is something else, you can use JS to change it in the loop
+- Date format is YYYY-MM-DD, if your daily note filename is something else, [you can use JS to change it in the loop](https://github.com/Richardsl/heatmap-calendar-obsidian/discussions/2)
 - I used [leonardocolor.io](https://leonardocolor.io) to create the example color gradients
 
 ---
 
-## Changelog:
+### Changelog:
 
-### [0.1.1] - 2022-03-18
+#### [0.1.1] - 2022-03-18
 
-#### Fixed
+##### Fixed
 - fix major date problem where year would render with incorrect number of days for different timezones [issue#4](https://github.com/Richardsl/heatmap-calendar-obsidian/issues/4).
 - fix problem with certain entries not showing up in correct month
 - fix grid cells not scaling correctly with browser width, especially content in grid cells
 
 
-### [0.1.0] - 2022-02-23
+#### [0.1.0] - 2022-02-23
 - initial release
