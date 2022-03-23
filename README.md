@@ -18,8 +18,7 @@ It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/o
 3. Collect the data you want to display using [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/api/code-reference/)
 4. Pass the data into Heatmap Calendar using  **renderHeatmapCalendar()** 
 
-![heatmap calendar example 1](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-howto1.png?raw=true)
-![heatmap calendar example 2](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-howto2.png?raw=true)
+![heatmap calendar example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-howto3.jpg?raw=true)
 
 
 ## Example Code:
@@ -60,12 +59,13 @@ renderHeatmapCalendar(this.container, calendarData)
 
   
 ## Colors:
-You don't need to supply any colors, the calendar used green by default, just like Github.   
+You don't need to supply any colors, the calendar uses green by default, just like Github.   
 If you do supply colors, the first index will be considered the default color.
 
 Add a custom color to each event by specifying the name you gave the color, if you want.
 You can even use multiple colors in the same calendar, just use different colors for different events.  
    
+The color schemes used in the examples was created at [leonardocolor.io](https://leonardocolor.io).
 
 
 ## Notes:
@@ -74,7 +74,7 @@ You can even use multiple colors in the same calendar, just use different colors
 - Doesn't adapt to darkmode yet
 - Week starts on Monday, not configurable yet
 - Date format is YYYY-MM-DD, if your daily note filename is something else, [you can use JS to change it in the loop](https://github.com/Richardsl/heatmap-calendar-obsidian/discussions/2)
-- I used [leonardocolor.io](https://leonardocolor.io) to create the example color gradients
+
 
 ---
 
