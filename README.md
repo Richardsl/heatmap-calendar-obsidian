@@ -2,7 +2,7 @@
 
 Visualise your data in a full year heatmap calendar similar to the github activity calendar using this [Obsidian](https://obsidian.md/) plugin.  
 
-Usefull for tracking your progress for various things such as exercise, finance, passion, vice, social, project progression etc.   
+Useful for tracking your progress for various things such as exercise, finance, passion, vice, social, project progression etc.   
 
 Tracking and visualizing the data can help motivate you to start doing the things you want to do, or even more – motivate you to continue once you've started!
 
@@ -73,7 +73,7 @@ The "Intensity" means which intensity of color to use, for instance from light-g
 The plugin currently supports five intensities, and they will be distributed between the highest and lowest number you pass to "intensity".  
 ***e.g*** if the number range 0-100 is used, numbers between 1-20 would map to the ligthest color, 40-60 would map to mid intensity color, and 80-100 would map to max intensity.  
 
-Dataview's time variables are supported without any conversion, as they return milliseconds på default.  
+Dataview's time variables are supported without any conversion, as they return milliseconds by default.  
 ***e.g***  **[time:: 1 hours, 35 minutes] => intensity: page.time**
 
 ## Notes:
