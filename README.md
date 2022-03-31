@@ -21,14 +21,14 @@ It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/o
 ![heatmap calendar example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-howto3.jpg?raw=true)
 
 
-## Example Code:
+## Full Example Code:
 
 ~~~javascript
 \```dataviewjs
 const calendarData = { 
-	year: 2022, // optional, defaults to current year
-	colors: {   // optional, defaults to green
-	  blue:        ["#8cb9ff","#69a3ff","#428bff","#1872ff","#0058e2"], // this first entry is considered default
+	year: 2022, // (optional) Defaults to current year
+	colors: {   // (optional) Defaults to green
+	  blue:        ["#8cb9ff","#69a3ff","#428bff","#1872ff","#0058e2"], // first entry is considered default if supplied
 	  green:       ["#c6e48b","#7bc96f","#49af5d","#2e8840","#196127"],
 	  red:         ["#ff9e82","#ff7b55","#ff4d1a","#e73400","#bd2a00"],
 	  orange:      ["#ffa244","#fd7f00","#dd6f00","#bf6000","#9b4e00"],
@@ -38,20 +38,21 @@ const calendarData = {
 	entries: [] // populated in the DataviewJS loop below
 }
 
-for(let page of dv.pages('"daily notes"').where(p=>p.exercise).sort(p=>p.file.name)){ //DataviewJS stuff
+//DataviewJS loop
+for(let page of dv.pages('"daily notes"').where(p=>p.exercise).sort(p=>p.file.name)){ 
 
 	calendarData.entries.push({
-		date: page.file.name, // needs to be in format YYYY-MM-DD
-		intensity: page.exercise, // optional, what color intensity to use for entry, will autoscale. Default 4 (1-5)
-		content: "🏋️", // optional, adds text to the date cell (use at own risk)
-		color: "orange", // optional, reference from your colors object. If no color is supplied; colors[0] is used
+		date: page.file.name, // (required) Format YYYY-MM-DD
+		intensity: page.exercise, // (required) Color intensity for entry, will map intensities automatically
+		content: "🏋️", // (optional) Add text to the date cell
+		color: "orange", // (optional) Reference from calendarData.colors. If no color is supplied; colors[0] is used
 	})
 
 }
 
 /**
-* param1  HTMLElement   this gives the plugin a reference to render the calendar at
-* param2  CalendarData  your calendar object, with settings/data for the calendar
+* param1  HTMLElement   DOM reference for calendar rendering
+* param2  CalendarData  Calendar data object from above
 */
 renderHeatmapCalendar(this.container, calendarData)
 ```
@@ -62,7 +63,7 @@ renderHeatmapCalendar(this.container, calendarData)
 You don't need to supply any colors, the calendar uses green by default, just like Github.   
 If you do supply colors, the first index will be considered the default color.
 
-Add a custom color to each event by specifying the name you gave the color, if you want.
+Add a custom color to each event by specifying the name you gave the color in calendarData.colors.
 You can even use multiple colors in the same calendar, just use different colors for different events.  
    
 The color schemes used in the examples was created at [leonardocolor.io](https://leonardocolor.io).
@@ -76,7 +77,7 @@ Dataview's time variables are supported without any conversion, as they return m
 ***e.g***  **[time:: 1 hours, 35 minutes] => intensity: page.time**
 
 ## Notes:
-- Download the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) to try out the examples.  
+- See the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) if you want to test out the examples.  
 - Not tested on phone/small screens
 - Doesn't adapt to darkmode yet
 - Week starts on Monday, not configurable yet
