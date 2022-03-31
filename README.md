@@ -67,6 +67,13 @@ You can even use multiple colors in the same calendar, just use different colors
    
 The color schemes used in the examples was created at [leonardocolor.io](https://leonardocolor.io).
 
+## Intensity:
+The "Intensity" means which intensity of color to use, for instance from light-green to dark-green.  
+The plugin currently supports five intensities, and they will be distributed between the highest and lowest number you pass to "intensity".  
+***e.g*** if the number range 0-100 is used, numbers between 1-20 would map to the ligthest color, 40-60 would map to mid intensity color, and 80-100 would map to max intensity.  
+
+Dataview's time variables are supported without any conversion, as they return milliseconds på default.  
+***e.g***  **[time:: 1 hours, 35 minutes] => intensity: page.time**
 
 ## Notes:
 - Download the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) to try out the examples.  
