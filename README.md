@@ -26,16 +26,16 @@ It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/o
 ~~~javascript
 \```dataviewjs
 const calendarData = { 
-	year: 2022, // (optional) Defaults to current year
-	colors: {   // (optional) Defaults to green
+	entries: [], // Populated in the DataviewJS loop below
+	year: 2022,  // (optional) Defaults to current year
+	colors: {    // (optional) Defaults to green
 	  blue:        ["#8cb9ff","#69a3ff","#428bff","#1872ff","#0058e2"], // first entry is considered default if supplied
 	  green:       ["#c6e48b","#7bc96f","#49af5d","#2e8840","#196127"],
 	  red:         ["#ff9e82","#ff7b55","#ff4d1a","#e73400","#bd2a00"],
 	  orange:      ["#ffa244","#fd7f00","#dd6f00","#bf6000","#9b4e00"],
 	  pink:        ["#ff96cb","#ff70b8","#ff3a9d","#ee0077","#c30062"],
 	  orangeToRed: ["#ffdf04","#ffbe04","#ff9a03","#ff6d02","#ff2c01"]
-	},
-	entries: [] // populated in the DataviewJS loop below
+	}
 }
 
 //DataviewJS loop
@@ -45,7 +45,7 @@ for(let page of dv.pages('"daily notes"').where(p=>p.exercise).sort(p=>p.file.na
 		date: page.file.name, // (required) Format YYYY-MM-DD
 		intensity: page.exercise, // (required) Color intensity for entry, will map intensities automatically
 		content: "🏋️", // (optional) Add text to the date cell
-		color: "orange", // (optional) Reference from calendarData.colors. If no color is supplied; colors[0] is used
+		color: "orange", // (optional) Reference from *calendarData.colors*. If no color is supplied; colors[0] is used
 	})
 
 }
@@ -61,25 +61,23 @@ renderHeatmapCalendar(this.container, calendarData)
   
 ## Colors:
 You don't need to supply any colors, the calendar uses green by default, just like Github.   
-If you do supply colors, the first index will be considered the default color.
+If you do supply colors to *calendarData.colors*, the first index will be considered the new default color.
 
-Add a custom color to each event by specifying the name you gave the color in calendarData.colors.
-You can even use multiple colors in the same calendar, just use different colors for different events.  
+Add a custom color to each entry by specifying the name you gave the color in calendarData.colors.
+You can even use multiple colors in the same calendar, just use different colors for different entries.  
    
-The color schemes used in the examples was created at [leonardocolor.io](https://leonardocolor.io).
+The color schemes used in the examples were created at [leonardocolor.io](https://leonardocolor.io).
 
 ## Intensity:
 The "Intensity" means which intensity of color to use, for instance from light-green to dark-green.  
 The plugin currently supports five intensities, and they will be distributed between the highest and lowest number you pass to "intensity".  
-***e.g*** if the number range 0-100 is used, numbers between 1-20 would map to the ligthest color, 40-60 would map to mid intensity color, and 80-100 would map to max intensity.  
+If the number range 0-100 is used, numbers between 1-20 would map to the ligthest color, 40-60 would map to mid intensity color, and 80-100 would map to max intensity.  
 
 Dataview's time variables are supported without any conversion, as they return milliseconds by default.  
-***e.g***  **[time:: 1 hours, 35 minutes] => intensity: page.time**
+**[time:: 1 hours, 35 minutes] => intensity: page.time**
 
 ## Notes:
-- See the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) if you want to test out the examples.  
-- Not tested on phone/small screens
-- Doesn't adapt to darkmode yet
+- See the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) if you want to test out the examples.
 - Week starts on Monday, not configurable yet
 - Date format is YYYY-MM-DD, if your daily note filename is something else, [you can use JS to change it in the loop](https://github.com/Richardsl/heatmap-calendar-obsidian/discussions/2)
 
@@ -92,7 +90,7 @@ Dataview's time variables are supported without any conversion, as they return m
 
 ##### Fixed
 - fix major date problem where year would render with incorrect number of days for different timezones [issue#4](https://github.com/Richardsl/heatmap-calendar-obsidian/issues/4).
-- fix problem with certain entries not showing up in correct month
+- fix problem with certain entries not showing up in the correct month
 - fix grid cells not scaling correctly with browser width, especially content in grid cells
 
 
