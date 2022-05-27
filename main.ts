@@ -28,6 +28,7 @@ interface Entry {
 	intensity?: number;
 	color?: string | number;
 	content?: string;
+	tooltip?: string;
 }
 
 interface CalendarData {
@@ -105,6 +106,7 @@ export default class HeatmapCalendar extends Plugin {
 			interface box {
 				backgroundColor: string;
 				content?: string;
+				tooltip?: string;
 			}
 
 			let boxes: Array<box> = []
@@ -117,7 +119,7 @@ export default class HeatmapCalendar extends Plugin {
 
 			for (let day = 1; day <= numberOfDays; day++) {
 
-				let background_color, content = ""
+				let background_color, content, tooltip = ""
 
 				if (mappedEntries[day]) {
 					if (mappedEntries[day].color) {
@@ -128,7 +130,10 @@ export default class HeatmapCalendar extends Plugin {
 					if (mappedEntries[day].content) {
 						content = mappedEntries[day].content
 					}
-					boxes.push({ backgroundColor: background_color, content: content })
+					if (mappedEntries[day].tooltip) {
+						tooltip = mappedEntries[day].tooltip
+					}
+					boxes.push({ backgroundColor: background_color, content: content, tooltip: tooltip })
 				} else {
 					boxes.push({ backgroundColor: "" })
 				}
@@ -184,6 +189,7 @@ export default class HeatmapCalendar extends Plugin {
 			boxes.forEach(e => {
 				createEl("li", {
 					text: e.content || "",
+					title: e.tooltip || "",
 					attr: { "style": `background-color: ${e.backgroundColor || ""}` },
 					parent: heatmapCalendarBoxesUl,
 				})
