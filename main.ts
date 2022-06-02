@@ -8,6 +8,7 @@ import { Plugin } from 'obsidian';
 interface HeatmapCalendarSettings {
 	year: number;
 	defaultEntryIntensity: number;
+	defaultGridColor: string;
 	colors: {
 		default: Array<string>;
 	};
@@ -17,6 +18,7 @@ interface HeatmapCalendarSettings {
 const DEFAULT_SETTINGS: HeatmapCalendarSettings = {
 	year: new Date().getUTCFullYear(),
 	defaultEntryIntensity: 4,
+	defaultGridColor: "#ffffff",
 	colors: {
 		default: ["#c6e48b", "#7bc96f", "#49af5d", "#2e8840", "#196127"]
 	},
@@ -32,6 +34,7 @@ interface Entry {
 
 interface CalendarData {
 	year?: number;
+	gridColor: string;
 	colors?: {
 		[index: string | number]: {
 			[index: number]: string;
@@ -70,6 +73,7 @@ export default class HeatmapCalendar extends Plugin {
 			const year = calendarData.year ?? this.settings.year
 			const colors = calendarData.colors ?? this.settings.colors
 			const calEntries = calendarData.entries ?? this.settings.entries
+			const gridColor = calendarData.gridColor ?? this.settings.defaultGridColor
 
 			const intensities: Array<number> = []
 			calEntries.forEach(e => {
@@ -130,7 +134,7 @@ export default class HeatmapCalendar extends Plugin {
 					}
 					boxes.push({ backgroundColor: background_color, content: content })
 				} else {
-					boxes.push({ backgroundColor: "" })
+					boxes.push({ backgroundColor: gridColor })
 				}
 			}
 

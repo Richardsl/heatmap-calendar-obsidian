@@ -28,6 +28,7 @@ It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/o
 const calendarData = { 
 	entries: [], // Populated in the DataviewJS loop below
 	year: 2022,  // (optional) Defaults to current year
+  gridColor: "#2a2a2a", // (optional) Defaults to "#ffffff"
 	colors: {    // (optional) Defaults to green
 	  blue:        ["#8cb9ff","#69a3ff","#428bff","#1872ff","#0058e2"], // first entry is considered default if supplied
 	  green:       ["#c6e48b","#7bc96f","#49af5d","#2e8840","#196127"],
