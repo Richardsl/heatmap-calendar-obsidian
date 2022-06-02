@@ -1,6 +1,6 @@
 {
 	"name": "heatmap-calendar",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Activity Heatmap Calendar Plugin for Obsidian",
 	"main": "main.js",
 	"scripts": {
