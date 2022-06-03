@@ -54,3 +54,8 @@
         font-size: 0.75em;
         background-color: #ebedf0;
       }
+      @media (max-width: 300px) {
+        .heatmap-calendar-graph  {
+          display: none;
+        }
+      }
