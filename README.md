@@ -72,7 +72,7 @@ The color schemes used in the examples were created at [leonardocolor.io](https:
 ## Intensity:
 The "Intensity" means which intensity of color to use, for instance from light-green to dark-green.  
 The plugin currently supports five intensities, and they will be distributed between the highest and lowest number you pass to "intensity".  
-If the number range 0-100 is used, numbers between 1-20 would map to the ligthest color, 40-60 would map to mid intensity color, and 80-100 would map to max intensity.  
+If the number range 0-100 is used, numbers between 1-20 would map to the lightest color, 40-60 would map to mid intensity color, and 80-100 would map to max intensity.  
 
 Dataview's time variables are supported without any conversion, as they return milliseconds by default.  
 **[time:: 1 hours, 35 minutes] => intensity: page.time**
@@ -83,8 +83,8 @@ Dataview's time variables are supported without any conversion, as they return m
 - Date format is YYYY-MM-DD, if your daily note filename is something else, [you can use JS to change it in the loop](https://github.com/Richardsl/heatmap-calendar-obsidian/discussions/2)
 
 ## Development (Windows):
- ```npm run dev``` - will start TS to JS transpiler and automatically copy the JS/CSS/manifest files to the example vault.  
- I highly recomend installing https://github.com/pjeby/hot-reload to avoid restarting obsidian after every change, but remember to add a **.hot-reload** file to EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar/
+ ```npm run dev``` - will start TS to JS transpiler and automatically copy the JS/CSS/manifest files to the example vault whenever they are modified.  
+ I highly recommend installing https://github.com/pjeby/hot-reload to avoid restarting obsidian after every change, but remember to add a **.hot-reload** file to EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar/
 
 ---
 
