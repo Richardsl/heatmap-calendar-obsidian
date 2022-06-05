@@ -89,6 +89,10 @@ Dataview's time variables are supported without any conversion, as they return m
 ---
 
 ### Changelog:
+#### [0.2.0] - 2022-06-05
+##### Feature
+- Add border around todays box to indicate what day it is. Can be removed by setting *showCurrentDayBorder* to false
+- Add better development solution/workflow by using automated file copying instead of symlinks
 
 #### [0.1.1] - 2022-03-18
 
