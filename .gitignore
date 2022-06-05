@@ -21,4 +21,6 @@ data.json
 # Exclude macOS Finder (System Explorer) View States
 .DS_Store
 
-
+# example vault files
+EXAMPLE_VAULT/.obsidian/plugins/
+EXAMPLE_VAULT/.obsidian/workspace
