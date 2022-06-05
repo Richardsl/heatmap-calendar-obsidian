@@ -81,6 +81,9 @@ Dataview's time variables are supported without any conversion, as they return m
 - Week starts on Monday, not configurable yet
 - Date format is YYYY-MM-DD, if your daily note filename is something else, [you can use JS to change it in the loop](https://github.com/Richardsl/heatmap-calendar-obsidian/discussions/2)
 
+## Development (Windows):
+ ```npm run dev``` - will start TS to JS transpiler and automatically copy the JS/CSS/manifest files to the example vault.  
+ I highly recomend installing https://github.com/pjeby/hot-reload to avoid restarting obsidian after every change, but remember to add a **.hot-reload** file to EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar/
 
 ---
 

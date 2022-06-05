@@ -1,4 +1,5 @@
 [
   "dataview",
-  "heatmap-calendar"
+  "heatmap-calendar",
+  "hot-reload"
 ]

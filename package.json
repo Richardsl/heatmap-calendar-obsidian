@@ -4,10 +4,12 @@
 	"description": "Activity Heatmap Calendar Plugin for Obsidian",
 	"main": "main.js",
 	"scripts": {
-		"dev": "node esbuild.config.mjs",
+		"dev": "concurrently \"node esbuild.config.mjs\" \"npm run copyAndWatchMainJS\" \"npm run copyAndWatchStylesJS\" \"npm run copyAndWatchManifestJS\"",
+		"copyAndWatchMainJS": "cpx \"main.js\" \"EXAMPLE_VAULT\\.obsidian\\plugins\\heatmap-calendar\" -w",
+		"copyAndWatchStylesJS": "cpx \"styles.css\" \"EXAMPLE_VAULT\\.obsidian\\plugins\\heatmap-calendar\" -w",
+		"copyAndWatchManifestJS": "cpx \"manifest.json\" \"EXAMPLE_VAULT\\.obsidian\\plugins\\heatmap-calendar\" -w",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
-		"version": "node version-bump.mjs && git add manifest.json versions.json",
-		"WINDOWS-moveFilesToExampleVault": "copyfiles main.js styles.css manifest.json EXAMPLE_VAULT/.obsidian/plugins/%npm_package_name%"
+		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
 	"keywords": [
 		"obsidian"
@@ -19,7 +21,8 @@
 		"@typescript-eslint/eslint-plugin": "^5.2.0",
 		"@typescript-eslint/parser": "^5.2.0",
 		"builtin-modules": "^3.2.0",
-		"copyfiles": "^2.4.1",
+		"concurrently": "^7.2.1",
+		"cpx": "^1.5.0",
 		"esbuild": "0.13.12",
 		"obsidian": "^0.12.17",
 		"tslib": "2.3.1",
