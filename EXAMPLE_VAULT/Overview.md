@@ -55,7 +55,8 @@ const calendarData = {
     colors: {
         blue: ["#ffdf04","#ffbe04","#ff9a03","#ff6d02","#ff2c01"]
     },
-    entries: [] 
+    entries: [],
+    showCurrentDayBorder: false
 }
 
 for(let page of dv.pages('"daily notes"').where(p=>p.alcohol).sort(p=>p.file.name)){

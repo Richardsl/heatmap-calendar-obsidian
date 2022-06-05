@@ -12,6 +12,7 @@ interface HeatmapCalendarSettings {
 		default: Array<string>;
 	};
 	entries: Array<Entry>;
+	showCurrentDayBorder?: boolean;
 }
 
 const DEFAULT_SETTINGS: HeatmapCalendarSettings = {
@@ -20,7 +21,8 @@ const DEFAULT_SETTINGS: HeatmapCalendarSettings = {
 	colors: {
 		default: ["#c6e48b", "#7bc96f", "#49af5d", "#2e8840", "#196127"]
 	},
-	entries: [{ date: "1900-01-01" }]
+	entries: [{ date: "1900-01-01" }],
+	showCurrentDayBorder: true,
 }
 
 interface Entry {
@@ -38,16 +40,28 @@ interface CalendarData {
 		};
 	};
 	entries?: Array<Entry>;
+	showCurrentDayBorder?: boolean;
 }
 
 export default class HeatmapCalendar extends Plugin {
 
 	settings: HeatmapCalendarSettings;
 
-	daysIntoYear(date: Date): number {
+	/**
+     * Returns a number representing how many days into the year the supplied date is. 
+	 * Example: first of january is 1, third of february is 34 (31+3) 
+     * @param date
+     */
+	getHowManyDaysIntoYear(date: Date): number {
 		return (
 			(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()) -
 				Date.UTC(date.getUTCFullYear(), 0, 0)) / 24 / 60 / 60 / 1000
+		)
+	}
+	getHowManyDaysIntoYearLocal(date: Date): number {
+		return (
+			(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) -
+				Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000
 		)
 	}
 
@@ -70,6 +84,7 @@ export default class HeatmapCalendar extends Plugin {
 			const year = calendarData.year ?? this.settings.year
 			const colors = calendarData.colors ?? this.settings.colors
 			const calEntries = calendarData.entries ?? this.settings.entries
+			const showCurrentDayBorder = calendarData.showCurrentDayBorder ?? this.settings.showCurrentDayBorder
 
 			const intensities: Array<number> = []
 			calEntries.forEach(e => {
@@ -95,43 +110,50 @@ export default class HeatmapCalendar extends Plugin {
 					} else {
 						newEntry.intensity = Math.round(this.map(newEntry.intensity, minimumIntensity, maximumIntensity, 1, 5))
 					}
-					mappedEntries[this.daysIntoYear(new Date(e.date))] = newEntry
+					mappedEntries[this.getHowManyDaysIntoYear(new Date(e.date))] = newEntry
 				}
 			})
 
 			const firstDayOfYear = new Date(Date.UTC(year, 0, 1))
 			let numberOfEmptyDaysBeforeYearBegins = (firstDayOfYear.getUTCDay() + 6) % 7
 
-			interface box {
-				backgroundColor: string;
+			interface Box {
+				backgroundColor?: string;
+				date?: string;
 				content?: string;
+				classNames?: string
 			}
 
-			let boxes: Array<box> = []
+			let boxes: Array<Box> = []
+
 			while (numberOfEmptyDaysBeforeYearBegins) {
 				boxes.push({ backgroundColor: "transparent" })
 				numberOfEmptyDaysBeforeYearBegins--
 			}
 			const lastDayOfYear = new Date(Date.UTC(year, 11, 31))
-			const numberOfDays = this.daysIntoYear(lastDayOfYear) //eg 365 or 366
+			const numberOfDaysInYear = this.getHowManyDaysIntoYear(lastDayOfYear) //eg 365 or 366
+			const todaysDayNumberLocal = this.getHowManyDaysIntoYearLocal(new Date())
 
-			for (let day = 1; day <= numberOfDays; day++) {
+			for (let day = 1; day <= numberOfDaysInYear; day++) {
 
-				let background_color, content = ""
+				const box: Box = {}
+
+				if(day === todaysDayNumberLocal && showCurrentDayBorder) {
+					box.classNames = "today"
+				}
 
 				if (mappedEntries[day]) {
-					if (mappedEntries[day].color) {
-						background_color = colors[mappedEntries[day].color][mappedEntries[day].intensity - 1]
-					} else {
-						background_color = colors[Object.keys(colors)[0]][mappedEntries[day].intensity - 1]
-					}
-					if (mappedEntries[day].content) {
-						content = mappedEntries[day].content
-					}
-					boxes.push({ backgroundColor: background_color, content: content })
-				} else {
-					boxes.push({ backgroundColor: "" })
-				}
+					const entry = mappedEntries[day]
+
+					box.date = entry.date
+
+					if(entry.content) box.content = entry.content
+
+					const currentDayColors = entry.color ? colors[entry.color] : colors[Object.keys(colors)[0]]
+					box.backgroundColor = currentDayColors[entry.intensity - 1]
+					
+				} 
+				boxes.push(box)
 			}
 
 			const heatmapCalendarGraphDiv = createDiv({
@@ -183,8 +205,11 @@ export default class HeatmapCalendar extends Plugin {
 
 			boxes.forEach(e => {
 				createEl("li", {
-					text: e.content || "",
-					attr: { "style": `background-color: ${e.backgroundColor || ""}` },
+					text: e.content,
+					attr: {
+						...e.backgroundColor && { style: `background-color: ${e.backgroundColor};` },
+					},
+					cls: e.classNames,
 					parent: heatmapCalendarBoxesUl,
 				})
 			})

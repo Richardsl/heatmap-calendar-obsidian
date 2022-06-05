@@ -53,4 +53,7 @@
       .heatmap-calendar-boxes li {
         font-size: 0.75em;
         background-color: #ebedf0;
+      }      
+      .heatmap-calendar-boxes .today {
+        border: solid 1px rgb(61, 61, 61);
       }

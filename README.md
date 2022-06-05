@@ -8,7 +8,7 @@ Tracking and visualizing the data can help motivate you to start doing the thing
 
 It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/), but could be used standalone or with other plugins as well, as all the plugin does, is add the function ***renderHeatmapCalendar()*** to the global namespace.
 
-![heatmap calendar examples](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-examples.jpg?raw=true)
+![heatmap calendar examples](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-examples.png?raw=true)
 
 
 ## Use:
@@ -35,7 +35,8 @@ const calendarData = {
 	  orange:      ["#ffa244","#fd7f00","#dd6f00","#bf6000","#9b4e00"],
 	  pink:        ["#ff96cb","#ff70b8","#ff3a9d","#ee0077","#c30062"],
 	  orangeToRed: ["#ffdf04","#ffbe04","#ff9a03","#ff6d02","#ff2c01"]
-	}
+	},
+	showCurrentDayBorder: true // (optional) Defaults to true
 }
 
 //DataviewJS loop
