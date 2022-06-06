@@ -18,6 +18,11 @@
       "@typescript-eslint/no-unused-vars": ["error", { "args": "none" }],
       "@typescript-eslint/ban-ts-comment": "off",
       "no-prototype-builtins": "off",
-      "@typescript-eslint/no-empty-function": "off"
+      "@typescript-eslint/no-empty-function": "off",
+      "@typescript-eslint/comma-dangle": ["error", "always"],
+      "@typescript-eslint/semi": ["error", "never"],
+      "curly": ["error", "multi-or-nest"],
+      "eqeqeq": ["error", "always"],
+      "camelcase": "error"
     } 
   }
