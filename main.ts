@@ -5,47 +5,35 @@ import { Plugin } from 'obsidian';
 // CouldDO: laga visuell scala under, me min max avg text
 // CouldDO: konne legge til so monge farga man vil i colors array 
 
-interface HeatmapCalendarSettings {
-	year: number;
-	defaultEntryIntensity: number;
+interface CalendarData {
+	year: number
 	colors: {
-		default: Array<string>;
-	};
-	entries: Array<Entry>;
-	showCurrentDayBorder?: boolean;
+		[index: string | number]: {
+			[index: number]: string
+		}
+	}
+	entries: Entry[]
+	showCurrentDayBorder: boolean
+	defaultEntryIntensity: number
 }
-
-const DEFAULT_SETTINGS: HeatmapCalendarSettings = {
+interface Entry {
+	date: string
+	intensity?: number
+	color?: string | number
+	content?: string
+}
+const DEFAULT_SETTINGS: CalendarData = {
 	year: new Date().getUTCFullYear(),
-	defaultEntryIntensity: 4,
 	colors: {
 		default: ["#c6e48b", "#7bc96f", "#49af5d", "#2e8840", "#196127"]
 	},
 	entries: [{ date: "1900-01-01" }],
 	showCurrentDayBorder: true,
+	defaultEntryIntensity: 4,
 }
-
-interface Entry {
-	date: string;
-	intensity?: number;
-	color?: string | number;
-	content?: string;
-}
-
-interface CalendarData {
-	year?: number;
-	colors?: {
-		[index: string | number]: {
-			[index: number]: string;
-		};
-	};
-	entries?: Array<Entry>;
-	showCurrentDayBorder?: boolean;
-}
-
 export default class HeatmapCalendar extends Plugin {
 
-	settings: HeatmapCalendarSettings;
+	settings: CalendarData;
 
 	/**
      * Returns a number representing how many days into the year the supplied date is. 
