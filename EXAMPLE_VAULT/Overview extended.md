@@ -1,5 +1,4 @@
 # Overview
-*(PS. Disable safe mode and install "Dataview" and "Heatmap Calendar" plugins for the examples below to work. You may have to restart Obsidian).*
 
 ```dataviewjs
 
@@ -26,7 +25,7 @@ renderHeatmapCalendar(this.container, calendarData)
 ```
 ```dataviewjs
 
-dv.span("**🏋️ Exercise 🏋️** (Green if you reached goal of 45 minutes)")
+dv.span("**🏋️ Exercise 🏋️** (Green if you reached your goal of 45 minutes)")
 
 const calendarData = {
     year: 2022,
@@ -284,15 +283,15 @@ const calendarData = {
     intensityScaleEnd: 9,
     colors: {   // optional, defaults to green
         red2greenX21: [
-            `hsl(${hue1}, 100%, 37%)`,     // 1 - darkest red
+            `hsl(${hue1}, 100%, 37%)`,     // 1 - darkest red (worst mood)
             `hsl(${hue1}, 100%, 50%)`,     // 2 - 
             `hsl(${hue1}, 100%, 60%)`,     // 3 - 
             `hsl(${hue1}, 100%, 77%)`,     // 4 - lightest red
-            `hsl(0, 0%, 80%)`,             // 5 - neutral gray
+            `hsl(0, 0%, 80%)`,             // 5 - gray (neutral mood)
             `hsl(${hue2*0.7}, 70%, 72%)`,  // 6 - lightest green
             `hsl(${hue2*0.85}, 43%, 56%)`, // 7 - 
             `hsl(${hue2}, 49%, 36%)`,      // 8 - 
-            `hsl(${hue2}, 59%, 24%)`,      // 9 - darkest green
+            `hsl(${hue2}, 59%, 24%)`,      // 9 - darkest green (best mood)
         ],
     },
     entries: [] // populated in the DataviewJS loop below

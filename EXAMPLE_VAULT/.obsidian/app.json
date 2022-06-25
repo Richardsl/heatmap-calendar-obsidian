@@ -2,5 +2,7 @@
   "legacyEditor": false,
   "livePreview": true,
   "useTab": false,
-  "promptDelete": false
+  "promptDelete": false,
+  "showFrontmatter": true,
+  "showUnsupportedFiles": true
 }

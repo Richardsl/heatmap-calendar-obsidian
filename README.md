@@ -8,7 +8,8 @@ Tracking and visualizing the data can help motivate you to start doing the thing
 
 It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/), but could be used standalone or with other plugins as well, as all the plugin does, is add the function ***renderHeatmapCalendar()*** to the global namespace.
 
-![heatmap calendar examples](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-examples.png?raw=true)
+![heatmap calendar examples](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/animated_examples_top3.gif?raw=true)
+![heatmap calendar examples](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-examples-bottom3.png?raw=true)
 
 
 ## Use:
@@ -93,6 +94,14 @@ Dataview's time variables are supported without any conversion, as they return m
 ---
 
 ### Changelog:
+#### [0.4.0] - 2022-06-25
+
+##### Feature
+- Add hover preview feature courtesy of @arsenty from issue #12.  
+to enable - add **content: await dv.span(`[](${page.file.name})`)** to entries, and enable **Settings** -> **Core Plugins** -> **Page Preview**.   
+Optionally install plugin [Metatable](https://github.com/arnau/obsidian-metatable) to display metadata/frontmatter in the preview window aswell.  
+See examples for more details
+
 #### [0.3.0] - 2022-06-25
 
 ##### Feature

@@ -1,8 +1,5 @@
 import { Plugin, } from 'obsidian'
 
-// TODO: blande farga om man bruka to farga i en event?
-// CouldDO: laga visuell scala under, me min max avg text
-
 interface CalendarData {
 	year: number
 	colors: {
@@ -54,6 +51,14 @@ export default class HeatmapCalendar extends Plugin {
 				Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000
 		)
 	}
+	/** 
+	 * keeps HTMLElements passed as content from rendering above the calendar if they are outside of the displayed year
+	 */
+	removeHtmlElementsNotInYear(entries: Entry[], year: number ){
+				const calEntriesNotInDisplayedYear = entries.filter(e=>Number.parseInt(e.date.substring(0,10))!==year) ?? this.settings.entries
+				//@ts-ignore
+				calEntriesNotInDisplayedYear.forEach(e => e.content instanceof HTMLElement && e.content.remove())
+	}
 
 	clamp(input: number, min: number, max: number): number {
 		return input < min ? min : input > max ? max : input
@@ -73,7 +78,9 @@ export default class HeatmapCalendar extends Plugin {
 
 			const year = calendarData.year ?? this.settings.year
 			const colors = calendarData.colors ?? this.settings.colors
-			// remove entries not in current year
+			
+			this.removeHtmlElementsNotInYear(calendarData.entries, year)
+			
 			const calEntries = calendarData.entries.filter(e=>Number.parseInt(e.date.substring(0,10))===year) ?? this.settings.entries
 
 			const showCurrentDayBorder = calendarData.showCurrentDayBorder ?? this.settings.showCurrentDayBorder

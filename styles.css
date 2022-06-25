@@ -47,13 +47,25 @@
         font-weight: bold;
         font-size: 1.2em;
       }
+      /* only label three days of the week */
       .heatmap-calendar-days li:nth-child(odd) {
         visibility: hidden;
       }
       .heatmap-calendar-boxes li {
+        position: relative;
         font-size: 0.75em;
         background-color: #ebedf0;
-      }      
+      }     
+      .heatmap-calendar-boxes li:not(.task-list-item)::before {
+        content: unset;
+      }
+      .heatmap-calendar-boxes .internal-link {
+        text-decoration: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+      }
       .heatmap-calendar-boxes .today {
         border: solid 1px rgb(61, 61, 61);
       }
