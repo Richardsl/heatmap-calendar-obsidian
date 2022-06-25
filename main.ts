@@ -23,7 +23,7 @@ interface Entry {
 	content?: string
 }
 const DEFAULT_SETTINGS: CalendarData = {
-	year: new Date().getUTCFullYear(),
+	year: new Date().getFullYear(),
 	colors: {
 		default: ["#c6e48b", "#7bc96f", "#49af5d", "#2e8840", "#196127",],
 	},
