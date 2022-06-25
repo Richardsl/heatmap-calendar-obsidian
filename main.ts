@@ -73,7 +73,9 @@ export default class HeatmapCalendar extends Plugin {
 
 			const year = calendarData.year ?? this.settings.year
 			const colors = calendarData.colors ?? this.settings.colors
-			const calEntries = calendarData.entries ?? this.settings.entries
+			// remove entries not in current year
+			const calEntries = calendarData.entries.filter(e=>Number.parseInt(e.date.substring(0,10))===year) ?? this.settings.entries
+
 			const showCurrentDayBorder = calendarData.showCurrentDayBorder ?? this.settings.showCurrentDayBorder
 
 			const defaultEntryIntensity = calendarData.defaultEntryIntensity ?? this.settings.defaultEntryIntensity
