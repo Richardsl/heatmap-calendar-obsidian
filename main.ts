@@ -1,9 +1,7 @@
 import { Plugin, } from 'obsidian'
 
 // TODO: blande farga om man bruka to farga i en event?
-// TODO: custom fixed scale istedenfor automap
 // CouldDO: laga visuell scala under, me min max avg text
-// CouldDO: konne legge til so monge farga man vil i colors array 
 
 interface CalendarData {
 	year: number
@@ -15,6 +13,8 @@ interface CalendarData {
 	entries: Entry[]
 	showCurrentDayBorder: boolean
 	defaultEntryIntensity: number
+	intensityScaleStart: number
+	intensityScaleEnd: number
 }
 interface Entry {
 	date: string
@@ -30,6 +30,8 @@ const DEFAULT_SETTINGS: CalendarData = {
 	entries: [{ date: "1900-01-01", },],
 	showCurrentDayBorder: true,
 	defaultEntryIntensity: 4,
+	intensityScaleStart: 1,
+	intensityScaleEnd: 5,
 }
 export default class HeatmapCalendar extends Plugin {
 
@@ -74,30 +76,24 @@ export default class HeatmapCalendar extends Plugin {
 			const calEntries = calendarData.entries ?? this.settings.entries
 			const showCurrentDayBorder = calendarData.showCurrentDayBorder ?? this.settings.showCurrentDayBorder
 
-			const intensities: Array<number> = []
+			const defaultEntryIntensity = calendarData.defaultEntryIntensity ?? this.settings.defaultEntryIntensity
+
+			const intensities = calEntries.filter(e => e.intensity).map(e => e.intensity)
+			const minimumIntensity = intensities.length ? Math.min(...intensities) : this.settings.intensityScaleStart
+			const maximumIntensity = intensities.length ? Math.max(...intensities) : this.settings.intensityScaleEnd
+			const intensityScaleStart = calendarData.intensityScaleStart ?? minimumIntensity
+			const intensityScaleEnd = calendarData.intensityScaleEnd ?? maximumIntensity
+
+			const mappedEntries: Entry[] = []
 			calEntries.forEach(e => {
-				if (e.intensity) intensities.push(e.intensity)
-			})
-
-			const minimumIntensity = Math.min(...intensities) ?? 1
-			//const averageIntensity = intensities.reduce((a,b) => a + b, 0) / intensities.length ?? 3
-			const maximumIntensity = Math.max(...intensities) ?? 5
-
-			const mappedEntries: Array<Entry> = []
-
-			calEntries.forEach(e => {
-				if (new Date(e.date).getUTCFullYear() === year) {
-
-					const newEntry = { ...e, }
-					newEntry.intensity = e.intensity ?? this.settings.defaultEntryIntensity
-
-					if (minimumIntensity === maximumIntensity)
-						newEntry.intensity = 5
-					else
-						newEntry.intensity = Math.round(this.map(newEntry.intensity, minimumIntensity, maximumIntensity, 1, 5))
-
-					mappedEntries[this.getHowManyDaysIntoYear(new Date(e.date))] = newEntry
+				const newEntry = {
+					intensity: defaultEntryIntensity,
+					...e,
 				}
+				const colorIntensities = colors[e.color] ?? colors[Object.keys(colors)[0]]
+				const numOfColorIntensities = Object.keys(colorIntensities).length
+				newEntry.intensity = Math.round(this.map(newEntry.intensity, intensityScaleStart, intensityScaleEnd, 1, numOfColorIntensities))
+				mappedEntries[this.getHowManyDaysIntoYear(new Date(e.date))] = newEntry
 			})
 
 			const firstDayOfYear = new Date(Date.UTC(year, 0, 1))

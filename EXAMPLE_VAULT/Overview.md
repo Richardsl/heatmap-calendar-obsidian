@@ -8,12 +8,12 @@ dv.span("**🏋️ Exercise 🏋️**")
 const calendarData = {
     year: 2022,
     colors: {
-        red: ["#ff9e82","#ff7b55","#ff4d1a","#e73400","#bd2a00"]
+        red: ["#ff9e82","#ff7b55","#ff4d1a","#e73400","#bd2a00",]
     },
     entries: []
 }
 
-for(let page of dv.pages('"daily notes"').where(p=>p.exercise).sort(p=>p.file.name)){
+for(let page of dv.pages('"daily notes"').where(p=>p.exercise)){
     calendarData.entries.push({
         date: page.file.name,
         intensity: page.exercise
@@ -30,7 +30,7 @@ renderHeatmapCalendar(this.container, calendarData)
 dv.span("**💸 Money Spent 💸**")
 
 const calendarData = {
-    entries: []
+    entries: [],
 }
 
  
@@ -74,7 +74,7 @@ renderHeatmapCalendar(this.container, calendarData)
 
 ```dataviewjs
 
-dv.span("**Writing - Dont break the chain! 🔗🔗**")
+dv.span("**🔗Writing **- Dont break the chain! 🔗🔗🔗🔗")
 
 const calendarData = {
     year: 2022,
@@ -88,7 +88,6 @@ for(let page of dv.pages('"daily notes"').where(p=>p.writing).sort(p=>p.file.nam
 	 
     calendarData.entries.push({
         date: page.file.name,
-        intensity: 5,
         content: "🔗"
     })   
 }

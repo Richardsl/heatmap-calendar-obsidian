@@ -26,7 +26,6 @@ It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/o
 ~~~javascript
 \```dataviewjs
 const calendarData = { 
-	entries: [], // Populated in the DataviewJS loop below
 	year: 2022,  // (optional) Defaults to current year
 	colors: {    // (optional) Defaults to green
 	  blue:        ["#8cb9ff","#69a3ff","#428bff","#1872ff","#0058e2"], // first entry is considered default if supplied
@@ -36,7 +35,11 @@ const calendarData = {
 	  pink:        ["#ff96cb","#ff70b8","#ff3a9d","#ee0077","#c30062"],
 	  orangeToRed: ["#ffdf04","#ffbe04","#ff9a03","#ff6d02","#ff2c01"]
 	},
-	showCurrentDayBorder: true // (optional) Defaults to true
+	showCurrentDayBorder: true, // (optional) Defaults to true
+	defaultEntryIntensity: 4, // (optional) Defaults to 4
+	intensityScaleStart: 10, // (optional) Defaults to lowest value passe to entries.intensity
+    intensityScaleEnd: 100, // (optional) Defaults to highest value passe to entries.intensity
+	entries: [], // Populated in the DataviewJS loop below
 }
 
 //DataviewJS loop
@@ -70,9 +73,10 @@ You can even use multiple colors in the same calendar, just use different colors
 The color schemes used in the examples were created at [leonardocolor.io](https://leonardocolor.io).
 
 ## Intensity:
-The "Intensity" means which intensity of color to use, for instance from light-green to dark-green.  
-The plugin currently supports five intensities, and they will be distributed between the highest and lowest number you pass to "intensity".  
-If the number range 0-100 is used, numbers between 1-20 would map to the lightest color, 40-60 would map to mid intensity color, and 80-100 would map to max intensity.  
+The "Intensity" means which intensity of color to use, for example from light-green to dark-green, 
+and they will be distributed between the highest and lowest number you pass to "intensity".  
+If the number range 0-100 is used, numbers between 1-20 would map to the lightest color, 40-60 would map to mid intensity color, and 80-100 would map to max intensity.
+You can add more intensities in order to increase color resolution; simply supply more colors to **calendarData.colors.yourcolor**
 
 Dataview's time variables are supported without any conversion, as they return milliseconds by default.  
 **[time:: 1 hours, 35 minutes] => intensity: page.time**
