@@ -93,10 +93,22 @@ Dataview's time variables are supported without any conversion, as they return m
 ---
 
 ### Changelog:
+#### [0.3.0] - 2022-06-25
+
+##### Feature
+- Can add more intensities in order to increase color resolution. simply supply more colors to **calendarData.colors.yourcolor**
+- Can set custom range on the intensity scaling using *intensityScaleStart* and *intensityScaleEnd*
+
+##### Bugfix
+- fix bug where entries from other years showing up in the calendar
+
+
 #### [0.2.0] - 2022-06-05
+
 ##### Feature
 - Add border around todays box to indicate what day it is. Can be removed by setting *showCurrentDayBorder* to false
 - Add better development solution/workflow by using automated file copying instead of symlinks
+
 
 #### [0.1.1] - 2022-03-18
 
