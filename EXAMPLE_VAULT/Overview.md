@@ -103,7 +103,7 @@ renderHeatmapCalendar(this.container, calendarData)
 // Using multiple colors for different variations of entry
 //
 
-dv.span("**Time spent with my friend Greg in 2022 :)**")
+dv.span("**👫 Social tracker 🧑‍🤝‍🧑**")
 
 const calendarData = {
     year: 2022,
@@ -131,6 +131,47 @@ renderHeatmapCalendar(this.container, calendarData)
 
 ```
 
+```dataviewjs
 
-##### Calories?
+dv.span("** 😊 Mood  😥**")
+
+const hue1 = 13 //red
+const hue2 = 132 //green
+
+const calendarData = { 
+    year: 2022,
+    intensityScaleStart: 1,
+    intensityScaleEnd: 9,
+    colors: {   // optional, defaults to green
+        red2green: [
+            `hsl(${hue1}, 100%, 37%)`,     // 1 - darkest red
+            `hsl(${hue1}, 100%, 50%)`,     // 2 - 
+            `hsl(${hue1}, 100%, 60%)`,     // 3 - 
+            `hsl(${hue1}, 100%, 77%)`,     // 4 - lightest red
+            `hsl(0, 0%, 80%)`,             // 5 - neutral gray
+            `hsl(${hue2*0.7}, 70%, 72%)`,  // 6 - lightest green
+            `hsl(${hue2*0.85}, 43%, 56%)`, // 7 - 
+            `hsl(${hue2}, 49%, 36%)`,      // 8 - 
+            `hsl(${hue2}, 59%, 24%)`,      // 9 - darkest green
+        ],
+    },
+    entries: [] // populated in the DataviewJS loop below
+}
+
+for(let page of dv.pages('"daily notes"').where(p=>p.mood)){ 
+
+    calendarData.entries.push({
+        date: page.file.name, 
+        intensity: page.mood,
+    })
+      
+}
+
+
+renderHeatmapCalendar(this.container, calendarData)
+
+
+```
+
+
 

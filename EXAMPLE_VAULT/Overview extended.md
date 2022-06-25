@@ -78,11 +78,16 @@ const calendarData = {
     entries: [],
     colors: {
         oldGithubGreen11:[
-            "hsl(65, 83%, 88%)","hsl(70, 77%, 78%)",
-            "hsl(80, 62%, 72%)","hsl(95, 52%, 66%)",
-            "hsl(112, 45%, 61%)","hsl(125, 43%, 56%)",
-            "hsl(132, 41%, 49%)","hsl(132, 45%, 43%)",
-            "hsl(132, 49%, 36%)","hsl(132, 54%, 29%)", 
+            "hsl(65, 83%, 88%)",
+            "hsl(70, 77%, 78%)",
+            "hsl(80, 62%, 72%)",
+            "hsl(95, 52%, 66%)",
+            "hsl(112, 45%, 61%)",
+            "hsl(125, 43%, 56%)",
+            "hsl(132, 41%, 49%)",
+            "hsl(132, 45%, 43%)",
+            "hsl(132, 49%, 36%)",
+            "hsl(132, 54%, 29%)", 
             "hsl(132, 59%, 24%)",
         ]
     },
@@ -266,6 +271,47 @@ renderHeatmapCalendar(this.container, calendarData)
 
 ```
 
+```dataviewjs
+
+dv.span("** 😊 Mood  😥**")
+
+const hue1 = 13 //red
+const hue2 = 132 //green
+
+const calendarData = { 
+    year: 2022,
+    intensityScaleStart: 1,
+    intensityScaleEnd: 9,
+    colors: {   // optional, defaults to green
+        red2greenX21: [
+            `hsl(${hue1}, 100%, 37%)`,     // 1 - darkest red
+            `hsl(${hue1}, 100%, 50%)`,     // 2 - 
+            `hsl(${hue1}, 100%, 60%)`,     // 3 - 
+            `hsl(${hue1}, 100%, 77%)`,     // 4 - lightest red
+            `hsl(0, 0%, 80%)`,             // 5 - neutral gray
+            `hsl(${hue2*0.7}, 70%, 72%)`,  // 6 - lightest green
+            `hsl(${hue2*0.85}, 43%, 56%)`, // 7 - 
+            `hsl(${hue2}, 49%, 36%)`,      // 8 - 
+            `hsl(${hue2}, 59%, 24%)`,      // 9 - darkest green
+        ],
+    },
+    entries: [] // populated in the DataviewJS loop below
+}
+
+for(let page of dv.pages('"daily notes"').where(p=>p.mood)){ 
+
+    calendarData.entries.push({
+        date: page.file.name, 
+        intensity: page.mood,
+    })
+      
+}
+
+
+renderHeatmapCalendar(this.container, calendarData)
+
+
+```
 
 
 
