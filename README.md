@@ -89,7 +89,7 @@ Dataview's time variables are supported without any conversion, as they return m
 
 ## Development (Windows):
  ```npm run dev``` - will start TS to JS transpiler and automatically copy the JS/CSS/manifest files to the example vault whenever they are modified.  
- I highly recommend installing https://github.com/pjeby/hot-reload to avoid restarting obsidian after every change, but remember to add a **.hot-reload** file to EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar/
+ Installing https://github.com/pjeby/hot-reload is recommended to avoid restarting obsidian after every change, but remember to add a **.hot-reload** file to EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar/
 
 ---
 
