@@ -86,6 +86,10 @@ You can add more intensities in order to increase color resolution; simply suppl
 Dataview's time variables are supported without any conversion, as they return milliseconds by default.  
 **[time:: 1 hours, 35 minutes] => intensity: page.time**
 
+## Styling:
+Use Obsidian CSS snippets for custom styling.  
+See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets).
+
 ## Notes:
 - See the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) if you want to test out the examples.
 - Week starts on Monday, not configurable yet
