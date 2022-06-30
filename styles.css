@@ -56,6 +56,9 @@
         font-size: 0.75em;
         background-color: #ebedf0;
       }     
+      .theme-dark .heatmap-calendar-boxes .isEmpty{
+        background: #333;
+      }
       .heatmap-calendar-boxes li:not(.task-list-item)::before {
         content: unset;
       }
