@@ -10,6 +10,7 @@ see [github repo](https://github.com/Richardsl/heatmap-calendar-obsidian#readme)
 
 ---
 # Overview
+
 ```dataviewjs
 
 dv.span("**🏋️ Exercise 🏋️**")

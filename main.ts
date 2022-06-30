@@ -52,12 +52,12 @@ export default class HeatmapCalendar extends Plugin {
 		)
 	}
 	/** 
-	 * keeps HTMLElements passed as content from rendering above the calendar if they are outside of the displayed year
+	 * Removes HTMLElements passed as entry.content and outside of the displayed year from rendering above the calendar
 	 */
-	removeHtmlElementsNotInYear(entries: Entry[], year: number ){
-				const calEntriesNotInDisplayedYear = entries.filter(e=>Number.parseInt(e.date.substring(0,10))!==year) ?? this.settings.entries
-				//@ts-ignore
-				calEntriesNotInDisplayedYear.forEach(e => e.content instanceof HTMLElement && e.content.remove())
+	removeHtmlElementsNotInYear(entries: Entry[], year: number) {
+		const calEntriesNotInDisplayedYear = entries.filter(e => Number.parseInt(e.date.substring(0, 10)) !== year) ?? this.settings.entries
+		//@ts-ignore
+		calEntriesNotInDisplayedYear.forEach(e => e.content instanceof HTMLElement && e.content.remove())
 	}
 
 	clamp(input: number, min: number, max: number): number {
@@ -78,10 +78,10 @@ export default class HeatmapCalendar extends Plugin {
 
 			const year = calendarData.year ?? this.settings.year
 			const colors = calendarData.colors ?? this.settings.colors
-			
+
 			this.removeHtmlElementsNotInYear(calendarData.entries, year)
-			
-			const calEntries = calendarData.entries.filter(e=>Number.parseInt(e.date.substring(0,10))===year) ?? this.settings.entries
+
+			const calEntries = calendarData.entries.filter(e => Number.parseInt(e.date.substring(0, 10)) === year) ?? this.settings.entries
 
 			const showCurrentDayBorder = calendarData.showCurrentDayBorder ?? this.settings.showCurrentDayBorder
 
@@ -112,7 +112,7 @@ export default class HeatmapCalendar extends Plugin {
 				backgroundColor?: string;
 				date?: string;
 				content?: string;
-				classNames?: string
+				classNames?: string[]
 			}
 
 			const boxes: Array<Box> = []
@@ -127,11 +127,14 @@ export default class HeatmapCalendar extends Plugin {
 
 			for (let day = 1; day <= numberOfDaysInYear; day++) {
 
-				const box: Box = {}
+				const box: Box = {
+					classNames: [],
+				}
 
-				if (day === todaysDayNumberLocal && showCurrentDayBorder) box.classNames = "today"
+				if (day === todaysDayNumberLocal && showCurrentDayBorder) box.classNames.push("today")
 
 				if (mappedEntries[day]) {
+					box.classNames.push("hasData")
 					const entry = mappedEntries[day]
 
 					box.date = entry.date
@@ -141,7 +144,7 @@ export default class HeatmapCalendar extends Plugin {
 					const currentDayColors = entry.color ? colors[entry.color] : colors[Object.keys(colors)[0]]
 					box.backgroundColor = currentDayColors[entry.intensity - 1]
 
-				}
+				} else box.classNames.push("isEmpty")
 				boxes.push(box)
 			}
 

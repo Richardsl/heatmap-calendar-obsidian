@@ -8,9 +8,13 @@ Tracking and visualizing the data can help motivate you to start doing the thing
 
 It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/), but could be used standalone or with other plugins as well, as all the plugin does, is add the function ***renderHeatmapCalendar()*** to the global namespace.
 
-![heatmap calendar examples](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/animated_examples_top3.gif?raw=true)
-![heatmap calendar examples](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-examples-bottom3.png?raw=true)
-
+<p align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Richardsl/heatmap-calendar-obsidian/blob/main/github-images/heatmap_examples_dark.gif?raw=true">
+      <source media="(prefers-color-scheme: light)" srcset="https://github.com/Richardsl/heatmap-calendar-obsidian/blob/main/github-images/heatmap_examples_light.gif?raw=true">
+      <img alt="Shows a black logo in light color mode and a white one in dark color mode." src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
+    </picture>
+</p>
 
 ## Use:
 
@@ -82,6 +86,10 @@ You can add more intensities in order to increase color resolution; simply suppl
 Dataview's time variables are supported without any conversion, as they return milliseconds by default.  
 **[time:: 1 hours, 35 minutes] => intensity: page.time**
 
+## Styling:
+Use Obsidian CSS snippets for custom styling.  
+See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets).
+
 ## Notes:
 - See the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) if you want to test out the examples.
 - Week starts on Monday, not configurable yet
@@ -89,7 +97,7 @@ Dataview's time variables are supported without any conversion, as they return m
 
 ## Development (Windows):
  ```npm run dev``` - will start TS to JS transpiler and automatically copy the JS/CSS/manifest files to the example vault whenever they are modified.  
- I highly recommend installing https://github.com/pjeby/hot-reload to avoid restarting obsidian after every change, but remember to add a **.hot-reload** file to EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar/
+ Installing https://github.com/pjeby/hot-reload is recommended to avoid restarting obsidian after every change, but remember to add a **.hot-reload** file to EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar/
 
 ---
 
