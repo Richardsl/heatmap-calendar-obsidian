@@ -1,6 +1,6 @@
 [
   "dataview",
-  "heatmap-calendar",
   "hot-reload",
-  "obsidian-metatable"
+  "obsidian-metatable",
+  "heatmap-calendar"
 ]
