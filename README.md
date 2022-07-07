@@ -1,17 +1,15 @@
 # Heatmap Calendar plugin for Obsidian
 
-Visualise your data in a full year heatmap calendar similar to the github activity calendar using this [Obsidian](https://obsidian.md/) plugin.  
+Visualize your data in a heatmap calendar similar to the github activity calendar using this [Obsidian](https://obsidian.md/) plugin.  
 
-Useful for tracking your progress for various things such as exercise, finance, passion, vice, social, project progression etc.   
-
-Tracking and visualizing the data can help motivate you to start doing the things you want to do, or even more – motivate you to continue once you've started!
+Useful for tracking progress towards various things such as exercise, finance, passion, vices, social, project progression etc.   
 
 It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/), but could be used standalone or with other plugins as well, as all the plugin does, is add the function ***renderHeatmapCalendar()*** to the global namespace.
 
 <p align="center">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Richardsl/heatmap-calendar-obsidian/blob/main/github-images/heatmap_examples_dark.gif?raw=true">
-      <source media="(prefers-color-scheme: light)" srcset="https://github.com/Richardsl/heatmap-calendar-obsidian/blob/main/github-images/heatmap_examples_light.gif?raw=true">
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap_examples_dark.gif?raw=true">
+      <source media="(prefers-color-scheme: light)" srcset="https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap_examples_light.gif?raw=true">
       <img alt="Shows a black logo in light color mode and a white one in dark color mode." src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
     </picture>
 </p>
@@ -52,7 +50,7 @@ for(let page of dv.pages('"daily notes"').where(p=>p.exercise)){
 
 	calendarData.entries.push({
 		date: page.file.name, // (required) Format YYYY-MM-DD
-		intensity: page.exercise, // (required) Color intensity for entry, will map intensities automatically
+		intensity: page.exercise, // (required) the data you want to track, will map color intensities automatically
 		content: "🏋️", // (optional) Add text to the date cell
 		color: "orange", // (optional) Reference from *calendarData.colors*. If no color is supplied; colors[0] is used
 	})
@@ -101,39 +99,30 @@ See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tr
 
 ---
 
-### Changelog:
-#### [0.4.0] - 2022-06-25
+### What's New:
 
-##### Feature
-- Add hover preview feature courtesy of @arsenty from issue #12.  
+**Version [0.5.0] - 2022-06-30**
+- Feature: Add darkmode support
+
+**Version [0.4.0] - 2022-06-25**
+- Feature: Add hover preview feature courtesy of @arsenty from issue #12.  
 to enable - add **content: await dv.span(`[](${page.file.name})`)** to entries, and enable **Settings** -> **Core Plugins** -> **Page Preview**.   
 Optionally install plugin [Metatable](https://github.com/arnau/obsidian-metatable) to display metadata/frontmatter in the preview window aswell.  
 See examples for more details
 
-#### [0.3.0] - 2022-06-25
+**Version [0.3.0] - 2022-06-25**
+- Feature: Can add more intensities in order to increase color resolution. simply supply more colors to **calendarData.colors.yourcolor**
+- Feature: Can set custom range on the intensity scaling using *intensityScaleStart* and *intensityScaleEnd*
+- Bugfix: Entries from other years would show up in the calendar
 
-##### Feature
-- Can add more intensities in order to increase color resolution. simply supply more colors to **calendarData.colors.yourcolor**
-- Can set custom range on the intensity scaling using *intensityScaleStart* and *intensityScaleEnd*
+**Version [0.2.0] - 2022-06-05**
+- Feature: Add border around todays box to indicate what day it is. Can be removed by setting *showCurrentDayBorder* to false
+- Feature: Add better development solution/workflow by using automated file copying instead of symlinks
 
-##### Bugfix
-- fix bug where entries from other years showing up in the calendar
+**Version [0.1.1] - 2022-03-18**
+- Bugfix: fix major date problem where year would render with incorrect number of days for different timezones [issue#4](https://github.com/Richardsl/heatmap-calendar-obsidian/issues/4).
+- Bugfix: fix problem with certain entries not showing up in the correct month
+- Bugfix: fix grid cells not scaling correctly with browser width, especially content in grid cells
 
-
-#### [0.2.0] - 2022-06-05
-
-##### Feature
-- Add border around todays box to indicate what day it is. Can be removed by setting *showCurrentDayBorder* to false
-- Add better development solution/workflow by using automated file copying instead of symlinks
-
-
-#### [0.1.1] - 2022-03-18
-
-##### Fixed
-- fix major date problem where year would render with incorrect number of days for different timezones [issue#4](https://github.com/Richardsl/heatmap-calendar-obsidian/issues/4).
-- fix problem with certain entries not showing up in the correct month
-- fix grid cells not scaling correctly with browser width, especially content in grid cells
-
-
-#### [0.1.0] - 2022-02-23
+**Version [0.1.0] - 2022-02-23**
 - initial release
