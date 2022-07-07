@@ -55,7 +55,7 @@ export default class HeatmapCalendar extends Plugin {
 	 * Removes HTMLElements passed as entry.content and outside of the displayed year from rendering above the calendar
 	 */
 	removeHtmlElementsNotInYear(entries: Entry[], year: number) {
-		const calEntriesNotInDisplayedYear = entries.filter(e => Number.parseInt(e.date.substring(0, 10)) !== year) ?? this.settings.entries
+		const calEntriesNotInDisplayedYear = entries.filter(e => new Date(e.date).getFullYear() !== year) ?? this.settings.entries
 		//@ts-ignore
 		calEntriesNotInDisplayedYear.forEach(e => e.content instanceof HTMLElement && e.content.remove())
 	}
@@ -81,7 +81,7 @@ export default class HeatmapCalendar extends Plugin {
 
 			this.removeHtmlElementsNotInYear(calendarData.entries, year)
 
-			const calEntries = calendarData.entries.filter(e => Number.parseInt(e.date.substring(0, 10)) === year) ?? this.settings.entries
+			const calEntries = calendarData.entries.filter(e => new Date(e.date).getFullYear() === year) ?? this.settings.entries
 
 			const showCurrentDayBorder = calendarData.showCurrentDayBorder ?? this.settings.showCurrentDayBorder
 

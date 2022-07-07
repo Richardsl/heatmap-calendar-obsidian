@@ -58,7 +58,7 @@ const calendarData = {
 }
 
  
-for(let page of dv.pages('"daily notes"').where(p=>p.moneySpent).sort(p=>p.file.name)){
+for(let page of dv.pages('"daily notes"').where(p=>p.moneySpent)){
 
     calendarData.entries.push({
         date: page.file.name,
@@ -93,7 +93,7 @@ const calendarData = {
 }
 
  
-for(let page of dv.pages('"daily notes"').where(p=>p.moneySpent).sort(p=>p.file.name)){
+for(let page of dv.pages('"daily notes"').where(p=>p.moneySpent)){
 
     calendarData.entries.push({
         date: page.file.name,
@@ -115,7 +115,7 @@ const calendarData = {
 }
 
  
-for(let page of dv.pages('"daily notes"').where(p=>p.moneySpent).sort(p=>p.file.name)){
+for(let page of dv.pages('"daily notes"').where(p=>p.moneySpent)){
 
     calendarData.entries.push({
         date: page.file.name,
@@ -146,7 +146,7 @@ const calendarData = {
 }
 
  
-for(let page of dv.pages('"daily notes"').where(p=>p.moneySpent).sort(p=>p.file.name)){
+for(let page of dv.pages('"daily notes"').where(p=>p.moneySpent)){
 
     calendarData.entries.push({
         date: page.file.name,
@@ -171,9 +171,8 @@ const calendarData = {
     showCurrentDayBorder: false
 }
 
-for(let page of dv.pages('"daily notes"').where(p=>p.alcohol).sort(p=>p.file.name)){
-	//dv.paragraph(page.file.name + " Alcohol units: " + page.alcohol)
-    
+for(let page of dv.pages('"daily notes"').where(p=>p.alcohol)){
+	dv.paragraph(page.file.name + " Alcohol units: " + page.alcohol)
     calendarData.entries.push({
         date: page.file.name,
         intensity: page.alcohol
@@ -197,7 +196,7 @@ const calendarData = {
     intensityScaleEnd: 8,
 }
 
-for(let page of dv.pages('"daily notes"').where(p=>p.alcohol).sort(p=>p.file.name)){
+for(let page of dv.pages('"daily notes"').where(p=>p.alcohol)){
 	//dv.paragraph(page.file.name + " Alcohol units: " + page.alcohol)
     
     calendarData.entries.push({
@@ -222,7 +221,7 @@ const calendarData = {
     entries: []
 }
 
-for(let page of dv.pages('"daily notes"').where(p=>p.writing).sort(p=>p.file.name)){
+for(let page of dv.pages('"daily notes"').where(p=>p.writing)){
 	 
     calendarData.entries.push({
         date: page.file.name,
@@ -253,11 +252,12 @@ const calendarData = {
     entries: []
 }
 
-for(let page of dv.pages('"daily notes"').where(p=>p.social).sort(p=>p.file.name)){
+for(let page of dv.pages('"daily notes"').where(p=>p.social)){
 
     let color = ""
     if(page.social.greg.initiative == "incoming"){color="pink"}
     
+    //dv.span("page.file.name: "+page.file.name)
     calendarData.entries.push({
         date: page.file.name,
         intensity: page.social.greg.time,
@@ -329,7 +329,7 @@ let calendarData = {
     entries: []
 }
 
-for(let page of dv.pages('"daily notes"').where(p=>p.intensity0to5).sort(p=>p.file.name)){
+for(let page of dv.pages('"daily notes"').where(p=>p.intensity0to5)){
     calendarData.entries.push({
         date: page.file.name,
         intensity: page.intensity0to5
@@ -350,7 +350,7 @@ calendarData = {
     entries: []
 }
 
-for(let page of dv.pages('"daily notes"').where(p=>p.intensity0to5ish).sort(p=>p.file.name)){
+for(let page of dv.pages('"daily notes"').where(p=>p.intensity0to5ish)){
     calendarData.entries.push({
         date: page.file.name,
         intensity: page.intensity0to5ish
@@ -372,7 +372,7 @@ calendarData = {
     entries: []
 }
 
-for(let page of dv.pages('"daily notes"').where(p=>p.intensity0to10).sort(p=>p.file.name)){
+for(let page of dv.pages('"daily notes"').where(p=>p.intensity0to10)){
     calendarData.entries.push({
         date: page.file.name,
         intensity: page.intensity0to10
@@ -393,7 +393,7 @@ calendarData = {
     entries: []
 }
 
-for(let page of dv.pages('"daily notes"').where(p=>p.intensity0to25).sort(p=>p.file.name)){
+for(let page of dv.pages('"daily notes"').where(p=>p.intensity0to25)){
     calendarData.entries.push({
         date: page.file.name,
         intensity: page.intensity0to25
@@ -415,7 +415,7 @@ calendarData = {
     entries: []
 }
 
-for(let page of dv.pages('"daily notes"').where(p=>p.intensity0to25).sort(p=>p.file.name)){
+for(let page of dv.pages('"daily notes"').where(p=>p.intensity0to25)){
     calendarData.entries.push({
         date: page.file.name,
         intensity: page.intensity0to25
