@@ -10,8 +10,8 @@ It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/o
 
 <p align="center">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Richardsl/heatmap-calendar-obsidian/blob/dev/github-images/heatmap_examples_dark.gif?raw=true">
-      <source media="(prefers-color-scheme: light)" srcset="https://github.com/Richardsl/heatmap-calendar-obsidian/blob/dev/github-images/heatmap_examples_light.gif?raw=true">
+      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Richardsl/heatmap-calendar-obsidian/blob/main/github-images/heatmap_examples_dark.gif?raw=true">
+      <source media="(prefers-color-scheme: light)" srcset="https://github.com/Richardsl/heatmap-calendar-obsidian/blob/main/github-images/heatmap_examples_light.gif?raw=true">
       <img alt="Shows a black logo in light color mode and a white one in dark color mode." src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
     </picture>
 </p>
