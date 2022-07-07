@@ -48,7 +48,7 @@ const calendarData = {
 }
 
 //DataviewJS loop
-for(let page of dv.pages('"daily notes"').where(p=>p.exercise).sort(p=>p.file.name)){ 
+for(let page of dv.pages('"daily notes"').where(p=>p.exercise)){ 
 
 	calendarData.entries.push({
 		date: page.file.name, // (required) Format YYYY-MM-DD
