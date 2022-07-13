@@ -101,7 +101,10 @@ export default class HeatmapCalendar extends Plugin {
 				}
 				const colorIntensities = colors[e.color] ?? colors[Object.keys(colors)[0]]
 				const numOfColorIntensities = Object.keys(colorIntensities).length
-				newEntry.intensity = Math.round(this.map(newEntry.intensity, intensityScaleStart, intensityScaleEnd, 1, numOfColorIntensities))
+
+				if(minimumIntensity === maximumIntensity) newEntry.intensity = minimumIntensity
+				else newEntry.intensity = Math.round(this.map(newEntry.intensity, intensityScaleStart, intensityScaleEnd, 1, numOfColorIntensities))
+	
 				mappedEntries[this.getHowManyDaysIntoYear(new Date(e.date))] = newEntry
 			})
 
