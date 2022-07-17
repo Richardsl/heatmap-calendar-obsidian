@@ -16,15 +16,15 @@ interface CalendarData {
 interface Entry {
 	date: string
 	intensity?: number
-	color?: string | number
-	content?: string
+	color: string 
+	content: string
 }
 const DEFAULT_SETTINGS: CalendarData = {
 	year: new Date().getFullYear(),
 	colors: {
 		default: ["#c6e48b", "#7bc96f", "#49af5d", "#2e8840", "#196127",],
 	},
-	entries: [{ date: "1900-01-01", },],
+	entries: [{ date: "1900-01-01", color: "#7bc96f", intensity: 5, content: "",},],
 	showCurrentDayBorder: true,
 	defaultEntryIntensity: 4,
 	intensityScaleStart: 1,
@@ -87,7 +87,7 @@ export default class HeatmapCalendar extends Plugin {
 
 			const defaultEntryIntensity = calendarData.defaultEntryIntensity ?? this.settings.defaultEntryIntensity
 
-			const intensities = calEntries.filter(e => e.intensity).map(e => e.intensity)
+			const intensities = calEntries.filter(e => e.intensity).map(e => e.intensity as number)
 			const minimumIntensity = intensities.length ? Math.min(...intensities) : this.settings.intensityScaleStart
 			const maximumIntensity = intensities.length ? Math.max(...intensities) : this.settings.intensityScaleEnd
 			const intensityScaleStart = calendarData.intensityScaleStart ?? minimumIntensity
@@ -130,14 +130,12 @@ export default class HeatmapCalendar extends Plugin {
 
 			for (let day = 1; day <= numberOfDaysInYear; day++) {
 
-				const box: Box = {
-					classNames: [],
-				}
+				const box: Box = {}
 
-				if (day === todaysDayNumberLocal && showCurrentDayBorder) box.classNames.push("today")
+				if (day === todaysDayNumberLocal && showCurrentDayBorder) box.classNames?.push("today")
 
 				if (mappedEntries[day]) {
-					box.classNames.push("hasData")
+					box.classNames?.push("hasData")
 					const entry = mappedEntries[day]
 
 					box.date = entry.date
@@ -145,9 +143,9 @@ export default class HeatmapCalendar extends Plugin {
 					if (entry.content) box.content = entry.content
 
 					const currentDayColors = entry.color ? colors[entry.color] : colors[Object.keys(colors)[0]]
-					box.backgroundColor = currentDayColors[entry.intensity - 1]
+					box.backgroundColor = currentDayColors[entry.intensity as number - 1]
 
-				} else box.classNames.push("isEmpty")
+				} else box.classNames?.push("isEmpty")
 				boxes.push(box)
 			}
 
