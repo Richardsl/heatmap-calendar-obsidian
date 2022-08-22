@@ -14,15 +14,14 @@ It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/o
     </picture>
 </p>
 
+&nbsp;
 ## Use:
 
 1. Annotate the data you want to track in your daily notes (see [Dataview annotation documentation](https://blacksmithgu.github.io/obsidian-dataview/data-annotation/)) 
 2. Create a [DataviewJS block](https://blacksmithgu.github.io/obsidian-dataview/api/intro/) wherever you want the Heatmap Calendar to display.  
 3. Collect the data you want to display using [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/api/code-reference/)
 4. Pass the data into Heatmap Calendar using  **renderHeatmapCalendar()** 
-
 ![heatmap calendar example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-howto3.jpg?raw=true)
-
 
 ## Full Example Code:
 
@@ -61,7 +60,8 @@ renderHeatmapCalendar(this.container, calendarData)
 ```
 ~~~
 
-  
+&nbsp;
+
 ## Colors:
 You don't need to supply any colors, the calendar uses green by default, just like Github.   
 If you do supply colors to *calendarData.colors*, the first index will be considered the new default color.
@@ -70,6 +70,8 @@ Add a custom color to each entry by specifying the name you gave the color in ca
 You can even use multiple colors in the same calendar, just use different colors for different entries.  
    
 The color schemes used in the examples were created at [leonardocolor.io](https://leonardocolor.io).
+
+&nbsp;
 
 ## Intensity:
 The "Intensity" means which intensity of color to use, for example from light-green to dark-green, 
@@ -80,18 +82,26 @@ You can add more intensities in order to increase color resolution; simply suppl
 Dataview's time variables are supported without any conversion, as they return milliseconds by default.  
 **[time:: 1 hours, 35 minutes] => intensity: page.time**
 
+&nbsp;
+
 ## Styling:
 Use Obsidian CSS snippets for custom styling.  
 See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets).
+
+&nbsp;
 
 ## Notes:
 - See the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) if you want to test out the examples.
 - Week starts on Monday, not configurable yet
 - Date format is YYYY-MM-DD, if your daily note filename is something else, [you can use JS to change it in the loop](https://github.com/Richardsl/heatmap-calendar-obsidian/discussions/2)
 
+&nbsp;
+
 ## Development (Windows):
  ```npm run dev``` - will start TS to JS transpiler and automatically copy the JS/CSS/manifest files to the example vault whenever they are modified.  
  Installing https://github.com/pjeby/hot-reload is recommended to avoid restarting obsidian after every change, but remember to add a **.hot-reload** file to EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar/
+
+&nbsp;
 
 ---
 
