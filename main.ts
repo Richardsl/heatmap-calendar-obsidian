@@ -223,6 +223,3 @@ export default class HeatmapCalendar extends Plugin {
 		await this.saveData(this.settings)
 	}
 }
-
-
-
