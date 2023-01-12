@@ -39,6 +39,7 @@ export default class HeatmapCalendar extends Plugin {
 	 * Example: first of january is 1, third of february is 34 (31+3) 
 	 * @param date
 	 */
+	
 	getHowManyDaysIntoYear(date: Date): number {
 		return (
 			(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()) -
