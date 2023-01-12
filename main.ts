@@ -81,7 +81,7 @@ export default class HeatmapCalendar extends Plugin {
 
 			this.removeHtmlElementsNotInYear(calendarData.entries, year)
 
-			const calEntries = calendarData.entries.filter(e => new Date(e.date).getFullYear() === year) ?? this.settings.entries
+			const calEntries = calendarData.entries.filter(e => new Date(e.date + "T00:00").getFullYear() === year) ?? this.settings.entries
 
 			const showCurrentDayBorder = calendarData.showCurrentDayBorder ?? this.settings.showCurrentDayBorder
 
@@ -104,7 +104,7 @@ export default class HeatmapCalendar extends Plugin {
 
 				if(minimumIntensity === maximumIntensity && intensityScaleStart === intensityScaleEnd) newEntry.intensity = numOfColorIntensities
 				else newEntry.intensity = Math.round(this.map(newEntry.intensity, intensityScaleStart, intensityScaleEnd, 1, numOfColorIntensities))
-	
+
 				mappedEntries[this.getHowManyDaysIntoYear(new Date(e.date))] = newEntry
 			})
 
