@@ -6,39 +6,13 @@
       {
         "id": "6fea9179edcb9059",
         "type": "tabs",
-        "dimension": 63.81529144587434,
         "children": [
           {
             "id": "c0a320f93508fa45",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Overview.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "6e9a04a3b0478159",
-        "type": "tabs",
-        "dimension": 36.18470855412566,
-        "children": [
-          {
-            "id": "f15def4f70943e6d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "daily notes/2022-01-02.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -110,11 +84,11 @@
       "obsidian-metatable:Metatable": false
     }
   },
-  "active": "c0a320f93508fa45",
+  "active": "187f209bf5981b5a",
   "lastOpenFiles": [
+    "Overview.md",
     "daily notes/2022-03-11.md",
     "daily notes/2022-03-12.md",
-    "Overview.md",
     "Overview extended.md",
     "daily notes/2022-01-02.md",
     "daily notes/2022-01-01.md"
