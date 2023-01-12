@@ -39,6 +39,7 @@ export default class HeatmapCalendar extends Plugin {
 	 * Example: first of january is 1, third of february is 34 (31+3) 
 	 * @param date
 	 */
+	
 	getHowManyDaysIntoYear(date: Date): number {
 		return (
 			(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()) -
@@ -102,9 +103,9 @@ export default class HeatmapCalendar extends Plugin {
 				const colorIntensities = colors[e.color] ?? colors[Object.keys(colors)[0]]
 				const numOfColorIntensities = Object.keys(colorIntensities).length
 
-				if(minimumIntensity === maximumIntensity) newEntry.intensity = minimumIntensity
+				if(minimumIntensity === maximumIntensity && intensityScaleStart === intensityScaleEnd) newEntry.intensity = numOfColorIntensities
 				else newEntry.intensity = Math.round(this.map(newEntry.intensity, intensityScaleStart, intensityScaleEnd, 1, numOfColorIntensities))
-	
+
 				mappedEntries[this.getHowManyDaysIntoYear(new Date(e.date))] = newEntry
 			})
 
@@ -222,6 +223,3 @@ export default class HeatmapCalendar extends Plugin {
 		await this.saveData(this.settings)
 	}
 }
-
-
-
