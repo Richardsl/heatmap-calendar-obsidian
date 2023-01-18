@@ -116,7 +116,7 @@ export default class HeatmapCalendar extends Plugin {
 				backgroundColor?: string;
 				date?: string;
 				content?: string;
-				classNames?: string[]
+				classNames?: string[];
 			}
 
 			const boxes: Array<Box> = []
@@ -131,7 +131,9 @@ export default class HeatmapCalendar extends Plugin {
 
 			for (let day = 1; day <= numberOfDaysInYear; day++) {
 
-				const box: Box = {}
+				const box: Box = {
+                    classNames: [],
+                }
 
 				if (day === todaysDayNumberLocal && showCurrentDayBorder) box.classNames?.push("today")
 
