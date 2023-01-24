@@ -11,8 +11,13 @@
             "id": "c0a320f93508fa45",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Overview.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
             }
           }
         ]
@@ -84,7 +89,7 @@
       "obsidian-metatable:Metatable": false
     }
   },
-  "active": "187f209bf5981b5a",
+  "active": "c0a320f93508fa45",
   "lastOpenFiles": [
     "Overview.md",
     "daily notes/2022-03-11.md",
