@@ -1,4 +1,5 @@
 /* Obsidian/DataviewJS Github inspired calendar by Richard Slettevoll - https://richard.sl/ */
+
 .heatmap-calendar-graph>* {
   padding: 0px;
   margin: 0px;
@@ -82,4 +83,50 @@
 
 .heatmap-calendar-boxes .today {
   border: solid 1px rgb(61, 61, 61);
+}
+
+/* Settings */
+
+.heatmap-calendar-settings-colors__color-box {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.heatmap-calendar-settings-colors__color-box:first-child {
+	margin-left: 0;
+}
+
+.heatmap-calendar-settings-colors__color-name {
+    display: inline-block;
+}
+
+.heatmap-calendar-settings-colors__container {
+	align-items: center;
+	border-top: 1px solid var(--background-modifier-border);
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5em 0;
+}
+
+.heatmap-calendar-settings-colors__container h4 {
+	margin: 0.5em 0;
+}
+
+.heatmap-calendar-settings-colors__new-color-input-container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.heatmap-calendar-settings-colors__new-color-input-container input {
+	margin-right: 1em;
+}
+
+.heatmap-calendar-settings-colors__new-color-input-container input {
+	margin-right: 1em;
+}
+
+.heatmap-calendar-settings-colors__new-color-input-value {
+	flex-grow: 1;
 }
