@@ -126,6 +126,10 @@ See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tr
 
 ### What's New:
 
+**Version [0.6.0] - 2023-04-12**
+- Feature: Add ability to define global colors via settings @sunyatasattva pull #74
+- Feature: Add more versatile custom styling of the "content" passed to date cell @sunyatasattva pull #73
+
 **Version [0.5.0] - 2022-06-30**
 - Feature: Add darkmode support
 

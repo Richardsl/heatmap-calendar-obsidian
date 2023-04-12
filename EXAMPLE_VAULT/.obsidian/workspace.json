@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Overview.md",
+                "file": "Overview extended.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -65,6 +65,14 @@
               "type": "starred",
               "state": {}
             }
+          },
+          {
+            "id": "8db595fccc236d1d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
         ]
       }
@@ -85,17 +93,18 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "command-palette:Open command palette": false,
-      "workspaces:Manage workspace layouts": false,
-      "obsidian-metatable:Metatable": false
+      "workspaces:Manage workspace layouts": false
     }
   },
   "active": "c0a320f93508fa45",
   "lastOpenFiles": [
     "Overview.md",
+    "Overview extended.md",
+    "README.md",
+    "daily notes/2022-02-21.md",
+    "daily notes/2022-01-01.md",
     "daily notes/2022-03-11.md",
     "daily notes/2022-03-12.md",
-    "Overview extended.md",
-    "daily notes/2022-01-02.md",
-    "daily notes/2022-01-01.md"
+    "daily notes/2022-01-02.md"
   ]
 }
