@@ -67,9 +67,28 @@ You don't need to supply any colors, the calendar uses green by default, just li
 If you do supply colors to *calendarData.colors*, the first index will be considered the new default color.
 
 Add a custom color to each entry by specifying the name you gave the color in calendarData.colors.
-You can even use multiple colors in the same calendar, just use different colors for different entries.  
-   
+You can even use multiple colors in the same calendar, just use different colors for different entries.
+
 The color schemes used in the examples were created at [leonardocolor.io](https://leonardocolor.io).
+
+### Adding global colors:
+
+You can also add a color scheme which will be available everywhere via the Settings panel.
+
+In order to do so go to `Obsidian Settings > Heatmap Calendar`, you will see a list of available colors, and you can add your own. You must specify a “Color name” by which you will reference it in your render call, and provide a valid array of colors.
+
+When you do so, you can now reference your scheme everywhere by passing your name to the `colors` option. For example, let's say you have defined a new color called `githubGreen`. Now, in your code, you can reference it like so:
+
+~~~javascript
+\```dataviewjs
+const calendarData = {
+	color: "githubGreen",
+	entries: [], // <- your entries
+}
+
+renderHeatmapCalendar(this.container, calendarData)
+```
+~~~
 
 &nbsp;
 
