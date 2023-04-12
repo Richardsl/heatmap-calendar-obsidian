@@ -1,7 +1,7 @@
 {
 	"id": "heatmap-calendar",
 	"name": "Heatmap Calendar",
-	"version": "0.5.4",
+	"version": "0.6.0",
 	"minAppVersion": "0.12.0",
 	"description": "Activity Year Overview for DataviewJS, Github style – Track Goals, Progress, Habits, Tasks, Exercise, Finances, \"Dont Break the Chain\" etc.",
 	"author": "Richard Slettevoll",
