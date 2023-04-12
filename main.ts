@@ -200,13 +200,18 @@ export default class HeatmapCalendar extends Plugin {
 			})
 
 			boxes.forEach(e => {
-				createEl("li", {
-					text: e.content,
+				const entry = createEl("li", {
 					attr: {
 						...e.backgroundColor && { style: `background-color: ${e.backgroundColor};`, },
 					},
 					cls: e.classNames,
 					parent: heatmapCalendarBoxesUl,
+				})
+
+				createSpan({
+					cls: "heatmap-calendar-content",
+					parent: entry,
+					text: e.content,
 				})
 			})
 
