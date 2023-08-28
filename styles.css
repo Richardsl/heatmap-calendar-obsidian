@@ -19,6 +19,12 @@
   width: 100%;
 }
 
+.heatmap-calendar-graph ul {
+	padding-inline-start: 0;
+	margin-block-start: 0;
+	margin-block-end: 0;
+}
+
 .heatmap-calendar-months {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
