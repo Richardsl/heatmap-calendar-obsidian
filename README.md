@@ -137,7 +137,7 @@ See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tr
 - Feature: Add hover preview feature courtesy of @arsenty from issue #12.  
 to enable - add **content: await dv.span(`[](${page.file.name})`)** to entries, and enable **Settings** -> **Core Plugins** -> **Page Preview**.   
 Optionally install plugin [Metatable](https://github.com/arnau/obsidian-metatable) to display metadata/frontmatter in the preview window aswell.  
-See examples for more details
+See examples for more details. Note: if you enabled **Use [[Wikilinks]]** under **Settings** -> **Files and links**, you have to use the respective link structure: **content: await dv.span(`[[${page.file.name}|]]`)**
 
 **Version [0.3.0] - 2022-06-25**
 - Feature: Can add more intensities in order to increase color resolution. simply supply more colors to **calendarData.colors.yourcolor**
