@@ -16,16 +16,17 @@ interface CalendarData {
 interface CalendarSettings extends CalendarData {
 	colors: {
 		[index: string | number]: string[]
-	}
+	},
+	weekStartDay: number,
 }
 
 interface Entry {
 	date: string
 	intensity?: number
-	color: string 
+	color: string
 	content: string
 }
-const DEFAULT_SETTINGS: CalendarData = {
+const DEFAULT_SETTINGS: CalendarSettings = {
 	year: new Date().getFullYear(),
 	colors: {
 		default: ["#c6e48b", "#7bc96f", "#49af5d", "#2e8840", "#196127",],
@@ -35,17 +36,18 @@ const DEFAULT_SETTINGS: CalendarData = {
 	defaultEntryIntensity: 4,
 	intensityScaleStart: 1,
 	intensityScaleEnd: 5,
+	weekStartDay: 1,
 }
 export default class HeatmapCalendar extends Plugin {
 
 	settings: CalendarSettings
 
 	/**
-	 * Returns a number representing how many days into the year the supplied date is. 
-	 * Example: first of january is 1, third of february is 34 (31+3) 
+	 * Returns a number representing how many days into the year the supplied date is.
+	 * Example: first of january is 1, third of february is 34 (31+3)
 	 * @param date
 	 */
-	
+
 	getHowManyDaysIntoYear(date: Date): number {
 		return (
 			(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()) -
@@ -58,7 +60,7 @@ export default class HeatmapCalendar extends Plugin {
 				Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000
 		)
 	}
-	/** 
+	/**
 	 * Removes HTMLElements passed as entry.content and outside of the displayed year from rendering above the calendar
 	 */
 	removeHtmlElementsNotInYear(entries: Entry[], year: number) {
@@ -74,6 +76,10 @@ export default class HeatmapCalendar extends Plugin {
 	map(current: number, inMin: number, inMax: number, outMin: number, outMax: number): number {
 		const mapped: number = ((current - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin
 		return this.clamp(mapped, outMin, outMax)
+	}
+
+	getWeekdayShort(dayNumber: number): string {
+		return new Date(1970, 0, dayNumber + this.settings.weekStartDay + 4).toLocaleDateString('en-US', { weekday: 'short' });
 	}
 
 	async onload() {
@@ -125,7 +131,7 @@ export default class HeatmapCalendar extends Plugin {
 			})
 
 			const firstDayOfYear = new Date(Date.UTC(year, 0, 1))
-			let numberOfEmptyDaysBeforeYearBegins = (firstDayOfYear.getUTCDay() + 6) % 7
+			let numberOfEmptyDaysBeforeYearBegins = (firstDayOfYear.getUTCDay() + 7 - this.settings.weekStartDay) % 7
 
 			interface Box {
 				backgroundColor?: string;
@@ -201,13 +207,9 @@ export default class HeatmapCalendar extends Plugin {
 				parent: heatmapCalendarGraphDiv,
 			})
 
-			createEl("li", { text: "Mon", parent: heatmapCalendarDaysUl, })
-			createEl("li", { text: "Tue", parent: heatmapCalendarDaysUl, })
-			createEl("li", { text: "Wed", parent: heatmapCalendarDaysUl, })
-			createEl("li", { text: "Thu", parent: heatmapCalendarDaysUl, })
-			createEl("li", { text: "Fri", parent: heatmapCalendarDaysUl, })
-			createEl("li", { text: "Sat", parent: heatmapCalendarDaysUl, })
-			createEl("li", { text: "Sun", parent: heatmapCalendarDaysUl, })
+			for (let i = 0; i < 7; i++) {
+				createEl("li", { text: this.getWeekdayShort(i), parent: heatmapCalendarDaysUl, })
+			}
 
 			const heatmapCalendarBoxesUl = createEl("ul", {
 				cls: "heatmap-calendar-boxes",
