@@ -2,7 +2,7 @@
 
 Visualize your data in a heatmap calendar similar to the github activity calendar using this [Obsidian](https://obsidian.md/) plugin.  
 
-Useful for tracking progress such as exercise, finance, passion, vices, social, project progression etc.   
+Useful for tracking progress for exercise, finances, social time, project progression, passions, vices etc.   
 
 To be used with [Obsidian Dataview](https://blacksmithgu.github.io/obsidian-dataview/), but could be used standalone or with other plugins aswell (if you know some javascript).
 
