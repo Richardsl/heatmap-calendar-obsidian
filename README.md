@@ -2,9 +2,9 @@
 
 Visualize your data in a heatmap calendar similar to the github activity calendar using this [Obsidian](https://obsidian.md/) plugin.  
 
-Useful for tracking progress towards various things such as exercise, finance, passion, vices, social, project progression etc.   
+Useful for tracking progress such as exercise, finance, passion, vices, social, project progression etc.   
 
-It's intended to be used alongside [Obsidian Dataview](https://blacksmithgu.github.io/obsidian-dataview/), but could be used standalone or with other plugins if you know some javascript.
+To be used with [Obsidian Dataview](https://blacksmithgu.github.io/obsidian-dataview/), but could be used standalone or with other plugins aswell (if you know some javascript).
 
 <p>
     <picture>
@@ -32,131 +32,102 @@ It's intended to be used alongside [Obsidian Dataview](https://blacksmithgu.gith
 ## Full Example Code:
 
 ~~~javascript
-\```dataviewjs
+\```dataviewjs // PS. remove backslash \ at the very beginning!
+
 dv.span("** 😊 Title  😥**") /* optional ⏹️💤⚡⚠🧩↑↓⏳📔💾📁📝🔄📝🔀⌨️🕸️📅🔍✨ */
 const calendarData = {
-    year: 2022,  // (optional) defaults to current year
-    colors: {    // (optional) defaults to green
-        blue:        ["#8cb9ff", "#69a3ff", "#428bff", "#1872ff", "#0058e2"], // first entry is considered default if supplied
-        green:       ["#c6e48b", "#7bc96f", "#49af5d", "#2e8840", "#196127"],
-        red:         ["#ff9e82", "#ff7b55", "#ff4d1a", "#e73400", "#bd2a00"],
-        orange:      ["#ffa244", "#fd7f00", "#dd6f00", "#bf6000", "#9b4e00"],
-        pink:        ["#ff96cb", "#ff70b8", "#ff3a9d", "#ee0077", "#c30062"],
-        orangeToRed: ["#ffdf04", "#ffbe04", "#ff9a03", "#ff6d02", "#ff2c01"]
-    },
-    showCurrentDayBorder: true, // (optional) defaults to true
-    defaultEntryIntensity: 4,   // (optional) defaults to 4
-    intensityScaleStart: 10,    // (optional) defaults to lowest value passed to entries.intensity
-    intensityScaleEnd: 100,     // (optional) defaults to highest value passed to entries.intensity
-    entries: [],                // (required) populated in the DataviewJS loop below
+	year: 2022,  // (optional) defaults to current year
+	colors: {    // (optional) defaults to green
+		blue:        ["#8cb9ff", "#69a3ff", "#428bff", "#1872ff", "#0058e2"], // first entry is considered default if supplied
+		green:       ["#c6e48b", "#7bc96f", "#49af5d", "#2e8840", "#196127"],
+		red:         ["#ff9e82", "#ff7b55", "#ff4d1a", "#e73400", "#bd2a00"],
+		orange:      ["#ffa244", "#fd7f00", "#dd6f00", "#bf6000", "#9b4e00"],
+		pink:        ["#ff96cb", "#ff70b8", "#ff3a9d", "#ee0077", "#c30062"],
+		orangeToRed: ["#ffdf04", "#ffbe04", "#ff9a03", "#ff6d02", "#ff2c01"]
+	},
+	showCurrentDayBorder: true, // (optional) defaults to true
+	defaultEntryIntensity: 4,   // (optional) defaults to 4
+	intensityScaleStart: 10,    // (optional) defaults to lowest value passed to entries.intensity
+	intensityScaleEnd: 100,     // (optional) defaults to highest value passed to entries.intensity
+	entries: [],                // (required) populated in the DataviewJS loop below
 }
 
 //DataviewJS loop
 for (let page of dv.pages('"daily notes"').where(p => p.exercise)) {
-    //dv.span("<br>" + page.file.name) // uncomment for troubleshooting
-    calendarData.entries.push({
-        date: page.file.name,     // (required) Format YYYY-MM-DD
-        intensity: page.exercise, // (required) the data you want to track, will map color intensities automatically
-        content: "🏋️",           // (optional) Add text to the date cell
-        color: "orange",          // (optional) Reference from *calendarData.colors*. If no color is supplied; colors[0] is used
-    })
+	//dv.span("<br>" + page.file.name) // uncomment for troubleshooting
+	calendarData.entries.push({
+		date: page.file.name,     // (required) Format YYYY-MM-DD
+		intensity: page.exercise, // (required) the data you want to track, will map color intensities automatically
+		content: "🏋️",           // (optional) Add text to the date cell
+		color: "orange",          // (optional) Reference from *calendarData.colors*. If no color is supplied; colors[0] is used
+	})
 }
 
 renderHeatmapCalendar(this.container, calendarData)
+
 ```
 ~~~
  
-<details>
-    <summary>PS. remove the backslash \ at the very beginning of the example</summary>
-    <br>
-    The backslash at the very beginning of the example is included just for styling the readme.md file on github.com
-    <br><br>
-</details>
 
 &nbsp;
-
-## Technical Explanation
-All the plugin does, is add the function ***renderHeatmapCalendar()*** to the global namespace of you vault.
-
-**"this.container"** is passed as the first argument because the plugin needs to know where to render the calendar. You don't have to worry about this.
-
-"renderHeatmapCalendar()" then takes **"calendarData"** as the secondary argument. This is the javascript object you have to create yourself in order to give plugin instructions and data. Most of the properties are optional, but you have to supply an entries array as an absolute minimum:
-
-**absolute minimum code example:**
-~~~javascript
-\```dataviewjs
-
-const calendarData = {
-    entries: [],                
-}
-
-renderHeatmapCalendar(this.container, calendarData)
-
-```
-~~~
- 
-<details>
-    <summary>PS. remove the backslash \ at the very beginning of the example</summary>
-    <br>
-    The backslash at the very beginning of the example is included just for styling the readme.md file on github.com
-    <br><br>
-</details>
-
----
 
 ## Colors:
 
 <details>
 <summary>You don't need to supply any colors, the calendar uses green by default, just like Github.</summary>
+	
 <br>
+
 But if you DO decide to supply colors to *calendarData.colors* array then it works like this:
+	
 <br>
-<b>Default: green (no color specified)</b>
+
+<b>Default Color: green (no color specified)</b>
 
 ![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_defaultColorExample.png?raw=true)
-<br>
+
 
 <b>Custom Color: red</b>
 
-![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_defaultColorExample.png?raw=true)
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_customColorExample.png?raw=true)
 
 
+<b>Multi-Color:</b>
+You can use multiple colors in the same calendar for displaying different data-entries in the same heatmap.
+Add a custom color to each data-entry by specifying the name you gave the color in calendarData.colors.
+
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_multiDataSingleHeatmap.png?raw=true)
+
+
+&nbsp;
+
+<b>Styling Background (days without any data):</b>
+
+Use Obsidian's built in "CSS snippets" for custom styling including styling the days without any data (aka the background cells).  
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/snippetCodeExample.png?raw=true)
+
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_cssSnippetsBeforeAfterEmptyDays.png?raw=true)
+
+
+<br>
+
+&nbsp;
 
 
 <i>The color schemes used in the examples were created at [leonardocolor.io](https://leonardocolor.io).</i>
 <br>
 
-Styling Background (days without any data):
-
-Use Obsidian's built in "CSS snippets" for custom styling including styling the days without any data aka the background cells.  
-See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets) for how to change the empty days. 
-<br>
-
-![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_cssSnippetsBeforeAfterEmptyDays.png?raw=true)
-
-<br>
 </details>
 
---- 
 
-
-SLETT FLYTT OMSKRIV
-Add a custom color to each data-entry by specifying the name you gave the color in calendarData.colors.
-You can even use multiple colors in the same calendar, just use different colors for different entries.
-
-/SLETT FLYTT OMSKRIV
-
-
-IKKE I BRUK
-![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors.png?raw=true)
-
-/IKKE I BRUK
 
 &nbsp;
 
 ## Styling:
 Use Obsidian CSS snippets for custom styling.  
 See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets).
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/snippetCodeExample.png?raw=true)
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/snippetCodeExample.png?raw=true)
 
 &nbsp;
 
@@ -204,6 +175,39 @@ Dataview's time variables are supported without any conversion, as they return m
 ## Development (Windows):
  ```npm run dev``` - will start TS to JS transpiler and automatically copy the JS/CSS/manifest files to the example vault whenever they are modified.  
  Installing https://github.com/pjeby/hot-reload is recommended to avoid restarting obsidian after every change, but remember to add a **.hot-reload** file to EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar/
+
+&nbsp;
+
+
+
+## Technical Explanation
+All the plugin does, is add the function ***renderHeatmapCalendar()*** to the global namespace of you vault.
+
+**"this.container"** is passed as the first argument because the plugin needs to know where to render the calendar. You don't have to worry about this.
+
+"renderHeatmapCalendar()" then takes **"calendarData"** as the secondary argument. This is the javascript object you have to create yourself in order to give plugin instructions and data. Most of the properties are optional, but you have to supply an entries array as an absolute minimum:
+
+**absolute minimum code example:**
+~~~javascript
+\```dataviewjs
+
+const calendarData = {
+    entries: [],                
+}
+
+renderHeatmapCalendar(this.container, calendarData)
+
+```
+~~~
+ 
+<details>
+    <summary>PS. remove the backslash \ at the very beginning of the example</summary>
+    <br>
+    The backslash at the very beginning of the example is included just for styling the readme.md file on github.com
+    <br><br>
+</details>
+
+---
 
 &nbsp;
 
