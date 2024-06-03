@@ -76,7 +76,7 @@ renderHeatmapCalendar(this.container, calendarData)
 <details>
 <summary>You don't need to supply any colors, the calendar uses green by default, just like Github.</summary>
 	
-<br>
+<br><br>
 
 But if you DO decide to supply colors to *calendarData.colors* array then it works like this:
 	
@@ -93,8 +93,9 @@ But if you DO decide to supply colors to *calendarData.colors* array then it wor
 
 
 <b>Multi-Color:</b>
-You can use multiple colors in the same calendar for displaying different data-entries in the same heatmap.
-Add a custom color to each data-entry by specifying the name you gave the color in calendarData.colors.
+
+You can use multiple colors to display different data-entries in the same heatmap.
+Specifying the name you gave the color in calendarData.colors (eg. "blue", "pink" etc).
 
 ![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_multiDataSingleHeatmap.png?raw=true)
 
@@ -103,7 +104,8 @@ Add a custom color to each data-entry by specifying the name you gave the color 
 
 <b>Styling Background (days without any data):</b>
 
-Use Obsidian's built in "CSS snippets" for custom styling including styling the days without any data (aka the background cells).  
+Use Obsidian's built in "CSS snippets" for custom styling including styling the days without any data (aka the background cells).
+But remember this will affect all of you heatmaps in all of your notes.
 ![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/snippetCodeExample.png?raw=true)
 
 ![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_cssSnippetsBeforeAfterEmptyDays.png?raw=true)
@@ -114,27 +116,10 @@ Use Obsidian's built in "CSS snippets" for custom styling including styling the 
 &nbsp;
 
 
-<i>The color schemes used in the examples were created at [leonardocolor.io](https://leonardocolor.io).</i>
-<br>
 
-</details>
+<b>Adding global colors:</b>
 
-
-
-&nbsp;
-
-## Styling:
-Use Obsidian CSS snippets for custom styling.  
-See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets).
-![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/snippetCodeExample.png?raw=true)
-![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/snippetCodeExample.png?raw=true)
-
-&nbsp;
-
-
-### Adding global colors:
-
-You can also add a color scheme which will be available everywhere via the Settings panel.
+You can also add a color scheme via the Settings panel. This scheme which will be available everywhere.
 
 In order to do so go to `Obsidian Settings > Heatmap Calendar`, you will see a list of available colors, and you can add your own. You must specify a “Color name” by which you will reference it in your render call, and provide a valid array of colors.
 
@@ -153,9 +138,37 @@ renderHeatmapCalendar(this.container, calendarData)
 
 &nbsp;
 
-## Intensity:
+
+
+
+&nbsp;
+
+<i>The color schemes used in the examples were created at [leonardocolor.io](https://leonardocolor.io).</i>
+<br>
+
+
+
+&nbsp;
+
+</details>
+
+
+
+&nbsp;
+
+## Other styling:
+Use Obsidian CSS snippets for custom styling.  
+See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets).
+
+&nbsp;
+
+
+## Data Intensity:
 The "Intensity" means which intensity of color to use, for example from light-green to dark-green, 
-and they will be distributed between the highest and lowest number you pass to "intensity".  
+and they will be distributed between the highest and lowest number you pass to "intensity".
+
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/intensity_example.png?raw=true)
+
 If the number range 0-100 is used, numbers between 1-20 would map to the lightest color, 40-60 would map to mid intensity color, and 80-100 would map to max intensity.
 You can add more intensities in order to increase color resolution; simply supply more colors to **calendarData.colors.yourcolor**
 
@@ -164,8 +177,9 @@ Dataview's time variables are supported without any conversion, as they return m
 
 &nbsp;
 
+--- 
 
-## Notes:
+## Other Notes:
 - See the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) if you want to test out the examples.
 - Week starts on Monday, not configurable yet
 - Date format is YYYY-MM-DD, if your daily note filename is something else, [you can use JS to change it in the loop](https://github.com/Richardsl/heatmap-calendar-obsidian/discussions/2)
@@ -207,13 +221,16 @@ renderHeatmapCalendar(this.container, calendarData)
     <br><br>
 </details>
 
----
+
 
 &nbsp;
 
 ---
 
 ### What's New:
+
+**Version [0.6.1] - 2024-06-03**
+- 
 
 **Version [0.6.0] - 2023-04-12**
 - Feature: Add ability to define global colors via settings @sunyatasattva pull #74
