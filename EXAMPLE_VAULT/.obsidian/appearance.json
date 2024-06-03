@@ -2,5 +2,6 @@
   "baseFontSize": 16,
   "theme": "system",
   "translucency": false,
-  "accentColor": ""
+  "accentColor": "",
+  "enabledCssSnippets": []
 }
