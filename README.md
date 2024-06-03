@@ -4,7 +4,7 @@ Visualize your data in a heatmap calendar similar to the github activity calenda
 
 Useful for tracking progress towards various things such as exercise, finance, passion, vices, social, project progression etc.   
 
-It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/), but could be used standalone or with other plugins as well, as all the plugin does, is add the function ***renderHeatmapCalendar()*** to the global namespace.
+It's intended to be used alongside [Obsidian Dataview](https://blacksmithgu.github.io/obsidian-dataview/), but could be used standalone or with other plugins if you know some javascript.
 
 <p>
     <picture>
@@ -15,13 +15,19 @@ It's intended to be used alongside [DataviewJS](https://blacksmithgu.github.io/o
 </p>
 
 &nbsp;
-## Use:
+## Howto
 
 1. Annotate the data you want to track in your daily notes (see [Dataview annotation documentation](https://blacksmithgu.github.io/obsidian-dataview/data-annotation/)) 
-2. Create a [DataviewJS block](https://blacksmithgu.github.io/obsidian-dataview/api/intro/) wherever you want the Heatmap Calendar to display.  
+
+2. Create a [DataviewJS block](https://blacksmithgu.github.io/obsidian-dataview/api/intro/) where you want the Heatmap Calendar to display.  
+
 3. Collect the data you want to display using [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/api/code-reference/)
+
 4. Pass the data into Heatmap Calendar using  **renderHeatmapCalendar()** 
+
+*Visualized Concept:*
 ![heatmap calendar example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-howto3.jpg?raw=true)
+
 
 ## Full Example Code:
 
@@ -59,12 +65,47 @@ for (let page of dv.pages('"daily notes"').where(p => p.exercise)) {
 renderHeatmapCalendar(this.container, calendarData)
 ```
 ~~~
+ 
+<details>
+    <summary>PS. remove the backslash \ at the very beginning of the example</summary>
+    <br>
+    The backslash at the very beginning of the example is included just for styling the readme.md file on github.com
+    <br><br>
+</details>
 
 &nbsp;
+## Technical Explanation
+All the plugin does, is add the function ***renderHeatmapCalendar()*** to the global namespace of you vault.
+
+**"this.container"** is passed as the first argument because the plugin needs to know where to render the calendar. You don't have to worry about this.
+
+"renderHeatmapCalendar()" then takes **"calendarData"** as the secondary argument. This is the javascript object you have to create yourself in order to give plugin instructions and data. Most of the properties are optional, but you have to supply an entries array as an absolute minimum:
+
+**Absolute minimum code:**
+~~~javascript
+\```dataviewjs
+
+const calendarData = {
+    entries: [],                
+}
+
+renderHeatmapCalendar(this.container, calendarData)
+
+```
+~~~
+ 
+<details>
+    <summary>PS. remove the backslash \ at the very beginning of the example</summary>
+    <br>
+    The backslash at the very beginning of the example is included just for styling the readme.md file on github.com
+    <br><br>
+</details>
+
+---
 
 ## Colors:
 You don't need to supply any colors, the calendar uses green by default, just like Github.   
-If you do supply colors to *calendarData.colors*, the first index will be considered the new default color.
+If you **do** supply colors to *calendarData.colors*, the first index will be considered the new default color.
 
 Add a custom color to each entry by specifying the name you gave the color in calendarData.colors.
 You can even use multiple colors in the same calendar, just use different colors for different entries.

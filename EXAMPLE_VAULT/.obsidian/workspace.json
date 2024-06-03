@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Overview extended.md",
+                "file": "Overview.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -98,9 +98,9 @@
   },
   "active": "c0a320f93508fa45",
   "lastOpenFiles": [
-    "Overview.md",
     "Overview extended.md",
     "README.md",
+    "Overview.md",
     "daily notes/2022-02-21.md",
     "daily notes/2022-01-01.md",
     "daily notes/2022-03-11.md",
