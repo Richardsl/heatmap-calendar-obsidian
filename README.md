@@ -217,7 +217,9 @@ All the plugin does, is add the function ***renderHeatmapCalendar()*** to the gl
 
 **"this.container"** is passed as the first argument because the plugin needs to know where to render the calendar. You don't have to worry about this.
 
-"renderHeatmapCalendar()" then takes **"calendarData"** as the secondary argument. This is the javascript object you have to create yourself in order to give plugin instructions and data. Most of the properties are optional, but you have to supply an entries array as an absolute minimum:
+"renderHeatmapCalendar()" then takes **"calendarData"** as the secondary argument. This is the javascript object you have to create yourself in order to give plugin instructions and data. Most of the properties are optional, but you have to supply an entries array as an absolute minimum.  
+
+See the beginning of the readme for the full code example.
 
 **absolute minimum code example:**
 ~~~javascript
@@ -231,17 +233,10 @@ renderHeatmapCalendar(this.container, calendarData)
 
 ```
 ~~~
- 
-<details>
-    <summary>PS. remove the backslash \ at the very beginning of the example</summary>
-    <br>
-    The backslash at the very beginning of the example is included just for styling the readme.md file on github.com
-    <br><br>
-</details>
+
 
 &nbsp;
 
-See the beginning of the readme for the full code example
 
 &nbsp;
 &nbsp;
@@ -252,7 +247,6 @@ See the beginning of the readme for the full code example
 ### What's New:
 
 **Version [0.6.1] - 2024-06-03**
-- 
 
 **Version [0.6.0] - 2023-04-12**
 - Feature: Add ability to define global colors via settings @sunyatasattva pull #74
