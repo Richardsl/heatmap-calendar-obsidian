@@ -27,6 +27,8 @@ To be used with [Obsidian Dataview](https://blacksmithgu.github.io/obsidian-data
 
 4. Pass the data into Heatmap Calendar using  **renderHeatmapCalendar()** 
 
+&nbsp;
+
 *Visualized Concept:*
 ![heatmap calendar example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/heatmap-calendar-howto3.jpg?raw=true)
 
@@ -75,21 +77,26 @@ renderHeatmapCalendar(this.container, calendarData)
 
 ## Colors:
 
-You don't need to supply any colors, the calendar uses green by default, just like Github.
+The calendar uses green colors by default, just like Github.
 
-<details>
-<summary>But if you DO decide to supply colors to <b>calendarData.colors</b> array then it works like this:</summary>
 
-<br>
-
-<b>Default Color: green (no color specified)</b>
+**Default Color: green (no color specified)**
 
 ![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_defaultColorExample.png?raw=true)
 
+&nbsp;
 
-<b>Custom Color: red</b>
+
+**Custom Color**
+
+You can customize the colors of the heatmap by supplying a color array to *calendarData.colors*:
 
 ![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_customColorExample.png?raw=true)
+
+&nbsp;
+
+<details>
+<summary>More Examples</summary>
 
 
 <b>Multi-Color:</b>
