@@ -77,7 +77,7 @@ renderHeatmapCalendar(this.container, calendarData)
 
 ## Colors:
 
-The calendar uses green colors by default, just like Github.
+The heatmap uses a green color scheme by default, just like Github.
 
 
 **Default Color: green (no color specified)**
@@ -89,15 +89,16 @@ The calendar uses green colors by default, just like Github.
 
 **Custom Color**
 
-You can customize the colors of the heatmap by supplying a color array to *calendarData.colors*:
+You can customize the colors of the heatmap by supplying a color array to **calendarData.colors**:
 
 ![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_customColorExample.png?raw=true)
 
 &nbsp;
 
 <details>
-<summary>More Examples</summary>
+<summary>More</summary>
 
+&nbsp;
 
 <b>Multi-Color:</b>
 
@@ -109,22 +110,20 @@ Specifying the name you gave the color in calendarData.colors (eg. "blue", "pink
 
 &nbsp;
 
-<b>Styling Background (days without any data):</b>
+<b>Styling Background (empty days):</b>
 
-Use Obsidian's built in "CSS snippets" for custom styling including styling the days without any data (aka the background cells).
+Use Obsidian's built in "CSS snippets" for custom styling including styling the empty days (aka the background cells).  
+
 But remember this will affect all of you heatmaps in all of your notes.
 ![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/snippetCodeExample.png?raw=true)
 
 ![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_cssSnippetsBeforeAfterEmptyDays.png?raw=true)
 
 
-<br>
-
 &nbsp;
 
 
-
-<b>Adding global colors:</b>
+<b>Global color schemes via settings:</b>
 
 You can also add a color scheme via the Settings panel. This scheme which will be available everywhere.
 
@@ -133,7 +132,7 @@ In order to do so go to `Obsidian Settings > Heatmap Calendar`, you will see a l
 When you do so, you can now reference your scheme everywhere by passing your name to the `colors` option. For example, let's say you have defined a new color called `githubGreen`. Now, in your code, you can reference it like so:
 
 ~~~javascript
-\```dataviewjs
+```dataviewjs
 const calendarData = {
 	color: "githubGreen",
 	entries: [], // <- your entries
@@ -146,11 +145,12 @@ renderHeatmapCalendar(this.container, calendarData)
 &nbsp;
 
 
-&nbsp;
+
 
 <i>The color schemes used in the examples were created at [leonardocolor.io](https://leonardocolor.io).</i>
 <br>
 
+---
 
 &nbsp;
 
@@ -239,11 +239,14 @@ renderHeatmapCalendar(this.container, calendarData)
     <br><br>
 </details>
 
+&nbsp;
+
+See the beginning of the readme for the full code example
 
 &nbsp;
 &nbsp;
 &nbsp;
-
+<br>
 ---
 
 ### What's New:
