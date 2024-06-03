@@ -78,10 +78,7 @@ renderHeatmapCalendar(this.container, calendarData)
 You don't need to supply any colors, the calendar uses green by default, just like Github.
 
 <details>
-<summary>But if you DO decide to supply colors to *calendarData.colors* array then it works like this:</summary>
-	
-<br><br>
-
+<summary>But if you DO decide to supply colors to <b>calendarData.colors</b> array then it works like this:</summary>
 
 <br>
 
@@ -155,30 +152,43 @@ renderHeatmapCalendar(this.container, calendarData)
 
 &nbsp;
 
+&nbsp;
 
 ## Data Intensity:
-The "Intensity" means which intensity of color to use, for example from light-green to dark-green, 
-and they will be distributed between the highest and lowest number you pass to "intensity".
+Set which intensity of color to use (eg. from light-green to dark-green etc).
 
 ![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/intensity_example.png?raw=true)
 
+
+
+<details>
+<summary>More</summary>
+<br>
+They color-range will be distributed between the highest and lowest number you pass to "intensity".
+
 If the number range 0-100 is used, numbers between 1-20 would map to the lightest color, 40-60 would map to mid intensity color, and 80-100 would map to max intensity.
-You can add more intensities in order to increase color resolution; simply supply more colors to **calendarData.colors.yourcolor**
+You can add more intensities in order to increase color resolution; simply supply more colors to <b>calendarData.colors.yourcolor</b>
 
 Dataview's time variables are supported without any conversion, as they return milliseconds by default.  
-**[time:: 1 hours, 35 minutes] => intensity: page.time**
+<b>[time:: 1 hours, 35 minutes] => intensity: page.time</b>
+
+
+</details>
 
 
 &nbsp;
-
 
 ## General styling:
 Use Obsidian CSS snippets for custom styling.  
 See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets).
 
 &nbsp;
+&nbsp;
 
 --- 
+
+&nbsp;
+&nbsp;
 
 ## Other Notes:
 - See the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) if you want to test out the examples.
@@ -223,7 +233,8 @@ renderHeatmapCalendar(this.container, calendarData)
 </details>
 
 
-
+&nbsp;
+&nbsp;
 &nbsp;
 
 ---
