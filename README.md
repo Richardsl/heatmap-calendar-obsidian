@@ -75,13 +75,14 @@ renderHeatmapCalendar(this.container, calendarData)
 
 ## Colors:
 
+You don't need to supply any colors, the calendar uses green by default, just like Github.
+
 <details>
-<summary>You don't need to supply any colors, the calendar uses green by default, just like Github.</summary>
+<summary>But if you DO decide to supply colors to *calendarData.colors* array then it works like this:</summary>
 	
 <br><br>
 
-But if you DO decide to supply colors to *calendarData.colors* array then it works like this:
-	
+
 <br>
 
 <b>Default Color: green (no color specified)</b>
@@ -141,26 +142,16 @@ renderHeatmapCalendar(this.container, calendarData)
 &nbsp;
 
 
-
-
 &nbsp;
 
 <i>The color schemes used in the examples were created at [leonardocolor.io](https://leonardocolor.io).</i>
 <br>
 
 
-
 &nbsp;
 
 </details>
 
-
-
-&nbsp;
-
-## Other styling:
-Use Obsidian CSS snippets for custom styling.  
-See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets).
 
 &nbsp;
 
@@ -176,6 +167,14 @@ You can add more intensities in order to increase color resolution; simply suppl
 
 Dataview's time variables are supported without any conversion, as they return milliseconds by default.  
 **[time:: 1 hours, 35 minutes] => intensity: page.time**
+
+
+&nbsp;
+
+
+## General styling:
+Use Obsidian CSS snippets for custom styling.  
+See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets).
 
 &nbsp;
 
