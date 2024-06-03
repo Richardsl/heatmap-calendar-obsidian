@@ -108,7 +108,6 @@ Specifying the name you gave the color in calendarData.colors (eg. "blue", "pink
 ![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_multiDataSingleHeatmap.png?raw=true)
 
 
-&nbsp;
 
 <b>Styling Background (empty days):</b>
 
@@ -119,8 +118,6 @@ But remember this will affect all of you heatmaps in all of your notes.
 
 ![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_cssSnippetsBeforeAfterEmptyDays.png?raw=true)
 
-
-&nbsp;
 
 
 <b>Global color schemes via settings:</b>
@@ -135,7 +132,7 @@ When you do so, you can now reference your scheme everywhere by passing your nam
 ```dataviewjs
 const calendarData = {
 	color: "githubGreen",
-	entries: [], // <- your entries
+	entries: [],
 }
 
 renderHeatmapCalendar(this.container, calendarData)
@@ -144,7 +141,7 @@ renderHeatmapCalendar(this.container, calendarData)
 
 &nbsp;
 
-
+&nbsp;
 
 
 <i>The color schemes used in the examples were created at [leonardocolor.io](https://leonardocolor.io).</i>
@@ -152,21 +149,16 @@ renderHeatmapCalendar(this.container, calendarData)
 
 ---
 
-&nbsp;
-
 </details>
 
 
 &nbsp;
 
-&nbsp;
 
 ## Data Intensity:
 Set which intensity of color to use (eg. from light-green to dark-green etc).
 
 ![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/intensity_example.png?raw=true)
-
-
 
 <details>
 <summary>More</summary>
@@ -185,22 +177,14 @@ Dataview's time variables are supported without any conversion, as they return m
 
 &nbsp;
 
-## General styling:
-Use Obsidian CSS snippets for custom styling.  
-See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets).
-
-&nbsp;
-&nbsp;
-
 --- 
 
-&nbsp;
-&nbsp;
 
 ## Other Notes:
 - See the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) if you want to test out the examples.
 - Week starts on Monday, not configurable yet
 - Date format is YYYY-MM-DD, if your daily note filename is something else, [you can use JS to change it in the loop](https://github.com/Richardsl/heatmap-calendar-obsidian/discussions/2)
+- Use Obsidian CSS snippets for custom styling. See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets).
 
 &nbsp;
 
