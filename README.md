@@ -74,6 +74,7 @@ renderHeatmapCalendar(this.container, calendarData)
 </details>
 
 &nbsp;
+
 ## Technical Explanation
 All the plugin does, is add the function ***renderHeatmapCalendar()*** to the global namespace of you vault.
 
@@ -81,7 +82,7 @@ All the plugin does, is add the function ***renderHeatmapCalendar()*** to the gl
 
 "renderHeatmapCalendar()" then takes **"calendarData"** as the secondary argument. This is the javascript object you have to create yourself in order to give plugin instructions and data. Most of the properties are optional, but you have to supply an entries array as an absolute minimum:
 
-**Absolute minimum code:**
+**absolute minimum code example:**
 ~~~javascript
 \```dataviewjs
 
@@ -104,13 +105,61 @@ renderHeatmapCalendar(this.container, calendarData)
 ---
 
 ## Colors:
-You don't need to supply any colors, the calendar uses green by default, just like Github.   
-If you **do** supply colors to *calendarData.colors*, the first index will be considered the new default color.
 
-Add a custom color to each entry by specifying the name you gave the color in calendarData.colors.
+<details>
+<summary>You don't need to supply any colors, the calendar uses green by default, just like Github.</summary>
+<br>
+But if you DO decide to supply colors to *calendarData.colors* array then it works like this:
+<br>
+<b>Default: green (no color specified)</b>
+
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_defaultColorExample.png?raw=true)
+<br>
+
+<b>Custom Color: red</b>
+
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_defaultColorExample.png?raw=true)
+
+
+
+
+<i>The color schemes used in the examples were created at [leonardocolor.io](https://leonardocolor.io).</i>
+<br>
+
+Styling Background (days without any data):
+
+Use Obsidian's built in "CSS snippets" for custom styling including styling the days without any data aka the background cells.  
+See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets) for how to change the empty days. 
+<br>
+
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors_cssSnippetsBeforeAfterEmptyDays.png?raw=true)
+
+<br>
+</details>
+
+--- 
+
+
+SLETT FLYTT OMSKRIV
+Add a custom color to each data-entry by specifying the name you gave the color in calendarData.colors.
 You can even use multiple colors in the same calendar, just use different colors for different entries.
 
-The color schemes used in the examples were created at [leonardocolor.io](https://leonardocolor.io).
+/SLETT FLYTT OMSKRIV
+
+
+IKKE I BRUK
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/colors.png?raw=true)
+
+/IKKE I BRUK
+
+&nbsp;
+
+## Styling:
+Use Obsidian CSS snippets for custom styling.  
+See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets).
+
+&nbsp;
+
 
 ### Adding global colors:
 
@@ -144,11 +193,6 @@ Dataview's time variables are supported without any conversion, as they return m
 
 &nbsp;
 
-## Styling:
-Use Obsidian CSS snippets for custom styling.  
-See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets).
-
-&nbsp;
 
 ## Notes:
 - See the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) if you want to test out the examples.

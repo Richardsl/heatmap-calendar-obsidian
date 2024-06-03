@@ -3,7 +3,5 @@
   "theme": "system",
   "translucency": false,
   "accentColor": "",
-  "enabledCssSnippets": [
-    "heatmap_custom_styling"
-  ]
+  "enabledCssSnippets": []
 }
