@@ -96,7 +96,7 @@ You can customize the colors of the heatmap by supplying a color array to **cale
 &nbsp;
 
 <details>
-<summary>More</summary>
+<summary>More color options</summary>
 
 &nbsp;
 
@@ -189,8 +189,19 @@ Dataview's time variables are supported without any conversion, as they return m
 &nbsp;
 
 ## Development (Windows):
- ```npm run dev``` - will start TS to JS transpiler and automatically copy the JS/CSS/manifest files to the example vault whenever they are modified.  
- Installing https://github.com/pjeby/hot-reload is recommended to avoid restarting obsidian after every change, but remember to add a **.hot-reload** file to EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar/
+
+ ```npm run dev``` - will start an automatic TS to JS transpiler and automatically copy the generated JS/CSS/manifest files to the example vault when modified (Remember to run ```npm install``` first).
+
+ After the files have been transpiled, the **hot-reload plugin** (https://github.com/pjeby/hot-reload) then reloads Obsidian automatically.
+ Hot-reload is installed in the example vault by default. its used to avoid restarting obsidian after every change to code.  
+ *(remember to add an empty *.hotreload* file to "EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar/" if not already present, as this tells hot-reload to watch for changes)*
+
+
+```npm run build``` generates the files ready for distribution.
+
+&nbsp;
+
+Tip: ```ctrl-shift-i``` opens the devtools inside Obsidian.
 
 &nbsp;
 

@@ -3,7 +3,7 @@
 - Enable **Settings** -> **Dataview** -> **Enable Javascript Queries**
 
 **Hover Preview**
-- Enable **Settings** -> **Core Plugins** -> **Page Preview** for hover preview to work.
+- Enable **Settings** -**> **Core Plugins** -> **Page Preview** for hover preview to work.
 - install **Community plugins** -> **Metatable** in order to preview frontmatter aswell.
 
 see [github repo](https://github.com/Richardsl/heatmap-calendar-obsidian#readme) for more info

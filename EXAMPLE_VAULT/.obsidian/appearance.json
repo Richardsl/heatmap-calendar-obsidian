@@ -3,5 +3,7 @@
   "theme": "system",
   "translucency": false,
   "accentColor": "",
-  "enabledCssSnippets": []
+  "enabledCssSnippets": [
+    "heatmap_styleAlternatingMonths"
+  ]
 }
