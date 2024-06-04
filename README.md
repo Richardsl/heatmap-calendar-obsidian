@@ -131,7 +131,7 @@ When you do so, you can now reference your scheme everywhere by passing your nam
 ~~~javascript
 ```dataviewjs
 const calendarData = {
-	color: "githubGreen",
+	colors: "githubGreen",
 	entries: [],
 }
 
