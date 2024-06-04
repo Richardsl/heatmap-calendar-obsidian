@@ -1,6 +1,6 @@
 # Heatmap Calendar plugin for Obsidian
 
-Visualize your data in a heatmap calendar similar to the github activity calendar using this [Obsidian](https://obsidian.md/) plugin.  
+Visualize your data in a heatmap calendar similar to the github activity calendar using this [Obsidian](https://obsidian.md/) plugin.
 
 
 
@@ -96,7 +96,7 @@ You can customize the colors of the heatmap by supplying a color array to **cale
 &nbsp;
 
 <details>
-<summary>More</summary>
+<summary>More color options</summary>
 
 &nbsp;
 
@@ -131,7 +131,7 @@ When you do so, you can now reference your scheme everywhere by passing your nam
 ~~~javascript
 ```dataviewjs
 const calendarData = {
-	color: "githubGreen",
+	colors: "githubGreen",
 	entries: [],
 }
 
@@ -182,15 +182,26 @@ Dataview's time variables are supported without any conversion, as they return m
 
 ## Other Notes:
 - See the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) if you want to test out the examples.
-- Week starts on Monday, not configurable yet
+- Week start day is configurable
 - Date format is YYYY-MM-DD, if your daily note filename is something else, [you can use JS to change it in the loop](https://github.com/Richardsl/heatmap-calendar-obsidian/discussions/2)
 - Use Obsidian CSS snippets for custom styling. See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets).
 
 &nbsp;
 
 ## Development (Windows):
- ```npm run dev``` - will start TS to JS transpiler and automatically copy the JS/CSS/manifest files to the example vault whenever they are modified.  
- Installing https://github.com/pjeby/hot-reload is recommended to avoid restarting obsidian after every change, but remember to add a **.hot-reload** file to EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar/
+
+ ```npm run dev``` - will start an automatic TS to JS transpiler and automatically copy the generated JS/CSS/manifest files to the example vault when modified (Remember to run ```npm install``` first).
+
+ After the files have been transpiled, the **hot-reload plugin** (https://github.com/pjeby/hot-reload) then reloads Obsidian automatically.
+ Hot-reload is installed in the example vault by default. its used to avoid restarting obsidian after every change to code.  
+ *(remember to add an empty *.hotreload* file to "EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar/" if not already present, as this tells hot-reload to watch for changes)*
+
+
+```npm run build``` generates the files ready for distribution.
+
+&nbsp;
+
+Tip: ```ctrl-shift-i``` opens the devtools inside Obsidian.
 
 &nbsp;
 
@@ -227,35 +238,100 @@ renderHeatmapCalendar(this.container, calendarData)
 ---
 
 ### What's New:
+<br>
 
-**Version [0.6.1] - 2024-06-03**
+**Version [0.7.0] - 2024-06-04**
+<details>
+<summary>New "First day of the week" setting, Thanks @antosha417</summary>
+<br>
+New setting for changing the first day of the week, ie. Sunday/Monday.  
+
+For the American users :-)
+
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/settings_startOfWeek.png?raw=true)
+
+Thanks @antosha417
+
+---
+
+<br>
+</details>
+
+<details>
+<summary>Alternating Month Styling, Thanks @lksrpp</summary>
+<br>
+The months now how their own classes so that they can be styled individually.
+
+The example CSS Snippet below can be found in the EXAMPLE_VAULT in the "./obsidian/snippets" folder:
+
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/style_alternate_month.png?raw=true)
+
+Thanks @lksrpp
+
+---
+
+<br>
+</details>
+
+
+<details>
+<summary>Tighter Heatmap Margins/paddings, Thanks @Chailotl</summary>
+<br>
+New setting for 
+
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/paddingReducedBefore.png?raw=true)
+
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/paddingReducedAfter.png?raw=true)
+
+Thanks @Chailotl
+
+---
+
+<br>
+</details>
+
+
+
+<br>
 
 **Version [0.6.0] - 2023-04-12**
 - Feature: Add ability to define global colors via settings @sunyatasattva pull #74
 - Feature: Add more versatile custom styling of the "content" passed to date cell @sunyatasattva pull #73
 
+<br>
+
 **Version [0.5.0] - 2022-06-30**
 - Feature: Add darkmode support
+
+<br>
 
 **Version [0.4.0] - 2022-06-25**
 - Feature: Add hover preview feature courtesy of @arsenty from issue #12.  
 to enable - add **content: await dv.span(`[](${page.file.name})`)** to entries, and enable **Settings** -> **Core Plugins** -> **Page Preview**.   
 Optionally install plugin [Metatable](https://github.com/arnau/obsidian-metatable) to display metadata/frontmatter in the preview window aswell.  
-See examples for more details
+See examples for more details. Note: if you enabled **Use [[Wikilinks]]** under **Settings** -> **Files and links**, you have to use the respective link structure: **content: await dv.span(`[[${page.file.name}|]]`)**
+
+<br>
 
 **Version [0.3.0] - 2022-06-25**
 - Feature: Can add more intensities in order to increase color resolution. simply supply more colors to **calendarData.colors.yourcolor**
 - Feature: Can set custom range on the intensity scaling using *intensityScaleStart* and *intensityScaleEnd*
 - Bugfix: Entries from other years would show up in the calendar
 
+<br>
+
 **Version [0.2.0] - 2022-06-05**
 - Feature: Add border around todays box to indicate what day it is. Can be removed by setting *showCurrentDayBorder* to false
 - Feature: Add better development solution/workflow by using automated file copying instead of symlinks
+
+<br>
 
 **Version [0.1.1] - 2022-03-18**
 - Bugfix: fix major date problem where year would render with incorrect number of days for different timezones [issue#4](https://github.com/Richardsl/heatmap-calendar-obsidian/issues/4).
 - Bugfix: fix problem with certain entries not showing up in the correct month
 - Bugfix: fix grid cells not scaling correctly with browser width, especially content in grid cells
+
+<br>
 
 **Version [0.1.0] - 2022-02-23**
 - initial release

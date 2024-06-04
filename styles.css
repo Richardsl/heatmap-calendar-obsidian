@@ -17,6 +17,7 @@
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
   width: 100%;
+  padding: 5px; /* 0px caused overflow and scrollbars */
 }
 
 .heatmap-calendar-graph ul {
@@ -136,3 +137,35 @@
 .heatmap-calendar-settings-colors__new-color-input-value {
 	flex-grow: 1;
 }
+
+
+
+
+
+/* ----
+/* ---- DEV Only ---- */
+/* ----
+
+/* for putting the settings window off to the side whilst taking screenshots */
+/*
+.modal-container {
+  justify-content: left !important; 
+  padding-left: 20px !important;
+}
+.modal-bg {
+  opacity: 0% !important;
+}
+.modal-container.mod-dim .modal {
+  box-shadow: var(--shadow-s) !important;
+}
+.modal.mod-sidebar-layout {
+  width: 700px !important;
+}
+.vertical-tab-content::-webkit-scrollbar {
+  display: none;
+}
+*/
+
+/* ----
+/* ---- DEV Only /END ---- */
+/* ----

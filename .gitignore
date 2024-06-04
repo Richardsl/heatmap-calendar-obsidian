@@ -8,6 +8,10 @@
 # npm
 node_modules
 
+# ignore .obsidian folder in root directory of repo. it sometimes gets created by mistake.
+.obsidian
+!EXAMPLE_VAULT/.obsidian
+
 # Don't include the compiled main.js file in the repo.
 # They should be uploaded to GitHub releases instead.
 /main.js
@@ -21,10 +25,16 @@ data.json
 # Exclude macOS Finder (System Explorer) View States
 .DS_Store
 
-# example vault files
-EXAMPLE_VAULT/.obsidian/plugins/*
-
-!EXAMPLE_VAULT/.obsidian/plugins/hot-reload
-
-# exclude workspace.json
+# exclude workspace.json, as it clutters up the git log as its contents change frequently
 EXAMPLE_VAULT/.obsidian/workspace.json
+
+# exclude plugin contents
+EXAMPLE_VAULT/.obsidian/plugins/*
+!EXAMPLE_VAULT/.obsidian/plugins/hot-reload
+# include heatmap-calendar plugin folder, but ignore contents except for .hotreload file
+!EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar
+EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar/*
+!EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar/.hotreload
+
+
+
