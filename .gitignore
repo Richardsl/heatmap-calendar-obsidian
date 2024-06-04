@@ -23,6 +23,8 @@ data.json
 
 # example vault files
 EXAMPLE_VAULT/.obsidian/plugins/*
-EXAMPLE_VAULT/.obsidian/workspace
 
 !EXAMPLE_VAULT/.obsidian/plugins/hot-reload
+
+# exclude workspace.json
+EXAMPLE_VAULT/.obsidian/workspace.json
