@@ -139,7 +139,12 @@
 }
 
 
+
+
+
+/* ----
 /* ---- DEV Only ---- */
+/* ----
 
 /* for putting the settings window off to the side whilst taking screenshots */
 /*
@@ -150,4 +155,17 @@
 .modal-bg {
   opacity: 0% !important;
 }
+.modal-container.mod-dim .modal {
+  box-shadow: var(--shadow-s) !important;
+}
+.modal.mod-sidebar-layout {
+  width: 700px !important;
+}
+.vertical-tab-content::-webkit-scrollbar {
+  display: none;
+}
 */
+
+/* ----
+/* ---- DEV Only /END ---- */
+/* ----

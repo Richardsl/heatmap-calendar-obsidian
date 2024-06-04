@@ -238,6 +238,7 @@ renderHeatmapCalendar(this.container, calendarData)
 ---
 
 ### What's New:
+<br>
 
 **Version [0.7.0] - 2024-06-04**
 <details>
@@ -250,6 +251,39 @@ For the American users :-)
 ![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/settings_startOfWeek.png?raw=true)
 
 Thanks @antosha417
+
+---
+
+<br>
+</details>
+
+<details>
+<summary>Alternating Month Styling, Thanks @lksrpp</summary>
+<br>
+The months now how their own classes so that they can be styled individually.
+
+The example CSS Snippet below can be found in the EXAMPLE_VAULT in the "./obsidian/snippets" folder:
+
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/style_alternate_month.png?raw=true)
+
+Thanks @lksrpp
+
+---
+
+<br>
+</details>
+
+
+<details>
+<summary>Tighter Heatmap Margins/paddings, Thanks @Chailotl</summary>
+<br>
+New setting for 
+
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/paddingReducedBefore.png?raw=true)
+
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/paddingReducedAfter.png?raw=true)
+
+Thanks @Chailotl
 
 ---
 
