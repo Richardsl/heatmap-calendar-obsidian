@@ -148,12 +148,38 @@ export default class HeatmapCalendarSettingsTab extends PluginSettingTab {
 		}
 	}
 
+	private displayWeekStartDaySettings() {
+		const { containerEl, } = this
+		new Setting(containerEl)
+			.setName("Week Start Day")
+			.setDesc("Select the day on which your week starts.")
+			.addDropdown(dropdown =>
+			dropdown
+				.addOptions({
+					0: "Sunday",
+					1: "Monday",
+					2: "Tuesday",
+					3: "Wednesday",
+					4: "Thursday",
+					5: "Friday",
+					6: "Saturday",
+				})
+				.setValue(this.plugin.settings.weekStartDay.toString())
+				.onChange(async value => {
+					this.plugin.settings.weekStartDay = +value
+					await this.plugin.saveSettings()
+				})
+			)
+	}
+
 	display() {
 		const { containerEl, } = this
 
 		containerEl.empty()
 
 		containerEl.createEl("h2", { text: "Heatmap Calendar Settings", })
+
+		this.displayWeekStartDaySettings()
 
 		this.displayColorSettings()
 
