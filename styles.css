@@ -137,3 +137,17 @@
 .heatmap-calendar-settings-colors__new-color-input-value {
 	flex-grow: 1;
 }
+
+
+/* ---- DEV Only ---- */
+
+/* for putting the settings window off to the side whilst taking screenshots */
+/*
+.modal-container {
+  justify-content: left !important; 
+  padding-left: 20px !important;
+}
+.modal-bg {
+  opacity: 0% !important;
+}
+*/
