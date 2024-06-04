@@ -101,6 +101,14 @@
               "type": "bookmarks",
               "state": {}
             }
+          },
+          {
+            "id": "8db595fccc236d1d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
         ]
       }
@@ -121,6 +129,7 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "command-palette:Open command palette": false,
+      "workspaces:Manage workspace layouts": false
       "workspaces:Manage workspace layouts": false
     }
   },

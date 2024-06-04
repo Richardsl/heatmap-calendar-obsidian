@@ -54,6 +54,7 @@ renderHeatmapCalendar(this.container, calendarData)
 dv.span("**💸 Money Spent 💸**")
 
 const calendarData = {
+    year: 2022, // optional, remove this line to autoswitch year
     entries: [],
 }
 
@@ -74,6 +75,7 @@ renderHeatmapCalendar(this.container, calendarData)
 dv.span("**💸 Money Spent 💸** (11 intensities instead of 5)")
 
 const calendarData = {
+    year: 2022, // optional, remove this line to autoswitch year
     entries: [],
     colors: {
         oldGithubGreen11:[
@@ -109,6 +111,7 @@ renderHeatmapCalendar(this.container, calendarData)
 dv.span("**💸 Money Spent 💸** (custom scale from 250 to 450)")
 
 const calendarData = {
+    year: 2022, // optional, remove this line to autoswitch year
     entries: [],
     intensityScaleStart: 250,
     intensityScaleEnd: 450
@@ -131,6 +134,7 @@ renderHeatmapCalendar(this.container, calendarData)
 dv.span("**💸 Money Spent 💸** (11 intensities + scale from 150)")
 
 const calendarData = {
+    year: 2022, // optional, remove this line to autoswitch year
     entries: [],
     intensityScaleStart: 150,
     colors: {

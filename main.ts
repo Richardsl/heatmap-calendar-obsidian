@@ -1,18 +1,24 @@
 import { Plugin, } from 'obsidian'
+import HeatmapCalendarSettingsTab from "settings"
 
 interface CalendarData {
 	year: number
 	colors: {
-		[index: string | number]: {
-			[index: number]: string
-		}
-	}
+		[index: string | number]: string[]
+	} | string
 	entries: Entry[]
 	showCurrentDayBorder: boolean
 	defaultEntryIntensity: number
 	intensityScaleStart: number
 	intensityScaleEnd: number
 }
+
+interface CalendarSettings extends CalendarData {
+	colors: {
+		[index: string | number]: string[]
+	}
+}
+
 interface Entry {
 	date: string
 	intensity?: number
@@ -32,7 +38,7 @@ const DEFAULT_SETTINGS: CalendarData = {
 }
 export default class HeatmapCalendar extends Plugin {
 
-	settings: CalendarData
+	settings: CalendarSettings
 
 	/**
 	 * Returns a number representing how many days into the year the supplied date is. 
@@ -74,11 +80,17 @@ export default class HeatmapCalendar extends Plugin {
 
 		await this.loadSettings()
 
+		this.addSettingTab(new HeatmapCalendarSettingsTab(this.app, this))
+
 		//@ts-ignore
 		window.renderHeatmapCalendar = (el: HTMLElement, calendarData: CalendarData): void => {
 
 			const year = calendarData.year ?? this.settings.year
-			const colors = calendarData.colors ?? this.settings.colors
+			const colors = typeof calendarData.colors === "string"
+				? this.settings.colors[calendarData.colors]
+					? { [calendarData.colors]: this.settings.colors[calendarData.colors], }
+					: this.settings.colors
+				: calendarData.colors ?? this.settings.colors
 
 			this.removeHtmlElementsNotInYear(calendarData.entries, year)
 
@@ -100,7 +112,10 @@ export default class HeatmapCalendar extends Plugin {
 					intensity: defaultEntryIntensity,
 					...e,
 				}
-				const colorIntensities = colors[e.color] ?? colors[Object.keys(colors)[0]]
+				const colorIntensities = typeof colors === "string"
+					? this.settings.colors[colors]
+					: colors[e.color] ?? colors[Object.keys(colors)[0]]
+
 				const numOfColorIntensities = Object.keys(colorIntensities).length
 
 				if(minimumIntensity === maximumIntensity && intensityScaleStart === intensityScaleEnd) newEntry.intensity = numOfColorIntensities
@@ -116,7 +131,7 @@ export default class HeatmapCalendar extends Plugin {
 				backgroundColor?: string;
 				date?: string;
 				content?: string;
-				classNames?: string[]
+				classNames?: string[];
 			}
 
 			const boxes: Array<Box> = []
@@ -131,7 +146,9 @@ export default class HeatmapCalendar extends Plugin {
 
 			for (let day = 1; day <= numberOfDaysInYear; day++) {
 
-				const box: Box = {}
+				const box: Box = {
+                    classNames: [],
+                }
 
 				if (day === todaysDayNumberLocal && showCurrentDayBorder) box.classNames?.push("today")
 
@@ -198,13 +215,19 @@ export default class HeatmapCalendar extends Plugin {
 			})
 
 			boxes.forEach(e => {
-				createEl("li", {
-					text: e.content,
+				const entry = createEl("li", {
 					attr: {
 						...e.backgroundColor && { style: `background-color: ${e.backgroundColor};`, },
+						...e.date && { "data-date": e.date, },
 					},
 					cls: e.classNames,
 					parent: heatmapCalendarBoxesUl,
+				})
+
+				createSpan({
+					cls: "heatmap-calendar-content",
+					parent: entry,
+					text: e.content,
 				})
 			})
 
@@ -216,6 +239,7 @@ export default class HeatmapCalendar extends Plugin {
 	}
 
 	async loadSettings() {
+		console.log( "heyoh", await this.loadData() );
 		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData())
 	}
 
