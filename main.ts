@@ -152,10 +152,11 @@ export default class HeatmapCalendar extends Plugin {
 
 				// determine the date and month for the current box
 				const currentDate = new Date(year, 0, day);
+				
           		const month = currentDate.toLocaleString('en-us', { month: 'short' });
 
 				// Add the month class name to the box
-          		box.classNames.push(`month-${month.toLowerCase()}`); // e.g., "month-jan", "month-feb", etc.
+          		box.classNames?.push(`month-${month.toLowerCase()}`); // e.g., "month-jan", "month-feb", etc.
 
 				if (day === todaysDayNumberLocal && showCurrentDayBorder) box.classNames?.push("today")
 
