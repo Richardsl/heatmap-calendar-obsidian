@@ -17,6 +17,7 @@
     Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
   width: 100%;
+  padding: 5px; /* 0px caused overflow and scrollbars */
 }
 
 .heatmap-calendar-graph ul {
