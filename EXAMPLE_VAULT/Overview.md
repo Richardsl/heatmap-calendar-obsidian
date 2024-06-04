@@ -89,7 +89,8 @@ dv.span("**🔗 Writing **- Dont break the chain! 🔗🔗🔗🔗")
 const calendarData = {
     year: 2022, // optional, remove this line to autoswitch year
     colors: {
-        white: ["#fff","#fff","#fff","#fff","#fff"],
+        //white: ["#fff","#fff","#fff","#fff","#fff"],
+        transparent: ["transparent"],
     },
     entries: []
 }

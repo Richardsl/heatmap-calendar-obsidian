@@ -220,7 +220,7 @@ dv.span("**🔗Writing **- Dont break the chain! 🔗🔗🔗🔗")
 const calendarData = {
     year: 2022,
     colors: {
-        white: ["#fff","#fff","#fff","#fff333","#fff"],
+        transparent: ["transparent"],
     },
     entries: []
 }
