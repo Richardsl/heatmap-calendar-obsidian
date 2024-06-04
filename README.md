@@ -223,8 +223,6 @@ renderHeatmapCalendar(this.container, calendarData)
 
 
 &nbsp;
-&nbsp;
-&nbsp;
 <br>
 ---
 
