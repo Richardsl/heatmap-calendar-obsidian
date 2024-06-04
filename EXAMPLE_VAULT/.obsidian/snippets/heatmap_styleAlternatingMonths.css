@@ -6,12 +6,12 @@
 /*------ Alters the colors of every alternating month -------*/
 
 /* Light mode */
-.heatmap-calendar-boxes .month-jan.isEmpty,
-.heatmap-calendar-boxes .month-mar.isEmpty,
-.heatmap-calendar-boxes .month-may.isEmpty,
-.heatmap-calendar-boxes .month-jul.isEmpty,
-.heatmap-calendar-boxes .month-sep.isEmpty,
-.heatmap-calendar-boxes .month-nov.isEmpty {
+.heatmap-calendar-boxes .month-feb.isEmpty,
+.heatmap-calendar-boxes .month-apr.isEmpty,
+.heatmap-calendar-boxes .month-jun.isEmpty,
+.heatmap-calendar-boxes .month-aug.isEmpty,
+.heatmap-calendar-boxes .month-oct.isEmpty,
+.heatmap-calendar-boxes .month-dec.isEmpty {
     background: #e2e2e2 !important;
     /* border: 1px solid #e2e2e2;*/
 }
@@ -23,7 +23,7 @@
 .theme-dark .heatmap-calendar-boxes .month-aug.isEmpty,
 .theme-dark .heatmap-calendar-boxes .month-oct.isEmpty,
 .theme-dark .heatmap-calendar-boxes .month-dec.isEmpty {
-    background: #c0c0c0 !important;
+    background: #424242 !important;
 	/* border: 1px solid #414141;*/
 }
 

@@ -239,14 +239,37 @@ renderHeatmapCalendar(this.container, calendarData)
 
 ### What's New:
 
-**Version [0.6.1] - 2024-06-03**
+**Version [0.7.0] - 2024-06-04**
+<details>
+<summary>New "First day of the week" setting, Thanks @antosha417</summary>
+<br>
+New setting for changing the first day of the week, ie. Sunday/Monday.  
+
+For the American users :-)
+
+![heatmap calendar custom colors example](https://github.com/Richardsl/heatmap-calendar-obsidian/blob/master/github-images/settings_startOfWeek.png?raw=true)
+
+Thanks @antosha417
+
+---
+
+<br>
+</details>
+
+
+
+<br>
 
 **Version [0.6.0] - 2023-04-12**
 - Feature: Add ability to define global colors via settings @sunyatasattva pull #74
 - Feature: Add more versatile custom styling of the "content" passed to date cell @sunyatasattva pull #73
 
+<br>
+
 **Version [0.5.0] - 2022-06-30**
 - Feature: Add darkmode support
+
+<br>
 
 **Version [0.4.0] - 2022-06-25**
 - Feature: Add hover preview feature courtesy of @arsenty from issue #12.  
@@ -254,19 +277,27 @@ to enable - add **content: await dv.span(`[](${page.file.name})`)** to entries, 
 Optionally install plugin [Metatable](https://github.com/arnau/obsidian-metatable) to display metadata/frontmatter in the preview window aswell.  
 See examples for more details. Note: if you enabled **Use [[Wikilinks]]** under **Settings** -> **Files and links**, you have to use the respective link structure: **content: await dv.span(`[[${page.file.name}|]]`)**
 
+<br>
+
 **Version [0.3.0] - 2022-06-25**
 - Feature: Can add more intensities in order to increase color resolution. simply supply more colors to **calendarData.colors.yourcolor**
 - Feature: Can set custom range on the intensity scaling using *intensityScaleStart* and *intensityScaleEnd*
 - Bugfix: Entries from other years would show up in the calendar
 
+<br>
+
 **Version [0.2.0] - 2022-06-05**
 - Feature: Add border around todays box to indicate what day it is. Can be removed by setting *showCurrentDayBorder* to false
 - Feature: Add better development solution/workflow by using automated file copying instead of symlinks
+
+<br>
 
 **Version [0.1.1] - 2022-03-18**
 - Bugfix: fix major date problem where year would render with incorrect number of days for different timezones [issue#4](https://github.com/Richardsl/heatmap-calendar-obsidian/issues/4).
 - Bugfix: fix problem with certain entries not showing up in the correct month
 - Bugfix: fix grid cells not scaling correctly with browser width, especially content in grid cells
+
+<br>
 
 **Version [0.1.0] - 2022-02-23**
 - initial release
