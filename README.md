@@ -1,6 +1,6 @@
 # Heatmap Calendar plugin for Obsidian
 
-Visualize your data in a heatmap calendar similar to the github activity calendar using this [Obsidian](https://obsidian.md/) plugin.  
+Visualize your data in a heatmap calendar similar to the github activity calendar using this [Obsidian](https://obsidian.md/) plugin.
 
 
 
@@ -182,7 +182,7 @@ Dataview's time variables are supported without any conversion, as they return m
 
 ## Other Notes:
 - See the [EXAMPLE VAULT](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT) if you want to test out the examples.
-- Week starts on Monday, not configurable yet
+- Week start day is configurable
 - Date format is YYYY-MM-DD, if your daily note filename is something else, [you can use JS to change it in the loop](https://github.com/Richardsl/heatmap-calendar-obsidian/discussions/2)
 - Use Obsidian CSS snippets for custom styling. See [snippet examples](https://github.com/Richardsl/heatmap-calendar-obsidian/tree/master/EXAMPLE_VAULT/.obsidian/snippets).
 
