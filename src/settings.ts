@@ -1,188 +1,188 @@
-import HeatmapCalendar from "main"
-import { App, PluginSettingTab, setIcon, Setting, } from "obsidian"
+import HeatmapCalendar from 'main'
+import { App, PluginSettingTab, setIcon, Setting } from 'obsidian'
 
 export default class HeatmapCalendarSettingsTab extends PluginSettingTab {
-	plugin: HeatmapCalendar
+    plugin: HeatmapCalendar
 
-	constructor(app: App, plugin: HeatmapCalendar) {
-		super(app, plugin)
-		this.plugin = plugin
-	}
+    constructor(app: App, plugin: HeatmapCalendar) {
+        super(app, plugin)
+        this.plugin = plugin
+    }
 
-	private async addColorMap(color: { key: string, value: string }) {
-		const isValid = { key: true, value: true, }
+    private async addColorMap(color: { key: string; value: string }) {
+        const isValid = { key: true, value: true }
 
-		if (!color.key) isValid.key = false
+        if (!color.key) isValid.key = false
 
-		const validatedArray = this.validateColorInput(color.value)
+        const validatedArray = this.validateColorInput(color.value)
 
-		if (!validatedArray) isValid.value = false
+        if (!validatedArray) isValid.value = false
 
-		if (isValid.key && isValid.value) {
-			this.plugin.settings.colors[color.key] = validatedArray as string[]
+        if (isValid.key && isValid.value) {
+            this.plugin.settings.colors[color.key] = validatedArray as string[]
 
-			await this.plugin.saveSettings()
+            await this.plugin.saveSettings()
 
-			this.display()
-		}
+            this.display()
+        }
 
-		return isValid
-	}
+        return isValid
+    }
 
-	private async deleteColorMap(key: keyof typeof this.plugin.settings.colors) {
-		delete this.plugin.settings.colors[key]
+    private async deleteColorMap(key: keyof typeof this.plugin.settings.colors) {
+        delete this.plugin.settings.colors[key]
 
-		await this.plugin.saveSettings()
+        await this.plugin.saveSettings()
 
-		this.display()
-	}
+        this.display()
+    }
 
-	private displayColorSettings() {
-		const { containerEl, } = this
+    private displayColorSettings() {
+        const { containerEl } = this
 
-		containerEl.createEl("h3", { text: "Colors", })
-		this.displayColorHelp(containerEl)
+        containerEl.createEl('h3', { text: 'Colors' })
+        this.displayColorHelp(containerEl)
 
-		for (const [key, colors,] of Object.entries(this.plugin.settings.colors)) {
-			const colorEntryContainer = containerEl.createDiv({
-				cls: "heatmap-calendar-settings-colors__container",
-			})
+        for (const [key, colors] of Object.entries(this.plugin.settings.colors)) {
+            const colorEntryContainer = containerEl.createDiv({
+                cls: 'heatmap-calendar-settings-colors__container',
+            })
 
-			const colorDataContainer = colorEntryContainer.createDiv({
-				cls: "heatmap-calendar-settings-colors__data-container",
-			})
+            const colorDataContainer = colorEntryContainer.createDiv({
+                cls: 'heatmap-calendar-settings-colors__data-container',
+            })
 
-			colorDataContainer.createEl("h4", { text: key, })
+            colorDataContainer.createEl('h4', { text: key })
 
-			const colorRow = colorDataContainer.createDiv({ cls: "heatmap-calendar-settings-colors__row", })
+            const colorRow = colorDataContainer.createDiv({ cls: 'heatmap-calendar-settings-colors__row' })
 
-			const colorsContainer = colorRow.createDiv({ cls: "heatmap-calendar-settings-colors__color-container", })
+            const colorsContainer = colorRow.createDiv({ cls: 'heatmap-calendar-settings-colors__color-container' })
 
-			for (const color of colors) {
-				colorsContainer.createEl("div", {
-					cls: "heatmap-calendar-settings-colors__color-box",
-					attr: {
-						style: `background-color: ${color}`,
-					},
-				})
+            for (const color of colors) {
+                colorsContainer.createEl('div', {
+                    cls: 'heatmap-calendar-settings-colors__color-box',
+                    attr: {
+                        style: `background-color: ${color}`,
+                    },
+                })
 
-				colorsContainer.createEl("pre", {
-					cls: "heatmap-calendar-settings-colors__color-name",
-					text: color,
-				})
-			}
+                colorsContainer.createEl('pre', {
+                    cls: 'heatmap-calendar-settings-colors__color-name',
+                    text: color,
+                })
+            }
 
-			if (key !== "default") {
-				const deleteColorButton = colorEntryContainer.createEl("button", {
-					cls: "mod-warning heatmap-calendar-settings-colors__delete",
-				})
+            if (key !== 'default') {
+                const deleteColorButton = colorEntryContainer.createEl('button', {
+                    cls: 'mod-warning heatmap-calendar-settings-colors__delete',
+                })
 
-				setIcon(deleteColorButton, "trash")
+                setIcon(deleteColorButton, 'trash')
 
-				deleteColorButton.addEventListener("click", () => this.deleteColorMap(key))
-			}
-		}
+                deleteColorButton.addEventListener('click', () => this.deleteColorMap(key))
+            }
+        }
 
-		this.displayColorInput(containerEl)
-	}
+        this.displayColorInput(containerEl)
+    }
 
-	private displayColorInput(parent: HTMLElement) {
-		const inputContainer = parent.createDiv({ cls: "heatmap-calendar-settings-colors__new-color-input-container", })
+    private displayColorInput(parent: HTMLElement) {
+        const inputContainer = parent.createDiv({ cls: 'heatmap-calendar-settings-colors__new-color-input-container' })
 
-		const colorNameInput = inputContainer.createEl("input", {
-			cls: "heatmap-calendar-settings-colors__new-color-input-name",
-			attr: { placeholder: "Color name", type: "text", },
-		})
+        const colorNameInput = inputContainer.createEl('input', {
+            cls: 'heatmap-calendar-settings-colors__new-color-input-name',
+            attr: { placeholder: 'Color name', type: 'text' },
+        })
 
-		const colorValueInput = inputContainer.createEl("input", {
-			cls: "heatmap-calendar-settings-colors__new-color-input-value",
-			attr: { placeholder: "Colors array", type: "text", },
-		})
+        const colorValueInput = inputContainer.createEl('input', {
+            cls: 'heatmap-calendar-settings-colors__new-color-input-value',
+            attr: { placeholder: 'Colors array', type: 'text' },
+        })
 
-		const addColorButton = inputContainer.createEl("button", {
-			cls: "mod-cta heatmap-calendar-settings-colors__new-color-button",
-		})
+        const addColorButton = inputContainer.createEl('button', {
+            cls: 'mod-cta heatmap-calendar-settings-colors__new-color-button',
+        })
 
-		setIcon(addColorButton, "plus")
+        setIcon(addColorButton, 'plus')
 
-		addColorButton.addEventListener("click", async () => {
-			const isValid = await this.addColorMap({
-				key: colorNameInput.value,
-				value: colorValueInput.value,
-			})
+        addColorButton.addEventListener('click', async () => {
+            const isValid = await this.addColorMap({
+                key: colorNameInput.value,
+                value: colorValueInput.value,
+            })
 
-			this.reportInputValidity(colorNameInput, isValid.key, "Please input a name for your color")
-			this.reportInputValidity(colorValueInput, isValid.value, "Color is not a valid JSON array of colors")
-		})
-	}
+            this.reportInputValidity(colorNameInput, isValid.key, 'Please input a name for your color')
+            this.reportInputValidity(colorValueInput, isValid.value, 'Color is not a valid JSON array of colors')
+        })
+    }
 
-	private displayColorHelp(parent: HTMLElement) {
-		parent.createEl("p", {
-			text: "Add lists of colors which will be globally available on your heatmaps.",
-		})
-		parent.createEl("p", {
-			text: "You can use those colors by referencing their name in your heatmap render settings.",
-		})
-	}
+    private displayColorHelp(parent: HTMLElement) {
+        parent.createEl('p', {
+            text: 'Add lists of colors which will be globally available on your heatmaps.',
+        })
+        parent.createEl('p', {
+            text: 'You can use those colors by referencing their name in your heatmap render settings.',
+        })
+    }
 
-	private reportInputValidity(input: HTMLInputElement, isValid: boolean, msg: string) {
-		if (!isValid) {
-			input.classList.add("has-error")
-			input.setCustomValidity(msg)
-		} else input.setCustomValidity("")
+    private reportInputValidity(input: HTMLInputElement, isValid: boolean, msg: string) {
+        if (!isValid) {
+            input.classList.add('has-error')
+            input.setCustomValidity(msg)
+        } else input.setCustomValidity('')
 
-		input.reportValidity()
-	}
+        input.reportValidity()
+    }
 
-	private validateColorInput(value: string) {
-		const colorRegex = /^(#[0-9a-f]{3,6}|rgba?\(\s*\d+%?\s*,\s*\d+%?\s*,\s*\d+%?\s*(,\s*\d+(\.\d+)?%?)?\s*\))$/i;
+    private validateColorInput(value: string) {
+        const colorRegex = /^(#[0-9a-f]{3,6}|rgba?\(\s*\d+%?\s*,\s*\d+%?\s*,\s*\d+%?\s*(,\s*\d+(\.\d+)?%?)?\s*\))$/i
 
-		try {
-			const data: string[] = JSON.parse(value)
+        try {
+            const data: string[] = JSON.parse(value)
 
-			if (!Array.isArray(data)) return false
+            if (!Array.isArray(data)) return false
 
-			return data.every(color => colorRegex.test(color)) ? data : false
-		} catch (e) {
-			return false
-		}
-	}
+            return data.every((color) => colorRegex.test(color)) ? data : false
+        } catch (e) {
+            return false
+        }
+    }
 
-	private displayWeekStartDaySettings() {
-		const { containerEl, } = this
-		new Setting(containerEl)
-			.setName("Week Start Day")
-			.setDesc("Select the day on which your week starts.")
-			.addDropdown(dropdown =>
-			dropdown
-				.addOptions({
-					0: "Sunday",
-					1: "Monday",
-					2: "Tuesday",
-					3: "Wednesday",
-					4: "Thursday",
-					5: "Friday",
-					6: "Saturday",
-				})
-				.setValue(this.plugin.settings.weekStartDay.toString())
-				.onChange(async value => {
-					this.plugin.settings.weekStartDay = +value
-					await this.plugin.saveSettings()
-				})
-			)
-	}
+    private displayWeekStartDaySettings() {
+        const { containerEl } = this
+        new Setting(containerEl)
+            .setName('Week Start Day')
+            .setDesc('Select the day on which your week starts.')
+            .addDropdown((dropdown) =>
+                dropdown
+                    .addOptions({
+                        0: 'Sunday',
+                        1: 'Monday',
+                        2: 'Tuesday',
+                        3: 'Wednesday',
+                        4: 'Thursday',
+                        5: 'Friday',
+                        6: 'Saturday',
+                    })
+                    .setValue(this.plugin.settings.weekStartDay.toString())
+                    .onChange(async (value) => {
+                        this.plugin.settings.weekStartDay = +value
+                        await this.plugin.saveSettings()
+                    })
+            )
+    }
 
-	display() {
-		const { containerEl, } = this
+    display() {
+        const { containerEl } = this
 
-		containerEl.empty()
+        containerEl.empty()
 
-		containerEl.createEl("h2", { text: "Heatmap Calendar Settings", })
+        containerEl.createEl('h2', { text: 'Heatmap Calendar Settings' })
 
-		this.displayWeekStartDaySettings()
+        this.displayWeekStartDaySettings()
 
-		this.displayColorSettings()
+        this.displayColorSettings()
 
-		console.log( "settings", this.plugin.settings )
-	}
+        console.log('settings', this.plugin.settings)
+    }
 }
