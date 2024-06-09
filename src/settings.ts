@@ -1,12 +1,15 @@
 import HeatmapCalendar from 'main'
+import { CalendarSettings } from 'model'
 import { App, PluginSettingTab, setIcon, Setting } from 'obsidian'
 
 export default class HeatmapCalendarSettingsTab extends PluginSettingTab {
     plugin: HeatmapCalendar
+    settings: CalendarSettings
 
-    constructor(app: App, plugin: HeatmapCalendar) {
+    constructor(app: App, plugin: HeatmapCalendar, settings: CalendarSettings) {
         super(app, plugin)
         this.plugin = plugin
+        this.settings = settings
     }
 
     private async addColorMap(color: { key: string; value: string }) {
@@ -19,9 +22,9 @@ export default class HeatmapCalendarSettingsTab extends PluginSettingTab {
         if (!validatedArray) isValid.value = false
 
         if (isValid.key && isValid.value) {
-            this.plugin.settings.colors[color.key] = validatedArray as string[]
+            this.settings.colors[color.key] = validatedArray as string[]
 
-            await this.plugin.saveSettings()
+            await this.plugin.saveSettings(this.settings)
 
             this.display()
         }
@@ -29,10 +32,10 @@ export default class HeatmapCalendarSettingsTab extends PluginSettingTab {
         return isValid
     }
 
-    private async deleteColorMap(key: keyof typeof this.plugin.settings.colors) {
-        delete this.plugin.settings.colors[key]
+    private async deleteColorMap(key: keyof typeof this.settings.colors) {
+        delete this.settings.colors[key]
 
-        await this.plugin.saveSettings()
+        await this.plugin.saveSettings(this.settings)
 
         this.display()
     }
@@ -43,7 +46,7 @@ export default class HeatmapCalendarSettingsTab extends PluginSettingTab {
         containerEl.createEl('h3', { text: 'Colors' })
         this.displayColorHelp(containerEl)
 
-        for (const [key, colors] of Object.entries(this.plugin.settings.colors)) {
+        for (const [key, colors] of Object.entries(this.settings.colors)) {
             const colorEntryContainer = containerEl.createDiv({
                 cls: 'heatmap-calendar-settings-colors__container',
             })
@@ -164,10 +167,10 @@ export default class HeatmapCalendarSettingsTab extends PluginSettingTab {
                         5: 'Friday',
                         6: 'Saturday',
                     })
-                    .setValue(this.plugin.settings.weekStartDay.toString())
+                    .setValue(this.settings.weekStartDay.toString())
                     .onChange(async (value) => {
-                        this.plugin.settings.weekStartDay = +value
-                        await this.plugin.saveSettings()
+                        this.settings.weekStartDay = +value
+                        await this.plugin.saveSettings(this.settings)
                     })
             )
     }
@@ -183,6 +186,6 @@ export default class HeatmapCalendarSettingsTab extends PluginSettingTab {
 
         this.displayColorSettings()
 
-        console.log('settings', this.plugin.settings)
+        console.log('settings', this.settings)
     }
 }
