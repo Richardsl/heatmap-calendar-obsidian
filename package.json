@@ -4,10 +4,14 @@
 	"description": "Activity Heatmap Calendar Plugin for Obsidian",
 	"main": "main.js",
 	"scripts": {
-		"dev": "concurrently \"node esbuild.config.mjs\" \"npm run copyAndWatchMainJS\" \"npm run copyAndWatchStylesJS\" \"npm run copyAndWatchManifestJS\"",
-		"copyAndWatchMainJS": "cpx \"main.js\" \"EXAMPLE_VAULT\\.obsidian\\plugins\\heatmap-calendar\" -w",
-		"copyAndWatchStylesJS": "cpx \"styles.css\" \"EXAMPLE_VAULT\\.obsidian\\plugins\\heatmap-calendar\" -w",
-		"copyAndWatchManifestJS": "cpx \"manifest.json\" \"EXAMPLE_VAULT\\.obsidian\\plugins\\heatmap-calendar\" -w",
+		"dev": "concurrently 'node esbuild.config.mjs' 'npm run copyAndWatchJS' 'npm run copyAndWatchCSS' 'npm run copyAndWatchManifest'",
+		"copyAndWatchJS": "cpx 'main.js' 'EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar' --watch",
+		"copyAndWatchCSS": "cpx 'styles.css' 'EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar' --watch",
+		"copyAndWatchManifest": "cpx 'manifest.json' 'EXAMPLE_VAULT/.obsidian/plugins/heatmap-calendar' --watch",
+		"lint": "eslint src/*",
+		"lint:fix": "eslint src/ --fix",
+		"format": "prettier src --check",
+		"format:fix": "prettier src --write",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
@@ -17,15 +21,19 @@
 	"author": "Richard Slettevoll",
 	"license": "Apache-2.0 License",
 	"devDependencies": {
-		"@types/node": "^18.0.5",
-		"@typescript-eslint/eslint-plugin": "^5.30.6",
-		"@typescript-eslint/parser": "^5.30.6",
-		"builtin-modules": "^3.3.0",
-		"concurrently": "^7.2.2",
-		"cpx": "^1.5.0",
-		"esbuild": "0.14.49",
-		"obsidian": "latest",
-		"tslib": "2.4.0",
-		"typescript": "4.7.4"
+		"@stylistic/eslint-plugin": "^2.1.0",
+		"@types/node": "^20.13.0",
+		"@typescript-eslint/parser": "^7.11.0",
+		"builtin-modules": "^4.0.0",
+		"concurrently": "^8.2.2",
+		"cpx2": "^7.0.1",
+		"esbuild": "0.21.4",
+		"eslint": "^8.57.0",
+		"obsidian": "^1.5.7-1",
+		"prettier": "^3.2.5",
+		"typescript": "5.4.5"
+	},
+	"dependencies": {
+		"@typescript-eslint/eslint-plugin": "^7.12.0"
 	}
 }
