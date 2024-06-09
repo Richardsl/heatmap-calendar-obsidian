@@ -70,6 +70,7 @@
   position: relative;
   font-size: 0.75em;
   background-color: #ebedf0;
+  margin-inline-start: 0 !important;
 }
 
 .theme-dark .heatmap-calendar-boxes .isEmpty {
