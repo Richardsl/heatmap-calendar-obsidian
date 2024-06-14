@@ -138,7 +138,9 @@
 	flex-grow: 1;
 }
 
-
+.heatmap-calendar-boxes>li {
+  width: 100%;
+}
 
 
 
