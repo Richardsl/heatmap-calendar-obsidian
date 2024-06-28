@@ -240,6 +240,15 @@ renderHeatmapCalendar(this.container, calendarData)
 ### What's New:
 <br>
 
+**Version [0.7.1] - 2024-06-28**
+<details>
+<summary>fix styling bug</summary>
+
+<br>
+</details>
+
+<br>
+
 **Version [0.7.0] - 2024-06-04**
 <details>
 <summary>New "First day of the week" setting, Thanks @antosha417</summary>
