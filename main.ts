@@ -11,6 +11,7 @@ interface CalendarData {
 	defaultEntryIntensity: number
 	intensityScaleStart: number
 	intensityScaleEnd: number
+	separateMonths: boolean
 }
 
 interface CalendarSettings extends CalendarData {
@@ -18,6 +19,7 @@ interface CalendarSettings extends CalendarData {
 		[index: string | number]: string[]
 	},
 	weekStartDay: number,
+	separateMonths: boolean,
 }
 
 interface Entry {
@@ -37,6 +39,7 @@ const DEFAULT_SETTINGS: CalendarSettings = {
 	intensityScaleStart: 1,
 	intensityScaleEnd: 5,
 	weekStartDay: 1,
+	separateMonths: false,
 }
 export default class HeatmapCalendar extends Plugin {
 
@@ -112,6 +115,8 @@ export default class HeatmapCalendar extends Plugin {
 			const intensityScaleStart = calendarData.intensityScaleStart ?? minimumIntensity
 			const intensityScaleEnd = calendarData.intensityScaleEnd ?? maximumIntensity
 
+			const separateMonths = calendarData.separateMonths ?? this.settings.separateMonths
+
 			const mappedEntries: Entry[] = []
 			calEntries.forEach(e => {
 				const newEntry = {
@@ -160,6 +165,16 @@ export default class HeatmapCalendar extends Plugin {
 				const currentDate = new Date(year, 0, day);
 				
           		const month = currentDate.toLocaleString('en-us', { month: 'short' });
+
+				// Add padding at the beginning of February to December
+				if (separateMonths && day > 31) {
+					const day_in_month = +currentDate.toLocaleString("en-us", { day: "numeric" });
+					if (day_in_month === 1) {
+						for (let i = 0; i < 7; i++) {
+							boxes.push({ backgroundColor: "transparent" });
+						}
+					}
+				}
 
 				// Add the month class name to the box
           		box.classNames?.push(`month-${month.toLowerCase()}`); // e.g., "month-jan", "month-feb", etc.
@@ -223,6 +238,9 @@ export default class HeatmapCalendar extends Plugin {
 				cls: "heatmap-calendar-boxes",
 				parent: heatmapCalendarGraphDiv,
 			})
+			if (separateMonths) {
+				heatmapCalendarBoxesUl.className += " separate-months";
+			}
 
 			boxes.forEach(e => {
 				const entry = createEl("li", {
