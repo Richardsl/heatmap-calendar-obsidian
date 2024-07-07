@@ -48,6 +48,12 @@
   grid-area: boxes;
 }
 
+.heatmap-calendar-boxes.separate-months {
+  grid-auto-flow: column;
+  grid-template-columns: repeat(64, minmax(0, 1fr));
+  grid-area: boxes;
+}
+
 .heatmap-calendar-days,
 .heatmap-calendar-boxes {
   display: grid;
@@ -92,6 +98,10 @@
 
 .heatmap-calendar-boxes .today {
   border: solid 1px rgb(61, 61, 61);
+}
+
+.theme-dark .heatmap-calendar-boxes .today {
+  border: solid 1px white;
 }
 
 /* Settings */
