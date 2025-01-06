@@ -172,6 +172,19 @@ export default class HeatmapCalendarSettingsTab extends PluginSettingTab {
 			)
 	}
 
+	private displayseparateMonthsSettings() {
+		const { containerEl, } = this
+		new Setting(containerEl)
+		  .setName("Separate Months")
+		  .setDesc("Separate months in your calendar views, globally.")
+		  .addToggle(toggle => toggle
+		  .setValue(this.plugin.settings.separateMonths)
+		  .onChange(async (value) => {
+			this.plugin.settings.separateMonths = value;
+			await this.plugin.saveSettings();
+		  }));
+	  }
+
 	display() {
 		const { containerEl, } = this
 
@@ -180,6 +193,8 @@ export default class HeatmapCalendarSettingsTab extends PluginSettingTab {
 		containerEl.createEl("h2", { text: "Heatmap Calendar Settings", })
 
 		this.displayWeekStartDaySettings()
+
+		this.displayseparateMonthsSettings()
 
 		this.displayColorSettings()
 
