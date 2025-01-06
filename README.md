@@ -25,7 +25,12 @@ To be used with [Obsidian Dataview](https://blacksmithgu.github.io/obsidian-data
 
 3. Collect the data you want to display using [DataviewJS](https://blacksmithgu.github.io/obsidian-dataview/api/code-reference/)
 
-4. Pass the data into Heatmap Calendar using  **renderHeatmapCalendar()** 
+4. Pass the data into Heatmap Calendar using  **renderHeatmapCalendar()**  
+
+#### Video Tutorial
+Someone on the internet made a video tutorial:)  
+[https://www.youtube.com/watch?v=2U4kizMyEEc](https://www.youtube.com/watch?v=2U4kizMyEEc)
+
 
 &nbsp;
 
