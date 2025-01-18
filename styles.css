@@ -9,13 +9,11 @@
 .heatmap-calendar-graph {
 	display: grid;
 	grid-template-areas:
-        "empty month"
+        "year month"
         "day chart";
 	grid-template-rows: 0.2fr;
 	grid-template-columns: min-content;
 	gap: 0.1em 1em;
-	width: 80%;
-	/*font-size: 1.4rem;*/
 }
 
 .heatmap-calendar-graph ul {
@@ -37,7 +35,8 @@
 	grid-template-rows: repeat(7, 1fr);
 	line-height: 0.1rem;
 }
-.heatmap-calendar-days li {
+
+.heatmap-calendar-graph .heatmap-calendar-days li {
 	margin-inline-start: 0;
 }
 
