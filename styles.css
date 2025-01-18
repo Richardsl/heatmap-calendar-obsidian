@@ -7,19 +7,19 @@
 }
 
 .heatmap-calendar-graph {
-	font-size: 0.65em;
-	display: grid;
-	grid-template-rows: 0.2fr;
-	grid-template-columns: min-content;
-	gap: 0.1em 0.1em;
-	grid-template-areas:
+  font-size: 0.65em;
+  display: grid;
+  grid-template-rows: 0.2fr;
+  grid-template-columns: min-content;
+  gap: 0.1em 0.1em;
+  grid-template-areas:
     'year months'
     'days boxes';
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
-	Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-	'Segoe UI Symbol';
-	width: 100%;
-	padding: 5px; /* 0px caused overflow and scrollbars */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
+  width: 100%;
+  padding: 5px; /* 0px caused overflow and scrollbars */
 }
 
 .heatmap-calendar-graph ul {
@@ -110,10 +110,10 @@
 /* Settings */
 
 .heatmap-calendar-settings-colors__color-box {
-    width: 10px;
-    height: 10px;
-    display: inline-block;
-    margin: 0 5px;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin: 0 5px;
 }
 
 .heatmap-calendar-settings-colors__color-box:first-child {
