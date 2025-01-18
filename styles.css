@@ -29,6 +29,10 @@
 	grid-template-columns: repeat(12, 1fr);
 }
 
+.heatmap-calendar-months li {
+	margin-inline-start: 0;
+}
+
 .heatmap-calendar-days {
 	grid-area: day;
 	display: grid;
