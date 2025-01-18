@@ -181,14 +181,9 @@ export default class HeatmapCalendar extends Plugin {
 				boxes.push(box)
 			}
 
-			const heatmapCalendarGraphWrapper = createDiv({
-				cls: "heatmap-calendar-graph-wrapper",
-				parent: el,
-			});
-
 			const heatmapCalendarGraphDiv = createDiv({
 				cls: "heatmap-calendar-graph",
-				parent: heatmapCalendarGraphWrapper,
+				parent: el,
 			})
 
 			createDiv({
