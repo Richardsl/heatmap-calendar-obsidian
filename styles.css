@@ -29,15 +29,14 @@
 }
 
 .heatmap-calendar-months {
-	grid-area: months;
 	display: grid;
-	grid-auto-flow: column;
 	grid-template-columns: repeat(12, 1fr);
+	grid-area: months;
+	grid-auto-flow: column;
 }
 
 .heatmap-calendar-graph .heatmap-calendar-months li {
 	margin-inline-start: 0;
-	font-size: 0.8em;
 }
 
 .heatmap-calendar-days {
