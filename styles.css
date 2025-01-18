@@ -23,9 +23,9 @@
 }
 
 .heatmap-calendar-graph ul {
-  padding-inline-start: 0;
-  margin-block-start: 0;
-  margin-block-end: 0;
+	padding-inline-start: 0;
+	margin-block-start: 0;
+	margin-block-end: 0;
 }
 
 .heatmap-calendar-months {
@@ -35,9 +35,6 @@
   grid-auto-flow: column;
 }
 
-.heatmap-calendar-graph .heatmap-calendar-months li {
-  margin-inline-start: 0;
-}
 
 .heatmap-calendar-days {
   grid-area: days;
@@ -45,10 +42,6 @@
   grid-template-rows: repeat(7, 1fr);
   line-height: 0.1rem;
   font-size: 0.8em;
-}
-
-.heatmap-calendar-graph .heatmap-calendar-days li {
-  margin-inline-start: 0;
 }
 
 .heatmap-calendar-boxes {
@@ -84,6 +77,11 @@
   background-color: #ebedf0;
   width: 100%;
   margin-inline-start: 0 !important;
+}
+
+.heatmap-calendar-graph .heatmap-calendar-months li,
+.heatmap-calendar-graph .heatmap-calendar-days li {
+  margin-inline-start: 0;
 }
 
 .theme-dark .heatmap-calendar-boxes .isEmpty {
@@ -124,32 +122,32 @@
 }
 
 .heatmap-calendar-settings-colors__container {
-  align-items: center;
-  border-top: 1px solid var(--background-modifier-border);
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5em 0;
+	align-items: center;
+	border-top: 1px solid var(--background-modifier-border);
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5em 0;
 }
 
 .heatmap-calendar-settings-colors__container h4 {
-  margin: 0.5em 0;
+	margin: 0.5em 0;
 }
 
 .heatmap-calendar-settings-colors__new-color-input-container {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .heatmap-calendar-settings-colors__new-color-input-container input {
-  margin-right: 1em;
+	margin-right: 1em;
 }
 
 .heatmap-calendar-settings-colors__new-color-input-container input {
-  margin-right: 1em;
+	margin-right: 1em;
 }
 
 .heatmap-calendar-settings-colors__new-color-input-value {
-  flex-grow: 1;
+	flex-grow: 1;
 }
 
 
